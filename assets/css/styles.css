@@ -37,22 +37,33 @@ body {
 }
 
 /* Hero */
+/* Hero / Banner Styling */
 .hero {
-  background: url('https://images.unsplash.com/photo-1520975698519-59c9a3b6e2e2?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+  background: linear-gradient(135deg, #0a2342, #1a1a1a); /* navy → deep charcoal */
+  color: #ffffff; /* white text on top */
+  padding: 100px 20px;
+  text-align: center;
 }
-.hero .eyebrow {
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(10, 35, 66, 0.7); /* subtle navy tint */
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #ffffff; /* pure white for banner title */
+  font-weight: 700;
+}
+.hero p {
+  font-size: 1.25rem;
+  color: #d9c9a9; /* champagne gold subtitle */
 }
 
 /* Sections */
+/* FORCE section titles color */
+h2.section-title,
 .section-title {
-  color: #b08d57 !important; /* bronze-gold */
-  font-weight: 700;
+  color: #b08d57 !important;  /* bronze-gold */
+  font-weight: 700 !important;
+  font-family: 'Playfair Display', serif !important;
+  text-transform: uppercase;
 }
-
 
 /* Product cards */
 .card {
