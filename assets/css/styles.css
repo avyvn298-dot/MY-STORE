@@ -1,8 +1,10 @@
-/* === GLOBAL COLORS === */
+/* === BASE STYLES === */
 body {
   background-color: #0D0D0D; /* near black */
   color: #F5F5F5; /* soft white */
   font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Navbar */
@@ -44,102 +46,6 @@ body {
   border-bottom: 2px solid #006D5B; /* emerald underline */
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
-}
-
-/* Product Cards */
-.card {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  color: #F5F5F5;
-}
-.card-title {
-  color: #F5F5F5;
-  font-weight: 600;
-}
-.card-text {
-  color: #006D5B !important; /* emerald price */
-  font-weight: 700;
-}
-
-/* Buttons */
-.btn-primary {
-  background-color: #D4AF37;
-  border-color: #D4AF37;
-  color: #0D0D0D;
-  font-weight: 600;
-}
-.btn-primary:hover {
-  background-color: #006D5B;
-  border-color: #006D5B;
-  color: #ffffff;
-}
-
-/* Category Banners */
-.category-banner .overlay {
-  background: linear-gradient(135deg, rgba(0, 109, 91, 0.7), rgba(212, 175, 55, 0.7));
-  color: #F5F5F5;
-}
-
-/* Footer */
-footer {
-  background-color: #0D0D0D;
-  color: #F5F5F5;
-  padding: 20px 0;
-  text-align: center;
-}
-footer a {
-  color: #006D5B;
-  text-decoration: none;
-}
-footer a:hover {
-  color: #D4AF37;
-}
-
-/* === HOVER ANIMATIONS & MICRO-INTERACTIONS === */
-
-/* Buttons */
-.btn-primary {
-  transition: all 0.3s ease;
-}
-.btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(0, 109, 91, 0.6); /* emerald glow */
-}
-
-/* Product Cards */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4); /* gold glow */
-}
-
-/* Product Images */
-.card img {
-  transition: transform 0.4s ease;
-}
-.card:hover img {
-  transform: scale(1.05);
-}
-
-/* Category Banners */
-.category-banner {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.category-banner:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 25px rgba(0, 109, 91, 0.5); /* emerald shadow */
-}
-.category-banner .overlay {
-  transition: background 0.4s ease;
-}
-.category-banner:hover .overlay {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(0, 109, 91, 0.8)); /* gold → emerald flip */
-}
-
-/* Section Titles */
-.section-title {
   position: relative;
   display: inline-block;
 }
@@ -158,4 +64,93 @@ footer a:hover {
   width: 100%;
   left: 0;
   background: #D4AF37; /* gold on hover */
+}
+
+/* Product Cards */
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  color: #F5F5F5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4); /* gold glow */
+}
+.card-title {
+  color: #F5F5F5;
+  font-weight: 600;
+}
+.card-text {
+  color: #006D5B !important; /* emerald price */
+  font-weight: 700;
+}
+.card img {
+  transition: transform 0.4s ease;
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #D4AF37;
+  border-color: #D4AF37;
+  color: #0D0D0D;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #006D5B;
+  border-color: #006D5B;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 109, 91, 0.6); /* emerald glow */
+}
+
+/* Category Banners */
+.category-banner {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.category-banner:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 109, 91, 0.5); /* emerald shadow */
+}
+.category-banner img {
+  width: 100%;
+  display: block;
+}
+.category-banner .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5F5F5;
+  background: linear-gradient(135deg, rgba(0, 109, 91, 0.7), rgba(212, 175, 55, 0.7));
+  transition: background 0.4s ease;
+}
+.category-banner:hover .overlay {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(0, 109, 91, 0.8)); /* gold → emerald flip */
+}
+
+/* Footer */
+footer {
+  background-color: #0D0D0D;
+  color: #F5F5F5;
+  padding: 20px 0;
+  text-align: center;
+}
+footer a {
+  color: #006D5B;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: #D4AF37;
 }
