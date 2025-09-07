@@ -74,14 +74,21 @@ body {
 
 /* Product title and price */
 .card-title {
-  color: #f5f3ef; /* ivory */
+  color: #f5f3ef; /* ivory for all titles */
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
+  transition: color 0.2s ease;
 }
+
+.card-title:hover {
+  color: #d4af37; /* gold on hover */
+}
+
 .card-text {
-  color: #d4af37; /* gold for price */
+  color: #d4af37; /* gold for all prices */
   font-weight: 500;
 }
+
 
 
 /* Footer */
