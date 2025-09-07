@@ -84,9 +84,10 @@ body {
   color: #d4af37; /* gold on hover */
 }
 
+/* Force product prices to gold everywhere */
 .card-text {
-  color: #d4af37; /* gold */
-  font-weight: 500;
+  color: #d4af37 !important; /* gold overrides Bootstrap */
+  font-weight: 600;
 }
 
 
