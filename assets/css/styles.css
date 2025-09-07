@@ -49,14 +49,10 @@ body {
 
 /* Sections */
 .section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
   color: #b08d57 !important; /* bronze-gold */
   font-weight: 700;
-  border-bottom: 2px solid rgba(176,141,87,0.6); /* stronger underline */
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
 }
+
 
 /* Product cards */
 .card {
