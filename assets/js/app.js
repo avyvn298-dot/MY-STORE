@@ -14,7 +14,7 @@ function renderProducts({ containerId, category = null, featured = false, limit 
         <img src="${p.images[0]}" class="card-img-top" alt="${p.name}">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">${p.name}</h5>
-          <p class="card-text text-muted">Rs. ${p.price}</p>
+          <p class="card-text">Rs. ${p.price}</p>
           <a href="product.html?sku=${p.sku}" class="btn btn-gold mt-auto">View Details</a>
         </div>
       </div>
