@@ -72,6 +72,18 @@ body {
   border-radius: 10px 10px 0 0;
 }
 
+/* Product title and price */
+.card-title {
+  color: #f5f3ef; /* ivory */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+}
+.card-text {
+  color: #d4af37; /* gold for price */
+  font-weight: 500;
+}
+
+
 /* Footer */
 footer {
   font-size: 0.9rem;
