@@ -1,0 +1,78 @@
+/* === Global Styling === */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0c0f0a; /* deep background */
+  color: #f5f3ef; /* ivory text */
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #d4af37 !important; /* gold */
+}
+
+.bg-deep { background-color: #0c0f0a; }
+.bg-deeper { background-color: #141414; }
+.text-ivory { color: #f5f3ef; }
+.text-gold { color: #d4af37; }
+.border-gold-20 { border-color: rgba(212,175,55,0.3) !important; }
+
+.btn-gold {
+  background-color: #d4af37;
+  color: #0c0f0a;
+  border: none;
+}
+.btn-gold:hover {
+  background-color: #b9972f;
+  color: #fff;
+}
+.btn-outline-gold {
+  border: 2px solid #d4af37;
+  color: #d4af37;
+}
+.btn-outline-gold:hover {
+  background-color: #d4af37;
+  color: #0c0f0a;
+}
+
+/* Hero */
+.hero {
+  background: url('https://images.unsplash.com/photo-1520975698519-59c9a3b6e2e2?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+}
+.hero .eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245, 243, 239, 0.7);
+}
+
+/* Sections */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #d4af37;
+  border-bottom: 2px solid rgba(212,175,55,0.2);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Product cards */
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+.card img {
+  border-radius: 10px 10px 0 0;
+}
+
+/* Footer */
+footer {
+  font-size: 0.9rem;
+}
