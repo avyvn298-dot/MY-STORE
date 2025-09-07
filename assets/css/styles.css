@@ -71,6 +71,44 @@ body {
   border-color: #8B5CF6;
 }
 
+/* === CATEGORY BANNERS (Men / Women / Kids etc.) === */
+.category-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+.category-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(70%); /* darken image for text readability */
+  transition: filter 0.3s ease;
+}
+.category-banner:hover img {
+  filter: brightness(85%);
+}
+.category-banner .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.7), rgba(220, 38, 38, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #EDEDED;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+}
+.category-banner:hover {
+  transform: scale(1.03);
+}
+
 /* Footer */
 footer {
   background-color: #111111;
