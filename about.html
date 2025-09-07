@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — My Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0D0D0D; --text:#F5F5F5; --emerald:#006D5B;
+      --gold:#D4AF37; --card:#1A1A1A; --muted:#2A2A2A;
+    }
+    body { background:var(--bg); color:var(--text); padding-top:72px; font-family: system-ui; }
+    .navbar { background:var(--bg); border-bottom:1px solid var(--muted); }
+    .nav-link { color:var(--text) !important; font-weight:600; }
+    .nav-link:hover { color:var(--emerald) !important; }
+    .hero { background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop"); background-size:cover; background-position:center; color:var(--text); text-align:center; padding:100px 20px; }
+    .hero h1 { font-size:3rem; font-weight:800; color:var(--gold); }
+    .hero p { font-size:1.2rem; margin-top:10px; }
+    .section-title { color:var(--gold); font-weight:800; margin-bottom:20px; }
+    .about-card { background:var(--card); border:1px solid var(--muted); border-radius:16px; padding:30px; margin-bottom:20px; }
+    footer { background:var(--bg); border-top:1px solid var(--muted); color:var(--text); padding:20px 0; text-align:center; }
+    footer a { color:var(--emerald); text-decoration:none; }
+    footer a:hover { color:var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">My Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navMain" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>About My Store</h1>
+  <p>Luxury fashion made simple, stylish, and accessible.</p>
+</section>
+
+<!-- About Content -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title">Who We Are</h2>
+    <div class="about-card">
+      <p>
+        At <strong>My Store</strong>, we believe fashion is more than clothing — it’s self-expression. 
+        Our mission is to provide timeless luxury, modern designs, and everyday essentials that empower confidence and style.
+      </p>
+    </div>
+
+    <h2 class="section-title">Our Vision</h2>
+    <div class="about-card">
+      <p>
+        To become the most trusted online destination for premium clothing and accessories, 
+        delivering quality products with outstanding service and care.
+      </p>
+    </div>
+
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="about-card">
+          <h5 class="fw-bold">✨ Premium Quality</h5>
+          <p>Hand-picked materials, designed to last.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="about-card">
+          <h5 class="fw-bold">🚚 Fast Delivery</h5>
+          <p>Reliable nationwide delivery, including cash on delivery.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="about-card">
+          <h5 class="fw-bold">🤝 Customer Care</h5>
+          <p>Dedicated support team to assist you 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2025 My Store. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
