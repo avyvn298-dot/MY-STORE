@@ -60,12 +60,30 @@
           <label for="phone" class="form-label">Phone Number</label>
           <input type="tel" class="form-control" id="phone" required />
         </div>
-        <div class="mb-3">
-          <label for="payment" class="form-label">Payment Method</label>
-          <select class="form-control" id="payment" disabled>
-            <option selected>Cash on Delivery</option>
-          </select>
-        </div>
+       <div class="mb-3">
+  <label class="form-label">Payment Method</label>
+  <div class="d-flex flex-column gap-3">
+
+    <!-- Cash on Delivery -->
+    <div class="form-check d-flex align-items-center gap-2 p-2 border rounded" style="background: var(--card);">
+      <input class="form-check-input" type="radio" name="payment" id="cod" value="COD" checked>
+      <label class="form-check-label d-flex align-items-center gap-2" for="cod">
+        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331716.png" width="28" alt="COD Logo">
+        Cash on Delivery
+      </label>
+    </div>
+
+    <!-- JazzCash -->
+    <div class="form-check d-flex align-items-center gap-2 p-2 border rounded" style="background: var(--card);">
+      <input class="form-check-input" type="radio" name="payment" id="jazzcash" value="JazzCash">
+      <label class="form-check-label d-flex align-items-center gap-2" for="jazzcash">
+        <img src="https://seeklogo.com/images/J/jazz-cash-logo-7D3C86147E-seeklogo.com.png" width="28" alt="JazzCash Logo">
+        JazzCash
+      </label>
+    </div>
+
+  </div>
+</div>
         <button type="submit" class="btn-submit">Place Order</button>
       </form>
     </div>
