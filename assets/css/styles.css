@@ -86,6 +86,11 @@ body {
   color: #b08d57 !important; /* bronze-gold price */
   font-weight: 600;
 }
+/* Navbar brand text override (so it's visible on navy background) */
+.navbar .brand {
+  color: #fdf5e6 !important; /* champagne ivory */
+}
+
 
 /* Footer */
 footer {
