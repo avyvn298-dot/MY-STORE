@@ -1,106 +1,87 @@
-/* === Global Styling === */
+/* === GLOBAL COLORS === */
 body {
+  background-color: #111111; /* matte black */
+  color: #EDEDED; /* platinum gray */
   font-family: 'Inter', sans-serif;
-  background-color: #fdf5e6; /* champagne beige */
-  color: #2c2c2c; /* charcoal text */
 }
 
-.brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  color: #0a2342 !important; /* navy */
+/* Navbar */
+.navbar {
+  background-color: #111111 !important;
+}
+.navbar .nav-link,
+.navbar-brand {
+  color: #EDEDED !important;
+  font-weight: 600;
+}
+.navbar .nav-link:hover {
+  color: #8B5CF6 !important; /* indigo hover */
 }
 
-.bg-deep { background-color: #0a2342; } /* header/footer navy */
-.bg-deeper { background-color: #081830; } /* darker navy */
-.text-ivory { color: #fdf5e6; }
-.text-gold { color: #b08d57; } /* bronze-gold */
-.border-gold-20 { border-color: rgba(176,141,87,0.3) !important; }
-
-.btn-gold {
-  background-color: #b08d57;
-  color: #fff;
-  border: none;
-}
-.btn-gold:hover {
-  background-color: #9a7746;
-  color: #fff;
-}
-.btn-outline-gold {
-  border: 2px solid #b08d57;
-  color: #b08d57;
-}
-.btn-outline-gold:hover {
-  background-color: #b08d57;
-  color: #fff;
-}
-
-/* Hero */
-/* Hero / Banner Styling */
+/* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #0a2342, #1a1a1a); /* navy → deep charcoal */
-  color: #ffffff; /* white text on top */
+  background: linear-gradient(135deg, #111111, #1a1a1a);
+  color: #EDEDED;
   padding: 100px 20px;
   text-align: center;
 }
 .hero h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 3rem;
-  color: #ffffff; /* pure white for banner title */
+  color: #DC2626; /* royal crimson title */
   font-weight: 700;
 }
 .hero p {
   font-size: 1.25rem;
-  color: #d9c9a9; /* champagne gold subtitle */
+  color: #8B5CF6; /* indigo subtitle */
 }
 
-/* Sections */
-/* FORCE section titles color */
-h2.section-title,
+/* Section Titles */
 .section-title {
-  color: #b08d57 !important;  /* bronze-gold */
-  font-weight: 700 !important;
-  font-family: 'Playfair Display', serif !important;
-  text-transform: uppercase;
-}
-
-/* Product cards */
-.card {
-  background-color: #fff;
-  border: 1px solid rgba(176,141,87,0.2);
-  border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-.card img {
-  border-radius: 10px 10px 0 0;
-}
-
-/* Product title and price */
-.card-title {
-  color: #0a2342; /* navy */
+  color: #DC2626 !important; /* crimson */
+  font-weight: 700;
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  transition: color 0.2s ease;
+  text-transform: uppercase;
+  border-bottom: 2px solid #8B5CF6; /* underline accent */
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
-.card-title:hover {
-  color: #b08d57; /* bronze-gold hover */
+
+/* Product Cards */
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  color: #EDEDED;
 }
-.card-text {
-  color: #b08d57 !important; /* bronze-gold price */
+.card-title {
+  color: #EDEDED;
   font-weight: 600;
 }
-/* Navbar brand text override (so it's visible on navy background) */
-.navbar .brand {
-  color: #fdf5e6 !important; /* champagne ivory */
+.card-text {
+  color: #8B5CF6 !important; /* indigo price */
+  font-weight: 700;
 }
 
+/* Buttons */
+.btn-primary {
+  background-color: #DC2626;
+  border-color: #DC2626;
+}
+.btn-primary:hover {
+  background-color: #8B5CF6;
+  border-color: #8B5CF6;
+}
 
 /* Footer */
 footer {
-  font-size: 0.9rem;
+  background-color: #111111;
+  color: #EDEDED;
+  padding: 20px 0;
+  text-align: center;
+}
+footer a {
+  color: #8B5CF6;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #DC2626;
 }
