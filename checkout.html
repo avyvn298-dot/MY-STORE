@@ -1,65 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Checkout — My Store</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Order Details — LuxTime</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    :root { --bg:#0B0B0B; --bg-alt:#1A1A1A; --text:#EDEDED; --gold:#C5A100; --silver:#C0C0C0; --muted:#2A2A2A; }
-    body { background:var(--bg); color:var(--text); font-family:'Inter', sans-serif; }
-    h1,h2,h3,h4 { font-family:'Playfair Display', serif; color:var(--gold); }
-    .btn-main { background:var(--gold); color:#0B0B0B; font-weight:700; border-radius:8px; padding:10px 20px; transition:.3s; }
-    .btn-main:hover { background:var(--silver); color:#000; box-shadow:0 0 15px var(--gold); transform:translateY(-2px); }
-    .form-control, .form-select { background:var(--bg-alt); border:1px solid var(--muted); color:var(--text); }
-    .form-control:focus, .form-select:focus { border-color:var(--gold); box-shadow:0 0 8px var(--gold); }
-    footer { background:var(--bg-alt); border-top:1px solid var(--muted); color:var(--text); text-align:center; padding:20px 0; margin-top:40px; }
+    :root {
+      --bg: #0B0F0E;
+      --panel: #101314;
+      --text: #EDEDED;
+      --gold: #D4AF37;
+      --silver: #C0C0C0;
+      --muted: #6B7280;
+      --green: #19A974;
+      --blue: #3B82F6;
+      --red: #EF4444;
+      --gray: #9CA3AF;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 15, 14, 0.95);
+      border-bottom: 1px solid rgba(212,175,55,0.06);
+    }
+    .logo { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--gold); }
+    .nav-links { display:flex; gap:1.2rem; }
+    .nav-links a { color:var(--text); text-decoration:none; font-weight:500; }
+    .nav-links a:hover { color:var(--gold); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=80') center/cover;
+      padding: 3rem 5%;
+      text-align: center;
+    }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.2rem; margin:0; color:var(--gold); }
+
+    /* Main content */
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 5%; }
+    .card {
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    h2, h3 { font-family:'Playfair Display',serif; color:var(--gold); margin-top:0; }
+    p { margin: 0.3rem 0; }
+
+    /* Product info */
+    .product {
+      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    }
+    .product img {
+      width: 140px; height: 140px; object-fit: cover;
+      border-radius: 10px; border:1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Status badge */
+    .badge {
+      display:inline-block; padding:0.4rem 0.7rem; border-radius:999px; font-weight:600; font-size:0.9rem;
+    }
+    .processing { background:rgba(156,163,175,0.15); color:var(--gray); }
+    .shipped { background:rgba(59,130,246,0.15); color:var(--blue); }
+    .delivered { background:rgba(25,169,116,0.15); color:var(--green); }
+    .cancelled { background:rgba(239,68,68,0.15); color:var(--red); }
+
+    /* Back link */
+    .back {
+      display:inline-block; margin-top:1rem; text-decoration:none;
+      padding:0.5rem 1rem; border-radius:8px;
+      border:1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s;
+      color: var(--silver);
+    }
+    .back:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Footer */
+    footer {
+      text-align:center; padding:1rem; color:var(--silver);
+      border-top:1px solid rgba(255,255,255,0.05);
+      margin-top:3rem;
+    }
+    .social a { color:var(--silver); margin:0 .4rem; }
+    .social a:hover { color:var(--gold); }
   </style>
 </head>
 <body>
 
-<div class="container py-5">
-  <h1 class="text-center mb-5">Checkout</h1>
-  <form class="row g-4">
-    <!-- Customer Info -->
-    <div class="col-md-6">
-      <label class="form-label">Full Name</label>
-      <input type="text" class="form-control" required>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">LuxTime</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="categories.html">Categories</a>
+      <a href="orders.html">Orders</a>
+      <a href="index.html#contact">Contact</a>
     </div>
-    <div class="col-md-6">
-      <label class="form-label">Email</label>
-      <input type="email" class="form-control" required>
-    </div>
-    <div class="col-md-6">
-      <label class="form-label">Phone</label>
-      <input type="tel" class="form-control" required>
-    </div>
-    <div class="col-md-6">
-      <label class="form-label">Address</label>
-      <input type="text" class="form-control" required>
-    </div>
+  </nav>
 
-    <!-- Payment -->
-    <div class="col-12">
-      <label class="form-label">Payment Method</label>
-      <select class="form-select">
-        <option>Cash on Delivery</option>
-        <option>JazzCash</option>
-        <option>Credit/Debit Card</option>
-      </select>
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Order Details</h1>
+  </header>
+
+  <!-- Main -->
+  <main class="container" id="orderContainer">
+    <!-- Order content will be injected by JS -->
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 LuxTime. All rights reserved.</p>
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
+  </footer>
 
-    <!-- Place Order -->
-    <div class="col-12 text-center">
-      <button type="submit" class="btn-main btn-lg">Place Order</button>
-    </div>
-  </form>
-</div>
+  <script>
+    // Example orders (same IDs from orders.html)
+    const orders = {
+      "ORD-1001": {
+        product: "Rolex Explorer",
+        price: "$5,499",
+        date: "2025-07-04",
+        status: "Delivered",
+        desc: "Automatic movement, stainless steel case, water-resistant.",
+        img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80",
+        shipping: "Delivered via FedEx on 2025-07-10"
+      },
+      "ORD-1002": {
+        product: "Omega Seamaster",
+        price: "$4,799",
+        date: "2025-07-08",
+        status: "Shipped",
+        desc: "Professional diver’s watch with ceramic bezel.",
+        img: "https://images.unsplash.com/photo-1612810806386-5a44e7c58a73?auto=format&fit=crop&w=400&q=80",
+        shipping: "Estimated delivery: 2025-07-15"
+      },
+      "ORD-1003": {
+        product: "Cartier Tank",
+        price: "$6,200",
+        date: "2025-07-12",
+        status: "Processing",
+        desc: "Classic rectangular design with leather strap.",
+        img: "https://images.unsplash.com/photo-1612810806419-c6ab5a29156a?auto=format&fit=crop&w=400&q=80",
+        shipping: "Processing — you will receive updates via email."
+      },
+      "ORD-1004": {
+        product: "Patek Nautilus",
+        price: "$18,900",
+        date: "2025-06-28",
+        status: "Cancelled",
+        desc: "Limited edition rose gold, highly collectible.",
+        img: "https://images.unsplash.com/photo-1601924582975-7c4b4b1aeb6b?auto=format&fit=crop&w=400&q=80",
+        shipping: "Order was cancelled. Payment refunded."
+      }
+    };
 
-<footer>
-  <p>© 2025 My Store. All rights reserved.</p>
-</footer>
+    // Extract order ID from query string
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get("order");
 
+    const container = document.getElementById("orderContainer");
+
+    if (orderId && orders[orderId]) {
+      const o = orders[orderId];
+      container.innerHTML = `
+        <div class="card">
+          <h2>Order ${orderId}</h2>
+          <p><strong>Order Date:</strong> ${o.date}</p>
+          <p><strong>Status:</strong> 
+            <span class="badge ${o.status.toLowerCase()}">${o.status}</span>
+          </p>
+        </div>
+
+        <div class="card product">
+          <img src="${o.img}" alt="${o.product}">
+          <div>
+            <h3>${o.product}</h3>
+            <p><strong>Price:</strong> ${o.price}</p>
+            <p>${o.desc}</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Shipping Info</h3>
+          <p>${o.shipping}</p>
+        </div>
+
+        <a class="back" href="orders.html"><i class="fas fa-arrow-left"></i> Back to Orders</a>
+      `;
+    } else {
+      container.innerHTML = `
+        <div class="card">
+          <h2>Order Not Found</h2>
+          <p>We couldn’t find any details for <strong>${orderId || "this order"}</strong>.</p>
+          <a class="back" href="orders.html"><i class="fas fa-arrow-left"></i> Back to Orders</a>
+        </div>
+      `;
+    }
+  </script>
 </body>
 </html>
