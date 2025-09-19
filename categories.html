@@ -3,281 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categories | LuxTime</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    :root {
-      --bg-dark: #0B0F0E;
-      --gold: #D4AF37;
-      --silver: #C0C0C0;
-      --text-light: #EDEDED;
-      --heading-font: 'Playfair Display', serif;
-      --body-font: 'Poppins', sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--body-font);
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--heading-font);
-    }
-
-    /* NAVBAR */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%;
-      position: sticky;
-      top: 0;
-      background: rgba(11, 15, 14, 0.95);
-      z-index: 1000;
-    }
-    nav .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav ul li a:hover {
-      color: var(--gold);
-    }
-
-    /* HERO */
-    .hero {
-      height: 50vh;
-      background: url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1500&q=80") no-repeat center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      color: var(--gold);
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    }
-
-    /* CATEGORIES GRID */
-    section {
-      padding: 5rem 10%;
-    }
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2rem;
-      color: var(--gold);
-    }
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .category-card {
-      background: #111;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
-    .category-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .category-card:hover img {
-      transform: scale(1.05);
-    }
-    .category-content {
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .category-card h3 {
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .category-card p {
-      color: var(--silver);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-    .category-card .btn {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 0.5rem 1.5rem;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    .category-card .btn:hover {
-      background: var(--gold);
-      color: var(--bg-dark);
-      box-shadow: 0 0 15px var(--gold);
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111;
-      padding: 2rem 10%;
-      text-align: center;
-    }
-    footer p {
-      color: var(--silver);
-    }
-    footer .social {
-      margin-top: 1rem;
-    }
-    footer .social a {
-      margin: 0 0.5rem;
-      font-size: 1.2rem;
-      color: var(--silver);
-    }
-    footer .social a:hover {
-      color: var(--gold);
-    }
-
-    /* RESPONSIVE */
-    @media(max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        background: #111;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        display: none;
-      }
-      nav ul.active {
-        display: flex;
-      }
-      nav .menu-toggle {
-        display: block;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-    }
-    @media(min-width: 769px) {
-      nav .menu-toggle {
-        display: none;
-      }
-    }
-  </style>
+  <title>Categories - LuxTime</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">LuxTime</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="products.html">Products</a>
+        <a href="orders.html">Orders</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="logo">LuxTime</div>
-    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Shop</a></li>
-      <li><a href="categories.html">Categories</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero">
     <h1>Explore Our Collections</h1>
   </section>
 
-  <!-- CATEGORIES GRID -->
-  <section>
-    <h2 class="section-title">Our Categories</h2>
-    <div class="categories">
+  <!-- Categories Grid -->
+  <section class="categories">
+    <div class="category-grid">
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1601924582975-7c4b4b1aeb6b?auto=format&fit=crop&w=800&q=80" alt="Men's Watches">
-        <div class="category-content">
-          <h3>Men's Watches</h3>
-          <p>Bold, timeless designs built for confidence and sophistication.</p>
-          <a href="products.html" class="btn">Shop Now</a>
-        </div>
+        <img src="https://via.placeholder.com/400x250" alt="Men’s Watches">
+        <h3>Men’s Watches</h3>
+        <p>Bold, classic, and refined.</p>
+        <a href="products.html" class="btn">Shop Now</a>
       </div>
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1612810806563-6f5fd8fa0c78?auto=format&fit=crop&w=800&q=80" alt="Women's Watches">
-        <div class="category-content">
-          <h3>Women's Watches</h3>
-          <p>Graceful and elegant pieces that complement any look.</p>
-          <a href="products.html" class="btn">Shop Now</a>
-        </div>
+        <img src="https://via.placeholder.com/400x250" alt="Women’s Watches">
+        <h3>Women’s Watches</h3>
+        <p>Elegant timepieces for her.</p>
+        <a href="products.html" class="btn">Shop Now</a>
       </div>
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1620222158879-b45cbb18ce19?auto=format&fit=crop&w=800&q=80" alt="Luxury Collection">
-        <div class="category-content">
-          <h3>Luxury Collection</h3>
-          <p>Exquisite designs crafted with precision and luxury materials.</p>
-          <a href="products.html" class="btn">Shop Now</a>
-        </div>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80" alt="Smart Watches">
-        <div class="category-content">
-          <h3>Smart Watches</h3>
-          <p>Modern technology fused with classic elegance.</p>
-          <a href="products.html" class="btn">Shop Now</a>
-        </div>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1612810806419-c6ab5a29156a?auto=format&fit=crop&w=800&q=80" alt="Limited Editions">
-        <div class="category-content">
-          <h3>Limited Editions</h3>
-          <p>Rare, collectible timepieces designed for true connoisseurs.</p>
-          <a href="products.html" class="btn">Shop Now</a>
-        </div>
+        <img src="https://via.placeholder.com/400x250" alt="Luxury Collection">
+        <h3>Luxury Collection</h3>
+        <p>Exclusive high-end designs.</p>
+        <a href="products.html" class="btn">Shop Now</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 LuxTime. All Rights Reserved.</p>
-    <div class="social">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
+    <p>© 2025 LuxTime. All Rights Reserved.</p>
   </footer>
-
-  <!-- JS -->
-  <script>
-    // Mobile Menu
-    const toggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector("nav ul");
-    toggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  </script>
-
 </body>
 </html>
