@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Orders — LuxTime</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root{--bg:#0B0F0E;--panel:#0E1110;--text:#EDEDED;--gold:#C5A100;--silver:#C0C0C0;--green:#19A974;--blue:#3B82F6;--red:#EF4444}
+    *{box-sizing:border-box} body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    nav{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:.9rem 5%;background:linear-gradient(180deg, rgba(11,15,14,0.9), rgba(11,15,14,0.85));border-bottom:1px solid rgba(255,255,255,.02)}
+    .logo{font-family:'Playfair Display',serif;color:var(--gold);font-weight:700}
+    .nav-links{display:flex;gap:1.2rem}
+    .nav-links a{color:var(--text);text-decoration:none} .nav-links a:hover{color:var(--gold)}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 5%;min-width:680px}
+    thead th{text-align:left;padding:.9rem 1rem;color:var(--silver);font-family:'Playfair Display',serif;border-bottom:1px solid rgba(255,255,255,0.03)}
+    tbody td{padding:.9rem 1rem;color:var(--silver);border-bottom:1px solid rgba(255,255,255,0.02)}
+    .prod{display:flex;gap:.8rem;align-items:center}
+    .thumb{width:64px;height:64px;object-fit:cover;border-radius:8px}
+    .badge{display:inline-block;padding:.3rem .6rem;border-radius:999px;font-weight:600}
+    .processing{background:rgba(255,255,255,0.02);color:var(--silver)}
+    .shipped{background:rgba(59,130,246,0.12);color:var(--blue)}
+    .delivered{background:rgba(25,169,116,0.12);color:var(--green)}
+    .cancelled{background:rgba(239,68,68,0.08);color:var(--red)}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--silver);padding:.45rem .7rem;border-radius:8px;text-decoration:none}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    @media(max-width:820px){ table{display:none} .card-list{display:block;padding:1rem 5%} .order-card{background:var(--panel);padding:1rem;border-radius:12px;margin-bottom:1rem;display:flex;gap:1rem;align-items:center} .order-card img{width:84px;height:84px;border-radius:8px;object-fit:cover}}
+    footer{padding:2rem 5%;text-align:center;color:var(--silver)}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">LuxTime</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="products.html">Products</a>
+      <a href="orders.html">Orders</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header style="min-height:32vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)),url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=80') center/cover;padding:3rem 1rem">
+    <div style="text-align:center">
+      <h1 style="font-family:'Playfair Display',serif;color:var(--gold);margin:0">My Orders</h1>
+      <p style="color:var(--silver);margin-top:.5rem">Track and view your recent orders</p>
+    </div>
+  </header>
+
+  <!-- ORDERS TABLE (desktop) -->
+  <table aria-label="Orders table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th style="text-align:right;padding-right:1.25rem">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>ORD-1001</strong></td>
+        <td><div class="prod"><img class="thumb" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop"><div><div style="font-weight:600;color:var(--silver)">Rolex Explorer</div><div style="color:var(--silver);font-size:.9rem">Automatic</div></div></div></td>
+        <td>$5,499</td>
+        <td>2025-07-04</td>
+        <td><span class="badge delivered">Delivered</span></td>
+        <td style="text-align:right"><a href="#" class="btn-outline">View Details</a></td>
+      </tr>
+
+      <tr>
+        <td><strong>ORD-1002</strong></td>
+        <td><div class="prod"><img class="thumb" src="https://images.unsplash.com/photo-1612810806386-5a44e7c58a73?q=80&w=400&auto=format&fit=crop"><div><div style="font-weight:600;color:var(--silver)">Omega Seamaster</div><div style="color:var(--silver);font-size:.9rem">Diver</div></div></div></td>
+        <td>$4,799</td>
+        <td>2025-07-08</td>
+        <td><span class="badge shipped">Shipped</span></td>
+        <td style="text-align:right"><a href="#" class="btn-outline">View Details</a></td>
+      </tr>
+
+      <tr>
+        <td><strong>ORD-1003</strong></td>
+        <td><div class="prod"><img class="thumb" src="https://images.unsplash.com/photo-1612810806419-c6ab5a29156a?q=80&w=400&auto=format&fit=crop"><div><div style="font-weight:600;color:var(--silver)">Cartier Tank</div><div style="color:var(--silver);font-size:.9rem">Leather Strap</div></div></div></td>
+        <td>$6,200</td>
+        <td>2025-07-12</td>
+        <td><span class="badge processing">Processing</span></td>
+        <td style="text-align:right"><a href="#" class="btn-outline">View Details</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Mobile stacked cards -->
+  <div class="card-list" aria-hidden="true" style="display:none; padding:1rem 5%">
+    <div class="order-card">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop" alt="Rolex">
+      <div style="flex:1">
+        <div style="font-family:'Playfair Display',serif;color:var(--gold)">ORD-1001</div>
+        <div style="color:var(--silver);font-weight:600">Rolex Explorer — $5,499</div>
+        <div style="margin-top:.4rem"><span class="badge delivered">Delivered</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.4rem;align-items:flex-end">
+        <a href="#" class="btn-outline">View Details</a>
+      </div>
+    </div>
+
+    <!-- more cards ... -->
+  </div>
+
+  <footer>
+    <div>© 2025 LuxTime. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Responsive: show cards on small screens
+    function toggleCardList(){
+      const isMobile = window.matchMedia('(max-width:820px)').matches;
+      document.querySelector('table').style.display = isMobile ? 'none' : 'table';
+      const cardList = document.querySelector('.card-list');
+      if(cardList) cardList.style.display = isMobile ? 'block' : 'none';
+    }
+    toggleCardList();
+    window.addEventListener('resize', toggleCardList);
+  </script>
+</body>
+</html>
