@@ -1,59 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categories - LuxTime</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Categories — LuxTime</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- same variables & base as index --- */
+    :root{--bg:#0B0F0E;--panel:#0E1110;--text:#EDEDED;--gold:#C5A100;--silver:#C0C0C0}
+    *{box-sizing:border-box} body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    nav{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:.9rem 5%;background:linear-gradient(180deg, rgba(11,15,14,0.9), rgba(11,15,14,0.85));border-bottom:1px solid rgba(255,255,255,.02)}
+    .logo{font-family:'Playfair Display',serif;color:var(--gold);font-weight:700}
+    .nav-links{display:flex;gap:1.2rem}
+    .nav-links a{color:var(--text);text-decoration:none} .nav-links a:hover{color:var(--gold)}
+    .menu-toggle{display:none} @media(max-width:820px){.menu-toggle{display:block}.nav-links{display:none;position:absolute;right:1rem;top:64px;background:var(--panel);flex-direction:column;padding:.6rem;border-radius:8px}.nav-links.active{display:flex}}
+
+    .hero{min-height:36vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg, rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=80') center/cover;padding:4rem 2rem}
+    .hero h1{font-family:'Playfair Display',serif;color:var(--gold);font-size:2.4rem;margin:0}
+
+    .section{padding:3.2rem 5%}
+    .section h2{font-family:'Playfair Display',serif;color:var(--gold);text-align:center;margin-bottom:1.8rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+    .category{background:var(--panel);border-radius:12px;padding:1rem;text-align:center;border:1px solid rgba(255,255,255,0.02);transition:transform .3s,box-shadow .3s}
+    .category img{width:100%;height:200px;object-fit:cover;border-radius:8px;transition:transform .4s}
+    .category:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+    .category:hover img{transform:scale(1.05)}
+    .category h3{font-family:'Playfair Display',serif;color:var(--gold);margin:.8rem 0 .4rem}
+    .category p{color:var(--silver);margin-bottom:.8rem}
+    .btn{display:inline-block;background:var(--gold);color:#0B0F0E;padding:.5rem 1rem;border-radius:20px;text-decoration:none;font-weight:600}
+    .btn:hover{box-shadow:0 0 15px rgba(197,161,0,0.25);transform:translateY(-2px)}
+    footer{padding:2rem 5%;text-align:center;color:var(--silver)}
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">LuxTime</div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="categories.html">Categories</a>
-        <a href="products.html">Products</a>
-        <a href="orders.html">Orders</a>
-        <a href="#">Contact</a>
-      </div>
-    </nav>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">LuxTime</div>
+    <div class="menu-toggle" id="menuToggleCat"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinksCat">
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="products.html">Products</a>
+      <a href="orders.html">Orders</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Explore Our Collections</h1>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Explore Our Collections</h1>
-  </section>
-
-  <!-- Categories Grid -->
-  <section class="categories">
-    <div class="category-grid">
-      <div class="category-card">
-        <img src="https://via.placeholder.com/400x250" alt="Men’s Watches">
+  <!-- CATEGORIES -->
+  <section class="section">
+    <h2>Shop by Category</h2>
+    <div class="grid">
+      <article class="category">
+        <img src="https://images.unsplash.com/photo-1601924582975-7c4b4b1aeb6b?q=80&w=1200&auto=format&fit=crop" alt="Men's">
         <h3>Men’s Watches</h3>
-        <p>Bold, classic, and refined.</p>
+        <p>Bold, timeless designs for everyday confidence.</p>
         <a href="products.html" class="btn">Shop Now</a>
-      </div>
-      <div class="category-card">
-        <img src="https://via.placeholder.com/400x250" alt="Women’s Watches">
+      </article>
+
+      <article class="category">
+        <img src="https://images.unsplash.com/photo-1612810806563-6f5fd8fa0c78?q=80&w=1200&auto=format&fit=crop" alt="Women's">
         <h3>Women’s Watches</h3>
-        <p>Elegant timepieces for her.</p>
+        <p>Elegant pieces that elevate any outfit.</p>
         <a href="products.html" class="btn">Shop Now</a>
-      </div>
-      <div class="category-card">
-        <img src="https://via.placeholder.com/400x250" alt="Luxury Collection">
+      </article>
+
+      <article class="category">
+        <img src="https://images.unsplash.com/photo-1620222158879-b45cbb18ce19?q=80&w=1200&auto=format&fit=crop" alt="Luxury">
         <h3>Luxury Collection</h3>
-        <p>Exclusive high-end designs.</p>
+        <p>Exquisite, limited-run timepieces for collectors.</p>
         <a href="products.html" class="btn">Shop Now</a>
-      </div>
+      </article>
+
+      <article class="category">
+        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=1200&auto=format&fit=crop" alt="Smart">
+        <h3>Smart Watches</h3>
+        <p>Modern tech wrapped in classic style.</p>
+        <a href="products.html" class="btn">Shop Now</a>
+      </article>
+
+      <article class="category">
+        <img src="https://images.unsplash.com/photo-1612810806419-c6ab5a29156a?q=80&w=1200&auto=format&fit=crop" alt="Limited">
+        <h3>Limited Editions</h3>
+        <p>Rare, collectible pieces with exceptional craftsmanship.</p>
+        <a href="products.html" class="btn">Shop Now</a>
+      </article>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2025 LuxTime. All Rights Reserved.</p>
+    <div>© 2025 LuxTime. All rights reserved.</div>
   </footer>
+
+  <script>
+    document.getElementById('menuToggleCat')?.addEventListener('click', ()=> {
+      document.getElementById('navLinksCat')?.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
