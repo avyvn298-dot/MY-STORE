@@ -3,415 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxury Watch Store</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    :root {
-      --bg-dark: #0B0F0E;
-      --gold: #D4AF37;
-      --silver: #C0C0C0;
-      --text-light: #EDEDED;
-      --heading-font: 'Playfair Display', serif;
-      --body-font: 'Poppins', sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--body-font);
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--heading-font);
-    }
-
-    /* NAVBAR */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%;
-      position: sticky;
-      top: 0;
-      background: rgba(11, 15, 14, 0.95);
-      z-index: 1000;
-    }
-    nav .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav ul li a:hover {
-      color: var(--gold);
-    }
-
-    /* HERO */
-    .hero {
-      height: 100vh;
-      background: url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      color: var(--gold);
-    }
-    .hero p {
-      margin: 1rem 0;
-      font-size: 1.2rem;
-      color: var(--silver);
-    }
-    .hero .btn {
-      background: var(--gold);
-      color: var(--bg-dark);
-      padding: 0.75rem 2rem;
-      border-radius: 30px;
-      transition: all 0.3s ease;
-      font-weight: bold;
-    }
-    .hero .btn:hover {
-      box-shadow: 0 0 15px var(--gold);
-      transform: scale(1.05);
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 5rem 10%;
-    }
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2rem;
-      color: var(--gold);
-    }
-
-    /* FEATURED PRODUCTS */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .product-card {
-      background: #111;
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .product-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    }
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    }
-    .product-card h3 {
-      margin: 0.5rem 0;
-      color: var(--gold);
-    }
-    .product-card p {
-      margin-bottom: 1rem;
-      color: var(--silver);
-    }
-    .product-card .btn {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 0.5rem 1.5rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-    .product-card .btn:hover {
-      background: var(--gold);
-      color: var(--bg-dark);
-    }
-
-    /* CATEGORIES */
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      text-align: center;
-    }
-    .category {
-      background: #111;
-      padding: 2rem;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-    .category:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    }
-    .category i {
-      font-size: 2rem;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    /* TESTIMONIALS */
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      text-align: center;
-    }
-    .testimonial {
-      background: #111;
-      padding: 2rem;
-      border-radius: 10px;
-      font-style: italic;
-    }
-    .testimonial h4 {
-      margin-top: 1rem;
-      color: var(--gold);
-    }
-
-    /* NEWSLETTER */
-    .newsletter {
-      text-align: center;
-    }
-    .newsletter input {
-      padding: 0.75rem;
-      border: none;
-      border-radius: 25px 0 0 25px;
-      outline: none;
-      width: 250px;
-    }
-    .newsletter button {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      background: var(--gold);
-      color: var(--bg-dark);
-      font-weight: bold;
-      border-radius: 0 25px 25px 0;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .newsletter button:hover {
-      box-shadow: 0 0 15px var(--gold);
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111;
-      padding: 2rem 10%;
-      text-align: center;
-    }
-    footer p {
-      color: var(--silver);
-    }
-    footer .social {
-      margin-top: 1rem;
-    }
-    footer .social a {
-      margin: 0 0.5rem;
-      font-size: 1.2rem;
-      color: var(--silver);
-    }
-    footer .social a:hover {
-      color: var(--gold);
-    }
-
-    /* SCROLL TO TOP */
-    #scrollTopBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--gold);
-      color: var(--bg-dark);
-      padding: 0.7rem 1rem;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      border: none;
-      cursor: pointer;
-      display: none;
-      transition: 0.3s;
-    }
-    #scrollTopBtn:hover {
-      box-shadow: 0 0 10px var(--gold);
-    }
-
-    /* RESPONSIVE */
-    @media(max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        background: #111;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        display: none;
-      }
-      nav ul.active {
-        display: flex;
-      }
-      nav .menu-toggle {
-        display: block;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-    }
-    @media(min-width: 769px) {
-      nav .menu-toggle {
-        display: none;
-      }
-    }
-  </style>
+  <title>LuxTime - Premium Watches</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">LuxTime</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="products.html">Products</a>
+        <a href="orders.html">Orders</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="logo">LuxTime</div>
-    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#shop">Shop</a></li>
-      <li><a href="#categories">Categories</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <h1>Luxury Watches</h1>
-    <p>Crafted with elegance, precision, and timeless beauty</p>
-    <a href="#shop" class="btn">Shop Now</a>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Luxury Redefined</h1>
+      <p>Discover timeless elegance with our premium watches.</p>
+      <a href="products.html" class="btn">Shop Now</a>
+    </div>
   </section>
 
-  <!-- FEATURED PRODUCTS -->
-  <section id="shop">
-    <h2 class="section-title">Featured Products</h2>
-    <div class="products">
+  <!-- Featured Products -->
+  <section class="featured">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
       <div class="product-card">
         <img src="https://via.placeholder.com/300x300" alt="Watch">
-        <h3>Gold Classic</h3>
-        <p>$1,200</p>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="product-card">
-        <img src="https://via.placeholder.com/300x300" alt="Watch">
-        <h3>Silver Elegance</h3>
-        <p>$950</p>
-        <a href="#" class="btn">Buy Now</a>
+        <h3>Rolex Submariner</h3>
+        <p>$12,000</p>
+        <a href="orders.html" class="btn">Buy Now</a>
+        <a href="products.html" class="btn-outline">View Details</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/300x300" alt="Watch">
-        <h3>Luxury Chrono</h3>
-        <p>$2,100</p>
-        <a href="#" class="btn">Buy Now</a>
+        <h3>Omega Seamaster</h3>
+        <p>$8,500</p>
+        <a href="orders.html" class="btn">Buy Now</a>
+        <a href="products.html" class="btn-outline">View Details</a>
       </div>
     </div>
   </section>
 
-  <!-- CATEGORIES -->
-  <section id="categories">
-    <h2 class="section-title">Categories</h2>
-    <div class="categories">
-      <div class="category"><i class="fas fa-male"></i><h3>Men's Watches</h3></div>
-      <div class="category"><i class="fas fa-female"></i><h3>Women's Watches</h3></div>
-      <div class="category"><i class="fas fa-gem"></i><h3>Luxury Collection</h3></div>
-      <div class="category"><i class="fas fa-mobile-alt"></i><h3>Smart Watches</h3></div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section>
-    <h2 class="section-title">Testimonials</h2>
-    <div class="testimonials">
-      <div class="testimonial">
-        <p>"Absolutely stunning watch! The craftsmanship is unmatched."</p>
-        <h4>- Sarah L.</h4>
-      </div>
-      <div class="testimonial">
-        <p>"My LuxTime watch is a statement piece — elegant and timeless."</p>
-        <h4>- David M.</h4>
-      </div>
-      <div class="testimonial">
-        <p>"I get compliments every day. Worth every dollar."</p>
-        <h4>- Maria K.</h4>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter" id="contact">
-    <h2 class="section-title">Stay Updated</h2>
-    <p>Subscribe to get exclusive offers and updates</p>
-    <form>
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="about">
-    <p>&copy; 2025 LuxTime. All Rights Reserved.</p>
-    <div class="social">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 LuxTime. All Rights Reserved.</p>
   </footer>
-
-  <!-- SCROLL TO TOP -->
-  <button id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
-
-  <!-- JS -->
-  <script>
-    // Scroll to top button
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollBtn.style.display = "block";
-      } else {
-        scrollBtn.style.display = "none";
-      }
-    };
-    scrollBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    // Mobile Menu
-    const toggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector("nav ul");
-    toggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  </script>
-
 </body>
 </html>
