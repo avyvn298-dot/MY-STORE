@@ -1,315 +1,312 @@
-<!doctype html>
-<!--
-  professional-website-index.html
-  Single-file professional, responsive, accessible static website ready for GitHub Pages.
-
-  How to use:
-  1) Create a new GitHub repository (public or private).
-  2) Add this file as `index.html` at the repo root and push to the `main` branch.
-  3) Go to Settings -> Pages -> Serve from `main` / `/ (root)` and enable GitHub Pages. The site will be published at https://<your-username>.github.io/<repo-name>/ within minutes.
-
-  Optional enhancements & repo structure (example):
-  / (repo root)
-  ├─ index.html                <-- this file
-  ├─ assets/
-  │  ├─ images/               <-- logo, hero image, icons (SVG/PNG)
-  │  ├─ fonts/                <-- optional web fonts
-  │  └─ media/                <-- videos, audio
-  ├─ css/
-  │  └─ styles.css           <-- if you split CSS out of index.html
-  ├─ js/
-  │  └─ main.js              <-- if you split JS out
-  ├─ .github/workflows/ci.yml <-- optional: runs lighthouse or link-check
-  └─ README.md
-
-  Example GitHub Actions workflow (link-check + deploy preview):
-  --- .github/workflows/ci.yml ---
-  name: CI - static site checks
-  on: [push]
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-        - name: Run HTMLProofer (link check)
-          uses: jakejarvis/html-proofer-action@v2
-          with:
-            args: "--checks ./"
-  --------------------------------
-
-  Notes:
-  - This site uses a simple, modern layout, offline-friendly progressive enhancement, and an accessible navigation.
-  - Contact form uses Formspree (no backend). Replace the FORM_ACTION with your Formspree endpoint or Netlify Forms if desired.
-  - Replace placeholder text and images with your own assets in the assets/ folder.
--->
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Acumen — Professional Site</title>
-  <meta name="description" content="Acumen — professional, responsive, accessible site template ready for GitHub Pages." />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Example Google font (optional) - you can self-host later -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acumen Watches — Precision. Craftsmanship. Luxury.">
+  <title>Acumen Watches | Luxury & Precision Timepieces</title>
 
-  <style>
-    /* Minimal reset */
-    :root{
-      --bg:#0b1220; --card:#0f1724; --muted:#94a3b8; --accent:#7c3aed; --glass: rgba(255,255,255,0.04);
-      --radius:12px; --container:1100px; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#041021);color:#e6eef8;}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--container);margin:0 auto;padding:2rem}
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
-    header{backdrop-filter: blur(6px);background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);position:sticky;top:0;z-index:40}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.6rem 0}
-    .brand{display:flex;align-items:center;gap:0.8rem}
-    .logo{width:44px;height:44px;display:inline-grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2dd4bf);font-weight:800;color:#041021}
-    nav ul{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
-    nav button{background:var(--accent);border:0;padding:0.5rem 0.9rem;border-radius:10px;font-weight:600;cursor:pointer}
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-    main{padding:2rem 0}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:2rem;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
-    h1{font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.02;margin:0 0 0.6rem}
-    p.lead{color:var(--muted);margin:0 0 1.2rem}
-    .cta-row{display:flex;gap:0.8rem;align-items:center}
-
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}
-    .feature{background:var(--glass);padding:1rem;border-radius:12px}
-    .feature h4{margin:0 0 0.5rem}
-
-    .card{background:var(--card);padding:1rem;border-radius:12px}
-
-    /* Responsive */
-    @media (max-width:920px){
-      .hero{grid-template-columns:1fr;}
-      .features{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:520px){
-      nav ul{display:none}
-      .features{grid-template-columns:1fr}
-      .container{padding:1rem}
-    }
-
-    footer{padding:2rem 0;color:var(--muted)}
-
-    /* simple accessible focus states */
-    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(124,58,237,0.22);outline-offset:3px}
-
-    /* small utility */
-    .muted{color:var(--muted)}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .badge{display:inline-block;padding:0.2rem 0.5rem;border-radius:999px;background:rgba(255,255,255,0.04);font-weight:600}
-
-  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icons/watch-favicon.png">
 </head>
 <body>
-  <header>
-    <div class="container nav" role="navigation" aria-label="Primary">
-      <div class="brand">
-        <div class="logo" aria-hidden>AC</div>
-        <div>
-          <div style="font-weight:800">Acumen</div>
-          <div class="muted" style="font-size:12px">Professional Web Presence</div>
-        </div>
-      </div>
-
-      <nav aria-label="Main navigation">
+  <!-- ================= HEADER ================= -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <div class="logo">ACUMEN</div>
+      <nav class="nav">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-
-      <div style="display:flex;gap:0.6rem;align-items:center">
-        <a class="muted" href="#pricing">Pricing</a>
-        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+      <div class="nav-icons">
+        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-card">
-        <span class="badge">NEW · 2025</span>
-        <h1>Beautiful, fast, and accessible websites for confident brands</h1>
-        <p class="lead">I build responsive websites, apps, and marketing pages — optimized for performance and conversions. Production-ready code, GitHub-friendly, with automated checks and deployment guides included.</p>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero">
+    <div class="hero-content container">
+      <h1 class="hero-title">Precision in Every Tick</h1>
+      <p class="hero-subtitle">Discover the essence of craftsmanship through our collection of timeless luxury watches.</p>
+      <a href="collection.html" class="btn-primary">Explore Collection</a>
+    </div>
+    <div class="hero-image-overlay"></div>
+    <img src="assets/images/hero-watch.jpg" alt="Luxury Watch" class="hero-image">
+  </section>
 
-        <div class="cta-row">
-          <button id="demoBtn">Live demo</button>
-          <a class="muted" href="#work">See examples →</a>
-        </div>
-
-        <div class="features" style="margin-top:1.2rem">
-          <div class="feature">
-            <h4>Performance</h4>
-            <p class="muted">Tiny payloads, images optimized, Lighthouse-friendly.</p>
-          </div>
-          <div class="feature">
-            <h4>Accessibility</h4>
-            <p class="muted">WCAG-aware components, keyboard-first navigation.</p>
-          </div>
-          <div class="feature">
-            <h4>Deploy</h4>
-            <p class="muted">One-click GitHub Pages + optional CI checks.</p>
-          </div>
-        </div>
+  <!-- ================= FEATURED COLLECTION ================= -->
+  <section class="featured container">
+    <h2 class="section-title">Featured Timepieces</h2>
+    <div class="featured-grid">
+      <div class="watch-card">
+        <img src="assets/images/watch1.png" alt="Eclipse Chronograph" class="watch-img">
+        <h3>Eclipse Chronograph</h3>
+        <p>Where elegance meets performance. Swiss automatic movement with sapphire crystal.</p>
+        <a href="product.html?id=1" class="btn-secondary">View Details</a>
       </div>
-
-      <aside class="card" aria-labelledby="statsTitle">
-        <h3 id="statsTitle">Project snapshot</h3>
-        <dl>
-          <dt class="muted">Pages</dt><dd>Landing, Services, Blog, Contact</dd>
-          <dt class="muted">Build</dt><dd>Static HTML/CSS/JS — no server required</dd>
-          <dt class="muted">Hosting</dt><dd>GitHub Pages (recommended)</dd>
-        </dl>
-
-        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-
-        <h4>Quick setup</h4>
-        <ol class="muted" style="padding-left:1rem;margin:0">
-          <li>Create repo, add index.html, push</li>
-          <li>Enable Pages from main branch</li>
-          <li>Optional: add CI workflow for link checks</li>
-        </ol>
-      </aside>
-    </section>
-
-    <section id="about" style="margin-top:2rem">
-      <div class="card">
-        <h2>About the project</h2>
-        <p class="muted">This template is built for maintainability. It uses semantic HTML, ARIA where necessary, and progressive enhancement: everything works without JavaScript, and JS only improves the experience.</p>
-
-        <div class="grid-2" style="margin-top:1rem">
-          <div>
-            <h3>Design choices</h3>
-            <ul class="muted">
-              <li>Single stylesheet to keep the critical path short</li>
-              <li>Responsive grid layout with CSS gap and clamp() for fluid type</li>
-              <li>Accessible interactions and focus styles</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Performance tips</h3>
-            <ul class="muted">
-              <li>Pre-compress assets (gzip or Brotli on server)</li>
-              <li>Use modern image formats (AVIF/WebP) and srcset</li>
-              <li>Defer non-essential JavaScript</li>
-            </ul>
-          </div>
-        </div>
+      <div class="watch-card">
+        <img src="assets/images/watch2.png" alt="Luna Classic" class="watch-img">
+        <h3>Luna Classic</h3>
+        <p>Timeless simplicity inspired by the moonlight. 18K gold bezel and leather strap.</p>
+        <a href="product.html?id=2" class="btn-secondary">View Details</a>
       </div>
-    </section>
-
-    <section id="services" style="margin-top:1.2rem">
-      <h2>Services</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Web Development</h3>
-          <p class="muted">Static sites, SPAs, and progressive web apps — clean code, good SEO, and fast load times.</p>
-        </div>
-        <div class="card">
-          <h3>Design & Branding</h3>
-          <p class="muted">Logo, color systems, and visual identity tuned for conversions.</p>
-        </div>
+      <div class="watch-card">
+        <img src="assets/images/watch3.png" alt="Aether Carbon" class="watch-img">
+        <h3>Aether Carbon</h3>
+        <p>Forged carbon casing and skeleton dial. Crafted for the bold and visionary.</p>
+        <a href="product.html?id=3" class="btn-secondary">View Details</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="work" style="margin-top:1.2rem">
-      <h2>Selected work</h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:0.8rem">
-        <figure class="card" role="group" aria-labelledby="p1">
-          <img src="https://via.placeholder.com/600x360.png?text=Project+1" alt="Screenshot of project 1" style="width:100%;height:auto;border-radius:8px;display:block;margin-bottom:0.6rem">
-          <figcaption id="p1"><strong>Project One</strong> — Landing page for a fintech startup.</figcaption>
-        </figure>
-        <figure class="card" role="group" aria-labelledby="p2">
-          <img src="https://via.placeholder.com/600x360.png?text=Project+2" alt="Screenshot of project 2" style="width:100%;height:auto;border-radius:8px;display:block;margin-bottom:0.6rem">
-          <figcaption id="p2"><strong>Project Two</strong> — Marketing site for an agency.</figcaption>
-        </figure>
-        <figure class="card" role="group" aria-labelledby="p3">
-          <img src="https://via.placeholder.com/600x360.png?text=Project+3" alt="Screenshot of project 3" style="width:100%;height:auto;border-radius:8px;display:block;margin-bottom:0.6rem">
-          <figcaption id="p3"><strong>Project Three</strong> — Documentation site with search.</figcaption>
-        </figure>
+  <!-- ================= BRAND STATEMENT ================= -->
+  <section class="brand-statement">
+    <div class="container">
+      <h2>Redefining Luxury, One Second at a Time</h2>
+      <p>Every Acumen timepiece embodies passion, artistry, and engineering perfection. Our watches are more than instruments of time — they are expressions of identity, legacy, and elegance.</p>
+    </div>
+  </section>
+
+  <!-- ================= CRAFTSMANSHIP SECTION ================= -->
+  <section class="craftsmanship container">
+    <div class="craftsmanship-text">
+      <h2>Unmatched Craftsmanship</h2>
+      <p>Our artisans meticulously assemble each component, ensuring unmatched precision and durability. From hand-polished cases to intricate movements, Acumen stands as a beacon of excellence.</p>
+      <a href="about.html" class="btn-primary">Learn More</a>
+    </div>
+    <div class="craftsmanship-image">
+      <img src="assets/images/craftsmanship.jpg" alt="Watchmaking process">
+    </div>
+  </section>
+
+  <!-- ================= NEWS / BLOG PREVIEW ================= -->
+  <section class="news container">
+    <h2 class="section-title">Latest from Acumen</h2>
+    <div class="news-grid">
+      <article class="news-card">
+        <img src="assets/images/blog1.jpg" alt="New Collection Launch">
+        <h3>Introducing the Midnight Collection</h3>
+        <p>Experience the deep tones and sleek design of our new Midnight series — elegance redefined for modern collectors.</p>
+        <a href="blog.html#midnight" class="btn-secondary">Read More</a>
+      </article>
+      <article class="news-card">
+        <img src="assets/images/blog2.jpg" alt="Craftsmanship Insight">
+        <h3>The Art of Horology</h3>
+        <p>Go behind the scenes with our master watchmakers to witness the craftsmanship that makes every second special.</p>
+        <a href="blog.html#horology" class="btn-secondary">Read More</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>Acumen Watches</h3>
+        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
       </div>
-    </section>
-
-    <section id="contact" style="margin-top:1.6rem">
-      <h2>Contact</h2>
-      <div class="card">
-        <p class="muted">Want this exact site with your branding and content? Fill the form and I’ll respond by email.</p>
-
-        <!-- Replace FORM_ACTION with your Formspree endpoint or Netlify forms handler -->
-        <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
-          <label for="name">Name</label><br>
-          <input id="name" name="name" required placeholder="Your name" style="width:100%;padding:0.6rem;margin:0.2rem 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-
-          <label for="email">Email</label><br>
-          <input id="email" name="email" type="email" required placeholder="you@example.com" style="width:100%;padding:0.6rem;margin:0.2rem 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-
-          <label for="message">Message</label><br>
-          <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project" style="width:100%;padding:0.6rem;margin:0.2rem 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
-
-          <div style="display:flex;gap:0.6rem;align-items:center;margin-top:0.6rem">
-            <button type="submit">Send message</button>
-            <div class="muted" style="font-size:13px">Or email: <a href="mailto:hello@acumen.example">hello@acumen.example</a></div>
-          </div>
-        </form>
-
-        <script>
-          // Lightweight enhancement: catch submission and show success without leaving page.
-          document.getElementById('contactForm').addEventListener('submit', async function(e){
-            // let the normal post happen; we progressively enhance so JS is optional.
-            // But show immediate UI feedback to the user.
-            const submitBtn = this.querySelector('button[type=submit]');
-            submitBtn.disabled = true; submitBtn.textContent = 'Sending...';
-            // Do a fetch to Formspree if you prefer AJAX (uncomment below). If you use AJAX, ensure CORS is allowed.
-            /*
-            e.preventDefault();
-            const formData = new FormData(this);
-            const res = await fetch(this.action, {method:'POST',body:formData,headers:{'Accept':'application/json'}});
-            if(res.ok){
-              submitBtn.textContent='Sent ✓';
-              this.reset();
-            } else {
-              submitBtn.textContent='Send message'; submitBtn.disabled=false; alert('Could not send message');
-            }
-            */
-          });
-        </script>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </div>
-    </section>
-
-  </main>
-
-  <footer class="container">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
-      <div class="muted">© <span id="year"></span> Acumen. Built with care.</div>
-      <div class="muted">Follow: <a href="#">Twitter</a> · <a href="#">GitHub</a> · <a href="#">Dribbble</a></div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
+        <p>Phone: +1 (800) 555-0199</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Acumen Watches. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+      </div>
     </div>
   </footer>
 
+  <!-- JS -->
+  <script src="js/main.js"></script>
   <script>
-    // small runtime niceties
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Smooth scrolling for internal anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
-      });
-    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acumen Watches — Precision. Craftsmanship. Luxury.">
+  <title>Acumen Watches | Luxury & Precision Timepieces</title>
 
-    // Demo button quick interaction
-    document.getElementById('demoBtn').addEventListener('click', ()=>{
-      alert('This is a static demo. To preview on your machine, save this file as index.html and open it in your browser.');
-    });
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icons/watch-favicon.png">
+</head>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <div class="logo">ACUMEN</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero">
+    <div class="hero-content container">
+      <h1 class="hero-title">Precision in Every Tick</h1>
+      <p class="hero-subtitle">Discover the essence of craftsmanship through our collection of timeless luxury watches.</p>
+      <a href="collection.html" class="btn-primary">Explore Collection</a>
+    </div>
+    <div class="hero-image-overlay"></div>
+    <img src="assets/images/hero-watch.jpg" alt="Luxury Watch" class="hero-image">
+  </section>
+
+  <!-- ================= FEATURED COLLECTION ================= -->
+  <section class="featured container">
+    <h2 class="section-title">Featured Timepieces</h2>
+    <div class="featured-grid">
+      <div class="watch-card">
+        <img src="assets/images/watch1.png" alt="Eclipse Chronograph" class="watch-img">
+        <h3>Eclipse Chronograph</h3>
+        <p>Where elegance meets performance. Swiss automatic movement with sapphire crystal.</p>
+        <a href="product.html?id=1" class="btn-secondary">View Details</a>
+      </div>
+      <div class="watch-card">
+        <img src="assets/images/watch2.png" alt="Luna Classic" class="watch-img">
+        <h3>Luna Classic</h3>
+        <p>Timeless simplicity inspired by the moonlight. 18K gold bezel and leather strap.</p>
+        <a href="product.html?id=2" class="btn-secondary">View Details</a>
+      </div>
+      <div class="watch-card">
+        <img src="assets/images/watch3.png" alt="Aether Carbon" class="watch-img">
+        <h3>Aether Carbon</h3>
+        <p>Forged carbon casing and skeleton dial. Crafted for the bold and visionary.</p>
+        <a href="product.html?id=3" class="btn-secondary">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BRAND STATEMENT ================= -->
+  <section class="brand-statement">
+    <div class="container">
+      <h2>Redefining Luxury, One Second at a Time</h2>
+      <p>Every Acumen timepiece embodies passion, artistry, and engineering perfection. Our watches are more than instruments of time — they are expressions of identity, legacy, and elegance.</p>
+    </div>
+  </section>
+
+  <!-- ================= CRAFTSMANSHIP SECTION ================= -->
+  <section class="craftsmanship container">
+    <div class="craftsmanship-text">
+      <h2>Unmatched Craftsmanship</h2>
+      <p>Our artisans meticulously assemble each component, ensuring unmatched precision and durability. From hand-polished cases to intricate movements, Acumen stands as a beacon of excellence.</p>
+      <a href="about.html" class="btn-primary">Learn More</a>
+    </div>
+    <div class="craftsmanship-image">
+      <img src="assets/images/craftsmanship.jpg" alt="Watchmaking process">
+    </div>
+  </section>
+
+  <!-- ================= NEWS / BLOG PREVIEW ================= -->
+  <section class="news container">
+    <h2 class="section-title">Latest from Acumen</h2>
+    <div class="news-grid">
+      <article class="news-card">
+        <img src="assets/images/blog1.jpg" alt="New Collection Launch">
+        <h3>Introducing the Midnight Collection</h3>
+        <p>Experience the deep tones and sleek design of our new Midnight series — elegance redefined for modern collectors.</p>
+        <a href="blog.html#midnight" class="btn-secondary">Read More</a>
+      </article>
+      <article class="news-card">
+        <img src="assets/images/blog2.jpg" alt="Craftsmanship Insight">
+        <h3>The Art of Horology</h3>
+        <p>Go behind the scenes with our master watchmakers to witness the craftsmanship that makes every second special.</p>
+        <a href="blog.html#horology" class="btn-secondary">Read More</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>Acumen Watches</h3>
+        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
+        <p>Phone: +1 (800) 555-0199</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Acumen Watches. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
