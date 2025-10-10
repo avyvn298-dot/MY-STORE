@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cart — Acumen Watches</title>
+  <meta name="description" content="Shopping cart demo for Acumen Watches (demo).">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" href="assets/icons/watch-favicon.png">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-container">
+      <div class="logo">ACUMEN</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
+        <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container cart-page">
+    <h1>Your Cart</h1>
+    <div class="cart-grid">
+      <div class="cart-items card" id="cartItems">
+        <p class="muted">Your cart is empty.</p>
+      </div>
+      <aside class="cart-summary card" id="cartSummary">
+        <h3>Summary</h3>
+        <div class="summary-lines muted">
+          <div>Subtotal: <span id="cartSubtotal">$0.00</span></div>
+          <div>Shipping: <span id="cartShipping">Calculated at checkout</span></div>
+          <div><strong>Total: <span id="cartTotal">$0.00</span></strong></div>
+        </div>
+        <div style="margin-top:1rem">
+          <button class="btn-primary" id="checkoutBtn" disabled>Checkout (Demo)</button>
+        </div>
+      </aside>
+    </div>
+    <p class="muted note">This demo cart uses localStorage and does not process payments. Integrate Stripe/Shopify for production checkout.</p>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>Acumen Watches</h3>
+        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
+        <p>Phone: +1 (800) 555-0199</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year-cart"></span> Acumen Watches. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year-cart').textContent = new Date().getFullYear();</script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
