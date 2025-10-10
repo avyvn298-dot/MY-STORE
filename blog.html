@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blog — Acumen Watches</title>
+  <meta name="description" content="Acumen Watches blog — releases, stories, and horology insights.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" href="assets/icons/watch-favicon.png">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-container">
+      <div class="logo">ACUMEN</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
+        <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container blog-list">
+    <section class="hero-compact">
+      <h1>Stories & Insights</h1>
+      <p class="lead">Stay up to date with launches, interviews, and care guides from the Acumen atelier.</p>
+    </section>
+
+    <section id="blogGrid" class="news-grid">
+      <!-- Blog posts inserted by js (data/blog.json) -->
+      <div class="grid-placeholder muted">Loading blog posts…</div>
+    </section>
+
+    <section class="newsletter card">
+      <h3>Subscribe for updates</h3>
+      <p class="muted">Get news about product launches and exclusive events.</p>
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="inline-form">
+        <input name="email" type="email" placeholder="you@example.com" required>
+        <button class="btn-primary" type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>Acumen Watches</h3>
+        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
+        <p>Phone: +1 (800) 555-0199</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year-blog"></span> Acumen Watches. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year-blog').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
