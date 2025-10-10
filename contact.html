@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact — Acumen Watches</title>
+  <meta name="description" content="Contact Acumen Watches for appointments, support, or commissions.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" href="assets/icons/watch-favicon.png">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-container">
+      <div class="logo">ACUMEN</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
+        <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container contact-page">
+    <section class="hero-compact">
+      <h1>Contact & Appointments</h1>
+      <p class="lead">We welcome inquiries for sales, servicing, and bespoke requests. Fill the form or book a private appointment.</p>
+    </section>
+
+    <section class="contact-grid grid-2">
+      <div class="card">
+        <h2>Send a Message</h2>
+        <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" required placeholder="Your full name">
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" placeholder="Subject">
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell us about your request…" required></textarea>
+
+          <div style="display:flex;gap:0.6rem;align-items:center">
+            <button class="btn-primary" type="submit">Send Message</button>
+            <div class="muted">Or email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></div>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Visit Us</h2>
+        <p class="muted">Our atelier is open by appointment. We also partner with select retailers worldwide.</p>
+        <h3>Addresses</h3>
+        <address>
+          <strong>Acumen Atelier</strong><br>
+          112 Atelier Lane<br>
+          Geneva, CH<br>
+          Phone: +41 22 555 0199
+        </address>
+
+        <h3 id="visit">Book a Private Appointment</h3>
+        <p>Request a visit and one of our experts will contact you to confirm a time.</p>
+        <a class="btn-secondary" href="mailto:appointments@acumenwatches.com?subject=Private Appointment Request">Request Appointment</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>Acumen Watches</h3>
+        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
+        <p>Phone: +1 (800) 555-0199</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year-contact"></span> Acumen Watches. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year-contact').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+</body>
+</html>
