@@ -1,105 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us — My Store</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    :root{
-      --bg:#0D0D0D; --text:#F5F5F5; --emerald:#006D5B;
-      --gold:#D4AF37; --card:#1A1A1A; --muted:#2A2A2A;
-    }
-    body { background:var(--bg); color:var(--text); padding-top:72px; font-family: system-ui; }
-    .navbar { background:var(--bg); border-bottom:1px solid var(--muted); }
-    .nav-link { color:var(--text) !important; font-weight:600; }
-    .nav-link:hover { color:var(--emerald) !important; }
-    .hero { background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop"); background-size:cover; background-position:center; color:var(--text); text-align:center; padding:100px 20px; }
-    .hero h1 { font-size:3rem; font-weight:800; color:var(--gold); }
-    .hero p { font-size:1.2rem; margin-top:10px; }
-    .section-title { color:var(--gold); font-weight:800; margin-bottom:20px; }
-    .about-card { background:var(--card); border:1px solid var(--muted); border-radius:16px; padding:30px; margin-bottom:20px; }
-    footer { background:var(--bg); border-top:1px solid var(--muted); color:var(--text); padding:20px 0; text-align:center; }
-    footer a { color:var(--emerald); text-decoration:none; }
-    footer a:hover { color:var(--gold); }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About — Acumen Watches</title>
+  <meta name="description" content="About Acumen Watches — our heritage, craftsmanship, and design philosophy.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" href="assets/icons/watch-favicon.png" type="image/png">
 </head>
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html">My Store</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navMain" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
-        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="hero">
-  <h1>About My Store</h1>
-  <p>Luxury fashion made simple, stylish, and accessible.</p>
-</section>
-
-<!-- About Content -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="section-title">Who We Are</h2>
-    <div class="about-card">
-      <p>
-        At <strong>My Store</strong>, we believe fashion is more than clothing — it’s self-expression. 
-        Our mission is to provide timeless luxury, modern designs, and everyday essentials that empower confidence and style.
-      </p>
-    </div>
-
-    <h2 class="section-title">Our Vision</h2>
-    <div class="about-card">
-      <p>
-        To become the most trusted online destination for premium clothing and accessories, 
-        delivering quality products with outstanding service and care.
-      </p>
-    </div>
-
-    <h2 class="section-title">Why Choose Us?</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="about-card">
-          <h5 class="fw-bold">✨ Premium Quality</h5>
-          <p>Hand-picked materials, designed to last.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="about-card">
-          <h5 class="fw-bold">🚚 Fast Delivery</h5>
-          <p>Reliable nationwide delivery, including cash on delivery.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="about-card">
-          <h5 class="fw-bold">🤝 Customer Care</h5>
-          <p>Dedicated support team to assist you 24/7.</p>
-        </div>
+  <header class="main-header">
+    <div class="container nav-container">
+      <div class="logo">ACUMEN</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
+        <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <p>© 2025 My Store. All rights reserved.</p>
-  </div>
-</footer>
+  <main class="container page-about">
+    <section class="hero-compact">
+      <h1>Heritage & Craftsmanship</h1>
+      <p class="lead">For generations we have refined the art of timekeeping — marrying engineering precision with timeless design.</p>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <section class="story grid-2">
+      <div class="card">
+        <h2>Our Story</h2>
+        <p>Founded by horology enthusiasts and master craftsmen, Acumen grew from a small atelier into a modern atelier that still values hand-finishing and thoughtful design. Each timepiece is conceived with a spirit of exploration and refined with decades of watchmaking knowledge.</p>
+        <p>We use Swiss-sourced movements in combination with cutting-edge materials and rigorous quality checks. Every watch that leaves our hands is built to endure, to be worn, and to carry forward a legacy.</p>
+      </div>
+      <div class="card">
+        <h2>Design Philosophy</h2>
+        <p>Our design is rooted in clarity, proportion, and tactile detail. We prefer subtle complexity over loud ornamentation — a dial that reveals itself at different angles, a case that fits like an extension of the wrist, and finishes that invite touch.</p>
+        <ul class="muted">
+          <li>Minimal yet detailed dials</li>
+          <li>Ergonomic case designs</li>
+          <li>Quality materials: sapphire, ceramics, gold, forged carbon</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="timeline">
+      <h2>Milestones</h2>
+      <ol class="muted">
+        <li><strong>1990</strong> — Founding of our atelier.</li>
+        <li><strong>2002</strong> — First in-house limited chronograph.</li>
+        <li><strong>2015</strong> — Launch of Aether Carbon collection.</li>
+        <li><strong>2024</strong> — Expansion into bespoke commissions and global retail partners.</li>
+      </ol>
+    </section>
+
+    <section class="craft-visuals grid-3">
+      <figure class="card">
+        <img src="assets/images/about1.jpg" alt="Craftsman polishing case">
+        <figcaption>Hand-polishing each case to mirror finish.</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/images/about2.jpg" alt="Movement assembly">
+        <figcaption>Movement assembly by master watchmakers.</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/images/about3.jpg" alt="Dial details">
+        <figcaption>Dial finishing: texture and depth work.</figcaption>
+      </figure>
+    </section>
+
+    <section class="cta">
+      <div class="card">
+        <h2>Visit the Atelier</h2>
+        <p>Book a private appointment to view collections or commission a bespoke piece.</p>
+        <a class="btn-primary" href="contact.html#visit">Book an Appointment</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>Acumen Watches</h3>
+        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
+        <p>Phone: +1 (800) 555-0199</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year-about"></span> Acumen Watches. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year-about').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
 </body>
 </html>
