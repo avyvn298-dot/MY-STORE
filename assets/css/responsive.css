@@ -1,0 +1,165 @@
+/* ===============================
+   RESPONSIVE DESIGN (responsive.css)
+   =============================== */
+
+/* ===== Base Breakpoints ===== */
+/*
+Mobile: max-width: 767px
+Tablet: 768px–1023px
+Desktop: 1024px+
+Large Desktop: 1440px+
+*/
+
+/* ===== Mobile Devices ===== */
+@media (max-width: 767px) {
+  body {
+    font-size: 15px;
+    overflow-x: hidden;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .hero {
+    height: 85vh;
+    padding: 60px 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .watch-card {
+    padding: 20px;
+  }
+
+  .brand-statement {
+    padding: 60px 20px;
+  }
+
+  .craftsmanship {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .craftsmanship-image img {
+    max-width: 100%;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* ===== Tablets ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .craftsmanship {
+    flex-direction: column;
+  }
+
+  .craftsmanship-image img {
+    max-width: 100%;
+  }
+}
+
+/* ===== Desktops ===== */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .craftsmanship {
+    flex-direction: row;
+  }
+}
+
+/* ===== Large Screens ===== */
+@media (min-width: 1440px) {
+  body {
+    font-size: 18px;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
