@@ -1,183 +1,1189 @@
-/* ===============================
-   ANIMATIONS (animations.css)
-   =============================== */
+/* ===== animations.css ===== */
+/* Animations, Transitions, and Effects for Luxury Watch Brand Website */
 
-/* ===== Keyframes ===== */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ==================== */
+/* KEYFRAME ANIMATIONS */
+/* ==================== */
 
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Fade In */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes zoomIn {
-  0% {
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from {
     opacity: 0;
     transform: scale(0.9);
   }
-  100% {
+  to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-@keyframes slideInLeft {
-  0% {
+/* Slide Up */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
     opacity: 0;
-    transform: translateX(-60px);
   }
-  100% {
+  to {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateX(0);
   }
 }
 
-@keyframes slideInRight {
+/* Shimmer Effect */
+@keyframes shimmer {
   0% {
-    opacity: 0;
-    transform: translateX(60px);
+    background-position: -1000px 0;
   }
   100% {
-    opacity: 1;
-    transform: translateX(0);
+    background-position: 1000px 0;
   }
 }
 
-@keyframes pulseGlow {
+/* Gold Glow Pulse */
+@keyframes goldGlow {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(199,166,84,0.3);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3),
+                0 0 10px rgba(212, 175, 55, 0.2);
   }
   50% {
-    box-shadow: 0 0 25px rgba(199,166,84,0.6);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6),
+                0 0 30px rgba(212, 175, 55, 0.4);
   }
 }
 
-/* ===== Scroll Animations ===== */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: all 1s ease;
-}
-.fade-left.visible {
-  opacity: 1;
-  transform: translateX(0);
+/* Subtle Float */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-.fade-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: all 1s ease;
-}
-.fade-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.fade-zoom {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 1s ease;
-}
-.fade-zoom.visible {
-  opacity: 1;
-  transform: scale(1);
+/* Rotate Slow */
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* ===== Hover Animations ===== */
-.btn-primary, .btn-secondary {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+/* Reveal Line */
+@keyframes revealLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
-.btn-primary::after, .btn-secondary::after {
-  content: '';
-  position: absolute;
-  left: -50%;
-  top: 0;
-  width: 0;
-  height: 100%;
-  background: rgba(255,255,255,0.15);
-  transform: skewX(-20deg);
-  transition: width 0.6s ease;
-  z-index: -1;
+/* Text Reveal */
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
 }
 
-.btn-primary:hover::after, .btn-secondary:hover::after {
-  width: 200%;
+/* Luxury Entrance */
+@keyframes luxuryEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-/* ===== Element Transitions ===== */
+/* ==================== */
+/* PAGE LOAD ANIMATIONS */
+/* ==================== */
+
+/* Hero Content Animation */
+.hero-logo {
+  animation: fadeInDown 1s ease 0.2s both;
+}
+
 .hero-title {
-  animation: fadeInDown 1.5s ease;
+  animation: luxuryEntrance 1.2s ease 0.4s both;
 }
 
 .hero-subtitle {
-  animation: fadeIn 2s ease 0.5s both;
+  animation: fadeInUp 1s ease 0.8s both;
 }
 
-.featured-grid .watch-card {
-  animation: zoomIn 1s ease forwards;
+.hero-divider {
+  animation: revealLine 1s ease 1s both;
 }
 
-.brand-statement h2, .brand-statement p {
-  animation: fadeInUp 1.2s ease;
+.hero .btn {
+  animation: fadeInUp 0.8s ease 1.2s both;
 }
 
-.craftsmanship-text h2, .craftsmanship-text p {
-  animation: slideInLeft 1s ease;
+/* Stagger Animation for Collection Cards */
+.product-card:nth-child(1) {
+  animation: fadeInUp 0.8s ease 0.1s both;
 }
 
-.craftsmanship-image img {
-  animation: slideInRight 1s ease;
+.product-card:nth-child(2) {
+  animation: fadeInUp 0.8s ease 0.2s both;
 }
 
-/* ===== Glowing Accent Effects ===== */
-.logo {
-  animation: pulseGlow 3s infinite ease-in-out;
+.product-card:nth-child(3) {
+  animation: fadeInUp 0.8s ease 0.3s both;
 }
 
-.btn-primary:hover, .btn-secondary:hover {
-  animation: pulseGlow 2s infinite ease-in-out;
+.product-card:nth-child(4) {
+  animation: fadeInUp 0.8s ease 0.4s both;
 }
 
-/* ===== Scroll Reveal Trigger ===== */
+.product-card:nth-child(5) {
+  animation: fadeInUp 0.8s ease 0.5s both;
+}
+
+.product-card:nth-child(6) {
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+/* Section Headers Animation */
+.section-header {
+  animation: fadeInUp 0.8s ease both;
+}
+
+/* Feature Cards Stagger */
+.feature-card:nth-child(1) {
+  animation: scaleIn 0.6s ease 0.1s both;
+}
+
+.feature-card:nth-child(2) {
+  animation: scaleIn 0.6s ease 0.2s both;
+}
+
+.feature-card:nth-child(3) {
+  animation: scaleIn 0.6s ease 0.3s both;
+}
+
+.feature-card:nth-child(4) {
+  animation: scaleIn 0.6s ease 0.4s both;
+}
+
+/* ==================== */
+/* NAVIGATION ANIMATIONS */
+/* ==================== */
+
+.navbar {
+  transition: all 0.5s ease;
+}
+
+.navbar-menu li a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+.navbar-menu li a:hover::after,
+.navbar-menu li a.active::after {
+  width: 100%;
+}
+
+/* Mobile Menu Animation */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.navbar-menu.active {
+  animation: slideInLeft 0.4s ease both;
+}
+
+.navbar-menu.active li {
+  animation: fadeInLeft 0.3s ease both;
+}
+
+.navbar-menu.active li:nth-child(1) { animation-delay: 0.1s; }
+.navbar-menu.active li:nth-child(2) { animation-delay: 0.15s; }
+.navbar-menu.active li:nth-child(3) { animation-delay: 0.2s; }
+.navbar-menu.active li:nth-child(4) { animation-delay: 0.25s; }
+.navbar-menu.active li:nth-child(5) { animation-delay: 0.3s; }
+.navbar-menu.active li:nth-child(6) { animation-delay: 0.35s; }
+
+/* Menu Toggle Animation */
+.menu-toggle span {
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ==================== */
+/* BUTTON ANIMATIONS */
+/* ==================== */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Button Shimmer Effect */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.btn-primary:hover::after {
+  left: 100%;
+}
+
+/* Gold Glow on Hover */
+.btn-secondary {
+  transition: all 0.5s ease;
+}
+
+.btn-secondary:hover {
+  animation: goldGlow 2s ease-in-out infinite;
+}
+
+/* ==================== */
+/* PRODUCT CARD ANIMATIONS */
+/* ==================== */
+
+.product-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+}
+
+.product-image {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08);
+}
+
+/* Product Badge Animation */
+.product-badge {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .product-badge {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Product Info Reveal */
+.product-name,
+.product-description,
+.product-price {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .product-name {
+  color: var(--gold);
+}
+
+.product-card:hover .product-price {
+  transform: scale(1.05);
+}
+
+/* Product Actions Slide In */
+.product-actions {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.product-card:hover .product-actions {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==================== */
+/* TEXT EFFECTS */
+/* ==================== */
+
+/* Gold Text Shimmer */
+.text-gold {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    var(--light-gold) 50%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Elegant Text Fade */
+.text-elegant {
+  transition: all 0.5s ease;
+}
+
+.text-elegant:hover {
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+/* Luxury Text Glow */
+.text-luxury {
+  transition: all 0.4s ease;
+}
+
+.text-luxury:hover {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* ==================== */
+/* LINK ANIMATIONS */
+/* ==================== */
+
+a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+a:hover::before {
+  width: 100%;
+}
+
+/* ==================== */
+/* FEATURE CARD ANIMATIONS */
+/* ==================== */
+
+.feature-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+}
+
+.feature-icon {
+  transition: all 0.5s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  color: var(--light-gold);
+}
+
+.feature-title {
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover .feature-title {
+  color: var(--gold);
+}
+
+/* ==================== */
+/* FORM ANIMATIONS */
+/* ==================== */
+
+.form-input,
+.form-textarea,
+.form-select {
+  transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  transform: translateY(-2px);
+}
+
+.form-label {
+  transition: all 0.3s ease;
+}
+
+.form-group:focus-within .form-label {
+  color: var(--gold);
+  transform: translateX(5px);
+}
+
+/* ==================== */
+/* FOOTER ANIMATIONS */
+/* ==================== */
+
+.footer-links a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+.social-icon {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ==================== */
+/* SCROLL REVEAL ANIMATIONS */
+/* ==================== */
+
+/* Add these classes with JavaScript for scroll-triggered animations */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ==================== */
+/* ABOUT SECTION ANIMATIONS */
+/* ==================== */
+
+.about-text {
+  animation: fadeInLeft 1s ease both;
+}
+
+.about-image {
+  animation: fadeInRight 1s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.3),
+    transparent
+  );
+  transition: left 0.8s ease;
+  z-index: 1;
+}
+
+.about-image:hover::before {
+  left: 100%;
+}
+
+.about-image img {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ==================== */
+/* LOADING ANIMATIONS */
+/* ==================== */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(212, 175, 55, 0.2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ==================== */
+/* PARALLAX EFFECTS (Pure CSS) */
+/* ==================== */
+
+.parallax-slow {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parallax-slow:hover {
+  transform: translateY(-5px);
+}
+
+/* ==================== */
+/* DIVIDER ANIMATIONS */
+/* ==================== */
+
+.hero-divider {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(244, 208, 63, 0.8),
+    transparent
+  );
+  animation: shimmerDivider 3s ease-in-out infinite;
+}
+
+@keyframes shimmerDivider {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* ==================== */
+/* ICON ANIMATIONS */
+/* ==================== */
+
+.nav-icon {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.nav-icon:hover::after {
+  width: 150%;
+  height: 150%;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1);
+}
+
+/* ==================== */
+/* CART BADGE PULSE */
+/* ==================== */
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.cart-badge {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ==================== */
+/* IMAGE OVERLAY ANIMATIONS */
+/* ==================== */
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.3) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.product-card:hover .image-overlay {
+  opacity: 1;
+}
+
+/* ==================== */
+/* LUXURY BOX SHADOW ANIMATIONS */
+/* ==================== */
+
+.shadow-glow {
+  transition: box-shadow 0.5s ease;
+}
+
+.shadow-glow:hover {
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.2),
+    0 0 60px rgba(212, 175, 55, 0.1);
+}
+
+/* ==================== */
+/* BORDER ANIMATIONS */
+/* ==================== */
+
+.border-animate {
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.border-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.border-animate:hover::before {
+  opacity: 1;
+}
+
+/* ==================== */
+/* TEXT GRADIENT ANIMATIONS */
+/* ==================== */
+
+.gradient-text {
+  background: linear-gradient(
+    45deg,
+    var(--gold),
+    var(--light-gold),
+    var(--platinum),
+    var(--gold)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ==================== */
+/* UNDERLINE ANIMATIONS */
+/* ==================== */
+
+.underline-animate {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.underline-animate:hover::after {
+  width: 100%;
+}
+
+/* ==================== */
+/* PRICE TAG ANIMATIONS */
+/* ==================== */
+
+.price-highlight {
+  position: relative;
+  display: inline-block;
+  transition: all 0.4s ease;
+}
+
+.price-highlight::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: rgba(212, 175, 55, 0.1);
+  transition: height 0.4s ease;
+  z-index: -1;
+}
+
+.price-highlight:hover::before {
+  height: 100%;
+}
+
+.price-highlight:hover {
+  transform: scale(1.05);
+}
+
+/* ==================== */
+/* SECTION TRANSITION EFFECTS */
+/* ==================== */
+
+section {
+  transition: all 0.6s ease;
+}
+
+/* ==================== */
+/* MODAL/OVERLAY ANIMATIONS */
+/* ==================== */
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-content {
+  animation: fadeInModal 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.modal-backdrop {
+  animation: fadeIn 0.4s ease both;
+}
+
+/* ==================== */
+/* LUXURY ENTRANCE SEQUENCE */
+/* ==================== */
+
+.luxury-sequence-1 {
+  animation: luxuryEntrance 1s ease 0.1s both;
+}
+
+.luxury-sequence-2 {
+  animation: luxuryEntrance 1s ease 0.3s both;
+}
+
+.luxury-sequence-3 {
+  animation: luxuryEntrance 1s ease 0.5s both;
+}
+
+.luxury-sequence-4 {
+  animation: luxuryEntrance 1s ease 0.7s both;
+}
+
+/* ==================== */
+/* RESPONSIVE ANIMATION ADJUSTMENTS */
+/* ==================== */
+
+/* Tablet Devices */
+@media (max-width: 991px) {
+  /* Reduce animation complexity */
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Faster animations on tablets */
+  .btn,
+  .product-card,
+  .feature-card {
+    transition-duration: 0.3s;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+  /* Disable complex hover animations on mobile */
+  .product-card:hover {
+    transform: none;
+  }
+
+  .product-card:hover .product-image {
+    transform: scale(1.02);
+  }
+
+  .feature-card:hover {
+    transform: none;
+  }
+
+  .feature-card:hover .feature-icon {
+    transform: scale(1.05);
+  }
+
+  /* Simplify button animations */
+  .btn:hover::before {
+    width: 0;
+    height: 0;
+  }
+
+  /* Reduce animation duration */
+  * {
+    animation-duration: 0.5s !important;
+    transition-duration: 0.3s !important;
+  }
+
+  /* Remove product actions slide-in on mobile */
+  .product-actions {
+    transform: none;
+    opacity: 1;
+  }
+
+  /* Simplify text effects */
+  .text-gold {
+    animation: none;
+    background: var(--gold);
+    -webkit-text-fill-color: var(--gold);
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 479px) {
+  /* Minimal animations for performance */
+  .hero-logo,
+  .hero-title,
+  .hero-subtitle,
+  .hero-divider {
+    animation-duration: 0.4s;
+  }
+
+  .product-card {
+    animation-duration: 0.4s;
+  }
+
+  /* Remove stagger delays on very small screens */
+  .product-card:nth-child(n) {
+    animation-delay: 0s;
+  }
+
+  .feature-card:nth-child(n) {
+    animation-delay: 0s;
+  }
+}
+
+/* ==================== */
+/* PERFORMANCE OPTIMIZATIONS */
+/* ==================== */
+
+/* Use transform and opacity for best performance */
+.gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ==================== */
+/* ACCESSIBILITY - REDUCED MOTION */
+/* ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .product-card:hover,
+  .feature-card:hover,
+  .btn:hover {
+    transform: none;
+  }
+
+  .text-gold {
+    animation: none;
+  }
+}
+
+/* ==================== */
+/* DARK MODE TRANSITION */
+/* ==================== */
+
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ==================== */
+/* SMOOTH SCROLL BEHAVIOR */
+/* ==================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ==================== */
+/* FOCUS ANIMATIONS FOR ACCESSIBILITY */
+/* ==================== */
+
+*:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  transition: outline-offset 0.2s ease;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* ==================== */
+/* CUSTOM CURSOR EFFECTS (Optional) */
+/* ==================== */
+
+.luxury-cursor {
+  cursor: pointer;
+  position: relative;
+}
+
+.luxury-cursor::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+.luxury-cursor:hover::after {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ==================== */
+/* END OF ANIMATIONS.CSS */
+/* ==================== */
