@@ -1,254 +1,511 @@
-<!-- ========================================= -->
-<!-- NAVIGATION BAR TEMPLATE -->
-<!-- Copy this to ALL pages and update the active class -->
-<!-- ========================================= -->
-
-<nav class="navbar" id="navbar">
-    <div class="container">
-        <!-- Brand Logo -->
-        <a href="index.html" class="navbar-brand">CLOCK UP</a>
-        
-        <!-- Navigation Menu -->
-        <ul class="navbar-menu" id="navbarMenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="collection.html">Collection</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <!-- Navigation Actions -->
-        <div class="navbar-actions">
-            <a href="collection.html" class="btn btn-primary">Explore Collection</a>
-            <div class="nav-icon" id="searchIcon" aria-label="Search">
-                <i class="fas fa-search"></i>
-            </div>
-            <a href="cart.html" class="nav-icon" aria-label="Shopping Cart">
-                <i class="fas fa-shopping-bag"></i>
-            </a>
-            <!-- Mobile Menu Toggle -->
-            <div class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===== Meta Tags ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Explore the CLOCK UP signature collection of luxury timepieces. Discover exceptional Swiss craftsmanship and timeless elegance in every watch.">
+    <meta name="keywords" content="luxury watch collection, premium timepieces, swiss watches, CLOCK UP collection, high-end watches">
+    <meta name="author" content="CLOCK UP">
+    <meta name="robots" content="index, follow">
+    
+    <!-- ===== Open Graph Meta Tags ===== -->
+    <meta property="og:title" content="CLOCK UP - Signature Collection | Luxury Timepieces">
+    <meta property="og:description" content="Explore our exclusive collection of handcrafted luxury watches that embody precision, elegance, and timeless design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.clockup.com/collection">
+    <meta property="og:image" content="https://www.clockup.com/assets/images/collection-og-image.jpg">
+    
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- ===== Title ===== -->
+    <title>CLOCK UP | Collection - Luxury Timepieces</title>
+    
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- ===== Font Awesome Icons ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- ===== Stylesheets ===== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+    
+    <!-- ===== Navigation Bar ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="navbar-brand">CLOCK UP</a>
+            
+            <!-- Navigation Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="collection.html" class="active">Collection</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Navigation Actions -->
+            <div class="navbar-actions">
+                <a href="collection.html" class="btn btn-primary">Explore Collection</a>
+                <div class="nav-icon" id="searchIcon" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-icon" id="cartIcon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <!-- Mobile Menu Toggle -->
+                <div class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+    <!-- ===== Hero Section (Collection Banner) ===== -->
+    <section class="hero" style="min-height: 70vh; background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0d0d0d 100%);">
+        <div class="hero-content">
+            <p class="hero-logo">SIGNATURE COLLECTION</p>
+            <h1 class="hero-title">TIMELESS ELEGANCE</h1>
+            <p class="hero-subtitle">Discover exceptional craftsmanship in every detail</p>
+            <div class="hero-divider"></div>
+        </div>
+    </section>
 
-<!-- ========================================= -->
-<!-- FOOTER TEMPLATE -->
-<!-- Copy this to ALL pages (same across all) -->
-<!-- ========================================= -->
+    <!-- ===== Filter Section ===== -->
+    <section class="collection-section" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-ghost btn-small" data-filter="all">All Watches</button>
+                    <button class="btn btn-ghost btn-small" data-filter="heritage">Heritage Series</button>
+                    <button class="btn btn-ghost btn-small" data-filter="royal">Royal Collection</button>
+                    <button class="btn btn-ghost btn-small" data-filter="aviation">Aviation Series</button>
+                    <button class="btn btn-ghost btn-small" data-filter="complications">Complications</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <!-- Footer Brand -->
-            <div class="footer-section">
-                <h4 class="navbar-brand" style="margin-bottom: 1rem;">CLOCK UP</h4>
-                <p>Crafting timeless luxury since 1970. Each timepiece is a masterpiece of Swiss horological tradition.</p>
-                <div class="footer-social">
-                    <a href="#" class="social-icon" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+    <!-- ===== Watch Collection Grid ===== -->
+    <section class="collection-section">
+        <div class="container">
+            <!-- Collection Grid -->
+            <div class="collection-grid">
+                <!-- Watch Card 1 -->
+                <article class="product-card" data-category="heritage">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">New Arrival</span>
+                        <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&h=600&fit=crop" alt="Chronograph Elite" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Heritage Series</p>
+                        <h3 class="product-name">Chronograph Elite</h3>
+                        <p class="product-description">Swiss automatic movement with precision chronograph and sapphire crystal display.</p>
+                        <p class="product-price">$12,500</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 2 -->
+                <article class="product-card" data-category="royal">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Bestseller</span>
+                        <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=600&h=600&fit=crop" alt="Royal Platinum" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Royal Collection</p>
+                        <h3 class="product-name">Royal Platinum</h3>
+                        <p class="product-description">18K white gold case with diamond-studded bezel and mother-of-pearl dial.</p>
+                        <p class="product-price">$24,800</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 3 -->
+                <article class="product-card" data-category="aviation">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Limited Edition</span>
+                        <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=600&h=600&fit=crop" alt="Aviator Gold" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Aviation Series</p>
+                        <h3 class="product-name">Aviator Gold</h3>
+                        <p class="product-description">Inspired by aviation heritage with 18K yellow gold and pilot chronograph functions.</p>
+                        <p class="product-price">$18,900</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 4 -->
+                <article class="product-card" data-category="complications">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1611251135555-b09e5e4ec7d9?w=600&h=600&fit=crop" alt="Moonphase Master" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Complications Series</p>
+                        <h3 class="product-name">Moonphase Master</h3>
+                        <p class="product-description">Stunning moonphase complication with hand-finished movement and sapphire caseback.</p>
+                        <p class="product-price">$16,200</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 5 -->
+                <article class="product-card" data-category="heritage">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=600&fit=crop" alt="Classic Heritage" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Heritage Series</p>
+                        <h3 class="product-name">Classic Heritage</h3>
+                        <p class="product-description">Timeless design with automatic movement and alligator leather strap.</p>
+                        <p class="product-price">$9,800</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 6 -->
+                <article class="product-card" data-category="royal">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Exclusive</span>
+                        <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&h=600&fit=crop" alt="Diamond Royale" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Royal Collection</p>
+                        <h3 class="product-name">Diamond Royale</h3>
+                        <p class="product-description">Exquisite 18K rose gold with full diamond pavé and precision quartz movement.</p>
+                        <p class="product-price">$32,500</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 7 -->
+                <article class="product-card" data-category="aviation">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=600&h=600&fit=crop" alt="Sky Navigator" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Aviation Series</p>
+                        <h3 class="product-name">Sky Navigator</h3>
+                        <p class="product-description">Pilot's watch with dual-time zone display and anti-reflective sapphire crystal.</p>
+                        <p class="product-price">$14,300</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 8 -->
+                <article class="product-card" data-category="complications">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Master Craft</span>
+                        <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600&h=600&fit=crop" alt="Perpetual Calendar" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Complications Series</p>
+                        <h3 class="product-name">Perpetual Calendar</h3>
+                        <p class="product-description">Perpetual calendar complication with day, date, month, and leap year indicators.</p>
+                        <p class="product-price">$28,700</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 9 -->
+                <article class="product-card" data-category="heritage">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=600&h=600&fit=crop" alt="Aurora Chronos" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Heritage Series</p>
+                        <h3 class="product-name">Aurora Chronos</h3>
+                        <p class="product-description">Classic design meets modern engineering with automatic caliber and 72-hour power reserve.</p>
+                        <p class="product-price">$11,400</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 10 -->
+                <article class="product-card" data-category="royal">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=600&fit=crop" alt="Imperial Gold" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Royal Collection</p>
+                        <h3 class="product-name">Imperial Gold</h3>
+                        <p class="product-description">24K gold-plated case with intricate guilloche dial and precision Swiss movement.</p>
+                        <p class="product-price">$19,600</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 11 -->
+                <article class="product-card" data-category="aviation">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1608276547722-2f72b2e82e49?w=600&h=600&fit=crop" alt="Tactical Commander" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Aviation Series</p>
+                        <h3 class="product-name">Tactical Commander</h3>
+                        <p class="product-description">Military-inspired design with reinforced titanium case and luminous markers.</p>
+                        <p class="product-price">$13,800</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Watch Card 12 -->
+                <article class="product-card" data-category="complications">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">New</span>
+                        <img src="https://images.unsplash.com/photo-1639006570490-79c0c53f1080?w=600&h=600&fit=crop" alt="Tourbillon Excellence" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Complications Series</p>
+                        <h3 class="product-name">Tourbillon Excellence</h3>
+                        <p class="product-description">Hand-assembled tourbillon movement visible through exhibition caseback.</p>
+                        <p class="product-price">$42,900</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary btn-small">View Details</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Quote Divider Section ===== -->
+    <section class="hero" style="min-height: 50vh; background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);">
+        <div class="hero-content">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <i class="fas fa-quote-left" style="font-size: 3rem; color: var(--gold); opacity: 0.3; margin-bottom: 1rem;"></i>
+                <h2 class="hero-title gradient-text" style="font-size: 2.5rem; font-style: italic; font-weight: 400; line-height: 1.4;">
+                    Every second tells a story of precision
+                </h2>
+                <i class="fas fa-quote-right" style="font-size: 3rem; color: var(--gold); opacity: 0.3; margin-top: 1rem;"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Featured Watch Section ===== -->
+    <section class="about-section" style="background: var(--black);">
+        <div class="container">
+            <div class="about-content">
+                <!-- Featured Image -->
+                <div class="about-image reveal-left">
+                    <img src="https://images.unsplash.com/photo-1611251135555-b09e5e4ec7d9?w=800&h=1000&fit=crop" alt="Luna Masterpiece Featured Watch" loading="lazy">
+                </div>
+                
+                <!-- Featured Text -->
+                <div class="about-text reveal-right">
+                    <p class="product-collection" style="color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem;">Featured Masterpiece</p>
+                    <h2>Luna <span class="text-gold">Masterpiece</span></h2>
+                    <div class="hero-divider" style="margin: 1.5rem 0;"></div>
+                    <p>The Luna Masterpiece represents the pinnacle of horological artistry. This exceptional timepiece features a hand-assembled Swiss movement with a mesmerizing moonphase complication that accurately tracks lunar cycles for 122 years.</p>
+                    <p>Crafted from 950 platinum with a hand-guilloché dial, each Luna Masterpiece takes over 300 hours to complete. The exhibition caseback reveals the intricate movement finished with Côtes de Genève striping and blued screws.</p>
+                    <div style="margin-top: 2rem;">
+                        <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.5rem;">Starting Price</p>
+                        <p class="product-price" style="font-size: 2.5rem; margin-bottom: 2rem;">$47,500</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="product-detail.html" class="btn btn-secondary">Explore This Model</a>
+                        <a href="#contact" class="btn btn-ghost">Schedule Viewing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Why Choose Section ===== -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The CLOCK UP <span class="text-gold">Promise</span></h2>
+                <p class="section-subtitle">Unparalleled excellence in every timepiece</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Authenticity Certified</h3>
+                    <p class="feature-description">Every watch includes certificate of authenticity with unique serial number.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="feature-title">Worldwide Delivery</h3>
+                    <p class="feature-description">Secure, insured shipping to over 150 countries with signature confirmation.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="feature-title">Lifetime Service</h3>
+                    <p class="feature-description">Complimentary maintenance and service for the lifetime of your timepiece.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Trade-In Program</h3>
+                    <p class="feature-description">Upgrade your collection with our exclusive trade-in and upgrade service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Newsletter Section ===== -->
+    <section class="hero" style="min-height: 50vh; background: var(--charcoal);">
+        <div class="container-narrow">
+            <div class="hero-content">
+                <h2 class="section-title">Join Our <span class="text-gold">Exclusive Circle</span></h2>
+                <p class="section-subtitle" style="margin-bottom: 2rem;">Be the first to discover new releases and receive invitations to private viewing events.</p>
+                
+                <form class="newsletter-form" style="max-width: 600px; margin: 0 auto;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                            <input 
+                                type="email" 
+                                class="form-input" 
+                                placeholder="Enter your email address" 
+                                required
+                                style="flex: 1; min-width: 280px; margin-bottom: 0;"
+                                aria-label="Email Address">
+                            <button type="submit" class="btn btn-secondary" style="white-space: nowrap;">
+                                Subscribe <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-gray); margin-top: 1rem;">
+                        Exclusive access to limited editions and special offers.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Footer Brand -->
+                <div class="footer-section">
+                    <h4 class="navbar-brand" style="margin-bottom: 1rem;">CLOCK UP</h4>
+                    <p>Crafting timeless luxury since 1970. Each timepiece is a masterpiece of Swiss horological tradition.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="collection.html">Collection</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Warranty Information</a></li>
+                        <li><a href="#">Care & Maintenance</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 0.5rem;"></i> Bahnhofstrasse 1, Zürich, Switzerland</li>
+                        <li><i class="fas fa-phone" style="color: var(--gold); margin-right: 0.5rem;"></i> +41 44 123 4567</li>
+                        <li><i class="fas fa-envelope" style="color: var(--gold); margin-right: 0.5rem;"></i> info@clockup.com</li>
+                        <li><i class="fas fa-clock" style="color: var(--gold); margin-right: 0.5rem;"></i> Mon - Sat: 10:00 - 19:00</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Quick Links -->
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="collection.html">Collection</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="order.html">Order Status</a></li>
-                </ul>
-            </div>
-
-            <!-- Customer Service -->
-            <div class="footer-section">
-                <h4>Customer Service</h4>
-                <ul class="footer-links">
-                    <li><a href="cart.html">Shopping Cart</a></li>
-                    <li><a href="order.html">Track Order</a></li>
-                    <li><a href="#">Shipping & Returns</a></li>
-                    <li><a href="#">Warranty Information</a></li>
-                    <li><a href="#">Care & Maintenance</a></li>
-                    <li><a href="#">Size Guide</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="footer-section">
-                <h4>Contact Us</h4>
-                <ul class="footer-links">
-                    <li><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 0.5rem;"></i> Bahnhofstrasse 1, Zürich, Switzerland</li>
-                    <li><i class="fas fa-phone" style="color: var(--gold); margin-right: 0.5rem;"></i> +41 44 123 4567</li>
-                    <li><i class="fas fa-envelope" style="color: var(--gold); margin-right: 0.5rem;"></i> info@clockup.com</li>
-                    <li><i class="fas fa-clock" style="color: var(--gold); margin-right: 0.5rem;"></i> Mon - Sat: 10:00 - 19:00</li>
-                </ul>
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 CLOCK UP. All rights reserved. | <a href="#" style="color: var(--gold);">Privacy Policy</a> | <a href="#" style="color: var(--gold);">Terms & Conditions</a></p>
             </div>
         </div>
+    </footer>
 
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <p>&copy; 2025 CLOCK UP. All rights reserved. | <a href="#" style="color: var(--gold);">Privacy Policy</a> | <a href="#" style="color: var(--gold);">Terms & Conditions</a></p>
-        </div>
-    </div>
-</footer>
+    <!-- ===== JavaScript Files ===== -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/script.js"></script>
 
-
-<!-- ========================================= -->
-<!-- ACTIVE CLASS GUIDE FOR EACH PAGE -->
-<!-- ========================================= -->
-
-<!-- 
-FOR index.html - Add class="active" to Home:
-<li><a href="index.html" class="active">Home</a></li>
-
-FOR about.html - Add class="active" to About:
-<li><a href="about.html" class="active">About</a></li>
-
-FOR collection.html - Add class="active" to Collection:
-<li><a href="collection.html" class="active">Collection</a></li>
-
-FOR blog.html - Add class="active" to Blog:
-<li><a href="blog.html" class="active">Blog</a></li>
-
-FOR contact.html - Add class="active" to Contact:
-<li><a href="contact.html" class="active">Contact</a></li>
-
-FOR cart.html, order.html, product.html - NO active class needed
-(These are utility pages without main navigation highlighting)
--->
-
-
-<!-- ========================================= -->
-<!-- EXAMPLE: collection.html NAVIGATION -->
-<!-- ========================================= -->
-
-<nav class="navbar" id="navbar">
-    <div class="container">
-        <a href="index.html" class="navbar-brand">CLOCK UP</a>
-        
-        <ul class="navbar-menu" id="navbarMenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="collection.html" class="active">Collection</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <div class="navbar-actions">
-            <a href="collection.html" class="btn btn-primary">Explore Collection</a>
-            <div class="nav-icon" id="searchIcon" aria-label="Search">
-                <i class="fas fa-search"></i>
-            </div>
-            <a href="cart.html" class="nav-icon" aria-label="Shopping Cart">
-                <i class="fas fa-shopping-bag"></i>
-            </a>
-            <div class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-</nav>
-
-
-<!-- ========================================= -->
-<!-- EXAMPLE: blog.html NAVIGATION -->
-<!-- ========================================= -->
-
-<nav class="navbar" id="navbar">
-    <div class="container">
-        <a href="index.html" class="navbar-brand">CLOCK UP</a>
-        
-        <ul class="navbar-menu" id="navbarMenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="collection.html">Collection</a></li>
-            <li><a href="blog.html" class="active">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <div class="navbar-actions">
-            <a href="collection.html" class="btn btn-primary">Explore Collection</a>
-            <div class="nav-icon" id="searchIcon" aria-label="Search">
-                <i class="fas fa-search"></i>
-            </div>
-            <a href="cart.html" class="nav-icon" aria-label="Shopping Cart">
-                <i class="fas fa-shopping-bag"></i>
-            </a>
-            <div class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-</nav>
-
-
-<!-- ========================================= -->
-<!-- PRODUCT CARD "VIEW DETAILS" BUTTONS -->
-<!-- Update these on collection.html and index.html -->
-<!-- ========================================= -->
-
-<!-- Replace generic "#" links with: -->
-<a href="product.html" class="btn btn-primary btn-small">View Details</a>
-
-<!-- Or if you want to pass product ID: -->
-<a href="product.html?id=chronograph-elite" class="btn btn-primary btn-small">View Details</a>
-
-
-<!-- ========================================= -->
-<!-- QUICK REFERENCE: ALL PAGE LINKS -->
-<!-- ========================================= -->
-
-<!--
-Main Pages:
-- index.html (Homepage)
-- about.html (About Us)
-- collection.html (Watch Collection)
-- blog.html (Blog/News)
-- contact.html (Contact Form)
-
-Utility Pages:
-- product.html (Individual Product Details)
-- cart.html (Shopping Cart)
-- order.html (Order Status/Tracking)
-
-Usage:
-- Use these exact filenames in all href attributes
-- All files are in the root directory (no folders)
-- Use relative links without "/" prefix
-- Keep consistent navigation across all pages
--->
-
-
-<!-- ========================================= -->
-<!-- ADDITIONAL USEFUL LINKS TO ADD -->
-<!-- ========================================= -->
-
-<!-- Add these to appropriate buttons on homepage: -->
-<a href="product.html" class="btn btn-primary">View Details</a>
-<a href="collection.html" class="btn btn-secondary">View Full Collection</a>
-<a href="about.html" class="btn btn-ghost">Our Story</a>
-<a href="contact.html" class="btn btn-ghost">Schedule Viewing</a>
-<a href="cart.html" class="btn btn-ghost">Add to Cart</a>
+</body>
+</html>
