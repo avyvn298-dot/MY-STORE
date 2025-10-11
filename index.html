@@ -1,312 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Acumen Watches — Precision. Craftsmanship. Luxury.">
-  <title>Acumen Watches | Luxury & Precision Timepieces</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/icons/watch-favicon.png">
+    <!-- ===== Meta Tags ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="CLOCK UP - Luxury timepieces crafted with precision and elegance. Discover our exclusive collection of premium watches that define sophistication and timeless beauty.">
+    <meta name="keywords" content="luxury watches, premium timepieces, swiss watches, high-end watches, CLOCK UP, luxury brand">
+    <meta name="author" content="CLOCK UP">
+    <meta name="robots" content="index, follow">
+    
+    <!-- ===== Open Graph Meta Tags ===== -->
+    <meta property="og:title" content="CLOCK UP - Crafting Time. Defining Luxury.">
+    <meta property="og:description" content="Discover exclusive luxury timepieces that embody precision, elegance, and timeless craftsmanship.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.clockup.com">
+    <meta property="og:image" content="https://www.clockup.com/assets/images/og-image.jpg">
+    
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- ===== Title ===== -->
+    <title>CLOCK UP - Luxury Timepieces | Crafting Time. Defining Luxury.</title>
+    
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- ===== Font Awesome Icons ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- ===== Stylesheets ===== -->
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/responsive.css">
+    <link rel="stylesheet" href="assets/animations.css">
 </head>
 <body>
-  <!-- ================= HEADER ================= -->
-  <header class="main-header">
-    <div class="container nav-container">
-      <div class="logo">ACUMEN</div>
-      <nav class="nav">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-icons">
-        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+    
+    <!-- ===== Navigation Bar ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a href="#home" class="navbar-brand">CLOCK UP</a>
+            
+            <!-- Navigation Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <!-- Navigation Actions -->
+            <div class="navbar-actions">
+                <a href="#collection" class="btn btn-primary">Explore Collection</a>
+                <div class="nav-icon" id="searchIcon" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-icon" id="cartIcon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <!-- Mobile Menu Toggle -->
+                <div class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section class="hero">
-    <div class="hero-content container">
-      <h1 class="hero-title">Precision in Every Tick</h1>
-      <p class="hero-subtitle">Discover the essence of craftsmanship through our collection of timeless luxury watches.</p>
-      <a href="collection.html" class="btn-primary">Explore Collection</a>
-    </div>
-    <div class="hero-image-overlay"></div>
-    <img src="assets/images/hero-watch.jpg" alt="Luxury Watch" class="hero-image">
-  </section>
+    <!-- ===== Hero Section ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-logo">CLOCK UP</p>
+            <h1 class="hero-title">CRAFTING TIME</h1>
+            <p class="hero-subtitle">Defining Luxury Through Precision & Elegance</p>
+            <div class="hero-divider"></div>
+            <div class="hero-actions">
+                <a href="#collection" class="btn btn-secondary btn-large">Discover Collection</a>
+                <a href="#about" class="btn btn-ghost btn-large">Our Story</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- ================= FEATURED COLLECTION ================= -->
-  <section class="featured container">
-    <h2 class="section-title">Featured Timepieces</h2>
-    <div class="featured-grid">
-      <div class="watch-card">
-        <img src="assets/images/watch1.png" alt="Eclipse Chronograph" class="watch-img">
-        <h3>Eclipse Chronograph</h3>
-        <p>Where elegance meets performance. Swiss automatic movement with sapphire crystal.</p>
-        <a href="product.html?id=1" class="btn-secondary">View Details</a>
-      </div>
-      <div class="watch-card">
-        <img src="assets/images/watch2.png" alt="Luna Classic" class="watch-img">
-        <h3>Luna Classic</h3>
-        <p>Timeless simplicity inspired by the moonlight. 18K gold bezel and leather strap.</p>
-        <a href="product.html?id=2" class="btn-secondary">View Details</a>
-      </div>
-      <div class="watch-card">
-        <img src="assets/images/watch3.png" alt="Aether Carbon" class="watch-img">
-        <h3>Aether Carbon</h3>
-        <p>Forged carbon casing and skeleton dial. Crafted for the bold and visionary.</p>
-        <a href="product.html?id=3" class="btn-secondary">View Details</a>
-      </div>
-    </div>
-  </section>
+    <!-- ===== About Section ===== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <!-- About Image -->
+                <div class="about-image reveal-left">
+                    <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&h=1000&fit=crop" alt="Luxury Watch Craftsmanship" loading="lazy">
+                </div>
+                
+                <!-- About Text -->
+                <div class="about-text reveal-right">
+                    <h2>Heritage of <span class="text-gold">Excellence</span></h2>
+                    <div class="hero-divider" style="margin: 1.5rem 0;"></div>
+                    <p>For over <span class="about-highlight">five decades</span>, CLOCK UP has been synonymous with unparalleled craftsmanship and timeless elegance. Each timepiece is meticulously crafted by master horologists who blend traditional Swiss techniques with innovative precision engineering.</p>
+                    <p>Our commitment to perfection is unwavering. Every watch undergoes rigorous testing and quality control, ensuring that when it graces your wrist, it carries with it the legacy of excellence that defines the CLOCK UP name.</p>
+                    <p class="text-elegant">We don't just make watches. We craft legacy pieces that transcend generations.</p>
+                    <a href="#collection" class="btn btn-primary mt-3">Explore Our Legacy</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ================= BRAND STATEMENT ================= -->
-  <section class="brand-statement">
-    <div class="container">
-      <h2>Redefining Luxury, One Second at a Time</h2>
-      <p>Every Acumen timepiece embodies passion, artistry, and engineering perfection. Our watches are more than instruments of time — they are expressions of identity, legacy, and elegance.</p>
-    </div>
-  </section>
+    <!-- ===== Collection Section ===== -->
+    <section class="collection-section" id="collection">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2 class="section-title">Our Signature <span class="text-gold">Collection</span></h2>
+                <p class="section-subtitle">Timepieces that define sophistication and timeless beauty</p>
+            </div>
+            
+            <!-- Collection Grid -->
+            <div class="collection-grid">
+                <!-- Product Card 1 -->
+                <article class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">New Arrival</span>
+                        <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&h=600&fit=crop" alt="Chronograph Elite" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Heritage Series</p>
+                        <h3 class="product-name">Chronograph Elite</h3>
+                        <p class="product-description">A masterpiece of precision engineering with Swiss automatic movement and sapphire crystal.</p>
+                        <p class="product-price">$12,500</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary btn-small">View Details</a>
+                            <a href="#" class="btn btn-ghost btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                </article>
 
-  <!-- ================= CRAFTSMANSHIP SECTION ================= -->
-  <section class="craftsmanship container">
-    <div class="craftsmanship-text">
-      <h2>Unmatched Craftsmanship</h2>
-      <p>Our artisans meticulously assemble each component, ensuring unmatched precision and durability. From hand-polished cases to intricate movements, Acumen stands as a beacon of excellence.</p>
-      <a href="about.html" class="btn-primary">Learn More</a>
-    </div>
-    <div class="craftsmanship-image">
-      <img src="assets/images/craftsmanship.jpg" alt="Watchmaking process">
-    </div>
-  </section>
+                <!-- Product Card 2 -->
+                <article class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Bestseller</span>
+                        <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=600&h=600&fit=crop" alt="Royal Platinum" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Royal Collection</p>
+                        <h3 class="product-name">Royal Platinum</h3>
+                        <p class="product-description">Elegance redefined with 18K white gold case and diamond-studded bezel.</p>
+                        <p class="product-price">$24,800</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary btn-small">View Details</a>
+                            <a href="#" class="btn btn-ghost btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                </article>
 
-  <!-- ================= NEWS / BLOG PREVIEW ================= -->
-  <section class="news container">
-    <h2 class="section-title">Latest from Acumen</h2>
-    <div class="news-grid">
-      <article class="news-card">
-        <img src="assets/images/blog1.jpg" alt="New Collection Launch">
-        <h3>Introducing the Midnight Collection</h3>
-        <p>Experience the deep tones and sleek design of our new Midnight series — elegance redefined for modern collectors.</p>
-        <a href="blog.html#midnight" class="btn-secondary">Read More</a>
-      </article>
-      <article class="news-card">
-        <img src="assets/images/blog2.jpg" alt="Craftsmanship Insight">
-        <h3>The Art of Horology</h3>
-        <p>Go behind the scenes with our master watchmakers to witness the craftsmanship that makes every second special.</p>
-        <a href="blog.html#horology" class="btn-secondary">Read More</a>
-      </article>
-    </div>
-  </section>
+                <!-- Product Card 3 -->
+                <article class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Limited Edition</span>
+                        <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=600&h=600&fit=crop" alt="Aviator Gold" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Aviation Series</p>
+                        <h3 class="product-name">Aviator Gold</h3>
+                        <p class="product-description">Inspired by aviation history with 18K yellow gold and pilot's chronograph functions.</p>
+                        <p class="product-price">$18,900</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary btn-small">View Details</a>
+                            <a href="#" class="btn btn-ghost btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                </article>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="main-footer">
-    <div class="container footer-grid">
-      <div class="footer-about">
-        <h3>Acumen Watches</h3>
-        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
-        <p>Phone: +1 (800) 555-0199</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="year"></span> Acumen Watches. All Rights Reserved.</p>
-      <div class="social-icons">
-        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
-        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
-      </div>
-    </div>
-  </footer>
+                <!-- Product Card 4 -->
+                <article class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1611251135555-b09e5e4ec7d9?w=600&h=600&fit=crop" alt="Moonphase Master" class="product-image" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Complications Series</p>
+                        <h3 class="product-name">Moonphase Master</h3>
+                        <p class="product-description">Features a stunning moonphase complication with hand-finished movement visible through sapphire caseback.</p>
+                        <p class="product-price">$16,200</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary btn-small">View Details</a>
+                            <a href="#" class="btn btn-ghost btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
 
-  <!-- JS -->
-  <script src="js/main.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Acumen Watches — Precision. Craftsmanship. Luxury.">
-  <title>Acumen Watches | Luxury & Precision Timepieces</title>
+            <!-- View All Button -->
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-secondary btn-large">View Full Collection</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- ===== Highlight Section ===== -->
+    <section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);">
+        <div class="hero-content">
+            <h2 class="hero-title gradient-text" style="font-size: 3.5rem;">Precision Meets Perfection</h2>
+            <p class="hero-subtitle" style="max-width: 700px; margin: 2rem auto;">Every CLOCK UP timepiece is a testament to Swiss horological mastery, where centuries of tradition merge seamlessly with cutting-edge innovation.</p>
+            <div class="hero-divider"></div>
+            <a href="#about" class="btn btn-primary btn-large mt-3">Discover Our Craft</a>
+        </div>
+    </section>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
+    <!-- ===== Features Section ===== -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose <span class="text-gold">CLOCK UP</span></h2>
+                <p class="section-subtitle">Uncompromising quality in every detail</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="feature-title">Swiss Craftsmanship</h3>
+                    <p class="feature-description">Each timepiece is meticulously handcrafted by master Swiss horologists with decades of experience.</p>
+                </div>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/icons/watch-favicon.png">
-</head>
-<body>
-  <!-- ================= HEADER ================= -->
-  <header class="main-header">
-    <div class="container nav-container">
-      <div class="logo">ACUMEN</div>
-      <nav class="nav">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-icons">
-        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="feature-title">Lifetime Warranty</h3>
+                    <p class="feature-description">We stand behind our craftsmanship with a comprehensive lifetime warranty on all timepieces.</p>
+                </div>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section class="hero">
-    <div class="hero-content container">
-      <h1 class="hero-title">Precision in Every Tick</h1>
-      <p class="hero-subtitle">Discover the essence of craftsmanship through our collection of timeless luxury watches.</p>
-      <a href="collection.html" class="btn-primary">Explore Collection</a>
-    </div>
-    <div class="hero-image-overlay"></div>
-    <img src="assets/images/hero-watch.jpg" alt="Luxury Watch" class="hero-image">
-  </section>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Authenticity Guaranteed</h3>
+                    <p class="feature-description">Every watch comes with a certificate of authenticity and unique serial number.</p>
+                </div>
 
-  <!-- ================= FEATURED COLLECTION ================= -->
-  <section class="featured container">
-    <h2 class="section-title">Featured Timepieces</h2>
-    <div class="featured-grid">
-      <div class="watch-card">
-        <img src="assets/images/watch1.png" alt="Eclipse Chronograph" class="watch-img">
-        <h3>Eclipse Chronograph</h3>
-        <p>Where elegance meets performance. Swiss automatic movement with sapphire crystal.</p>
-        <a href="product.html?id=1" class="btn-secondary">View Details</a>
-      </div>
-      <div class="watch-card">
-        <img src="assets/images/watch2.png" alt="Luna Classic" class="watch-img">
-        <h3>Luna Classic</h3>
-        <p>Timeless simplicity inspired by the moonlight. 18K gold bezel and leather strap.</p>
-        <a href="product.html?id=2" class="btn-secondary">View Details</a>
-      </div>
-      <div class="watch-card">
-        <img src="assets/images/watch3.png" alt="Aether Carbon" class="watch-img">
-        <h3>Aether Carbon</h3>
-        <p>Forged carbon casing and skeleton dial. Crafted for the bold and visionary.</p>
-        <a href="product.html?id=3" class="btn-secondary">View Details</a>
-      </div>
-    </div>
-  </section>
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 class="feature-title">Concierge Service</h3>
+                    <p class="feature-description">Personalized customer service and complimentary maintenance for the lifetime of your watch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ================= BRAND STATEMENT ================= -->
-  <section class="brand-statement">
-    <div class="container">
-      <h2>Redefining Luxury, One Second at a Time</h2>
-      <p>Every Acumen timepiece embodies passion, artistry, and engineering perfection. Our watches are more than instruments of time — they are expressions of identity, legacy, and elegance.</p>
-    </div>
-  </section>
+    <!-- ===== Testimonials Section ===== -->
+    <section class="about-section" style="background: var(--charcoal);">
+        <div class="container-narrow">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients <span class="text-gold">Say</span></h2>
+                <p class="section-subtitle">Trusted by discerning collectors worldwide</p>
+            </div>
 
-  <!-- ================= CRAFTSMANSHIP SECTION ================= -->
-  <section class="craftsmanship container">
-    <div class="craftsmanship-text">
-      <h2>Unmatched Craftsmanship</h2>
-      <p>Our artisans meticulously assemble each component, ensuring unmatched precision and durability. From hand-polished cases to intricate movements, Acumen stands as a beacon of excellence.</p>
-      <a href="about.html" class="btn-primary">Learn More</a>
-    </div>
-    <div class="craftsmanship-image">
-      <img src="assets/images/craftsmanship.jpg" alt="Watchmaking process">
-    </div>
-  </section>
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 3rem;">
+                <!-- Testimonial 1 -->
+                <div class="feature-card" style="text-align: left;">
+                    <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem;">"The Chronograph Elite is without question the finest timepiece I've ever owned. The attention to detail is extraordinary."</p>
+                    <p class="text-gold" style="font-weight: 600;">— James Wellington</p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">CEO, Wellington & Associates</p>
+                </div>
 
-  <!-- ================= NEWS / BLOG PREVIEW ================= -->
-  <section class="news container">
-    <h2 class="section-title">Latest from Acumen</h2>
-    <div class="news-grid">
-      <article class="news-card">
-        <img src="assets/images/blog1.jpg" alt="New Collection Launch">
-        <h3>Introducing the Midnight Collection</h3>
-        <p>Experience the deep tones and sleek design of our new Midnight series — elegance redefined for modern collectors.</p>
-        <a href="blog.html#midnight" class="btn-secondary">Read More</a>
-      </article>
-      <article class="news-card">
-        <img src="assets/images/blog2.jpg" alt="Craftsmanship Insight">
-        <h3>The Art of Horology</h3>
-        <p>Go behind the scenes with our master watchmakers to witness the craftsmanship that makes every second special.</p>
-        <a href="blog.html#horology" class="btn-secondary">Read More</a>
-      </article>
-    </div>
-  </section>
+                <!-- Testimonial 2 -->
+                <div class="feature-card" style="text-align: left;">
+                    <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem;">"CLOCK UP represents the pinnacle of horological excellence. A true investment piece that will be treasured for generations."</p>
+                    <p class="text-gold" style="font-weight: 600;">— Victoria Ashford</p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">Art Collector & Philanthropist</p>
+                </div>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="main-footer">
-    <div class="container footer-grid">
-      <div class="footer-about">
-        <h3>Acumen Watches</h3>
-        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
-        <p>Phone: +1 (800) 555-0199</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="year"></span> Acumen Watches. All Rights Reserved.</p>
-      <div class="social-icons">
-        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
-        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
-      </div>
-    </div>
-  </footer>
+                <!-- Testimonial 3 -->
+                <div class="feature-card" style="text-align: left;">
+                    <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="feature-description" style="font-style: italic; margin-bottom: 1.5rem;">"The Royal Platinum exceeded every expectation. The craftsmanship is impeccable and the service was exceptional from start to finish."</p>
+                    <p class="text-gold" style="font-weight: 600;">— Alexander Chen</p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">Investment Banker</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- JS -->
-  <script src="js/main.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- ===== Newsletter Section ===== -->
+    <section class="hero" style="min-height: 50vh; background: var(--black);">
+        <div class="container-narrow">
+            <div class="hero-content">
+                <h2 class="section-title">Stay <span class="text-gold">Updated</span></h2>
+                <p class="section-subtitle" style="margin-bottom: 2rem;">Subscribe to receive exclusive updates on new collections, events, and special offers.</p>
+                
+                <form class="newsletter-form" style="max-width: 600px; margin: 0 auto;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                            <input 
+                                type="email" 
+                                class="form-input" 
+                                placeholder="Enter your email address" 
+                                required
+                                style="flex: 1; min-width: 280px; margin-bottom: 0;"
+                                aria-label="Email Address">
+                            <button type="submit" class="btn btn-secondary" style="white-space: nowrap;">
+                                Subscribe <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-gray); margin-top: 1rem;">
+                        We respect your privacy. Unsubscribe at any time.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Footer Brand -->
+                <div class="footer-section">
+                    <h4 class="navbar-brand" style="margin-bottom: 1rem;">CLOCK UP</h4>
+                    <p>Crafting timeless luxury since 1970. Each timepiece is a masterpiece of Swiss horological tradition.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Warranty Information</a></li>
+                        <li><a href="#">Care & Maintenance</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 0.5rem;"></i> Bahnhofstrasse 1, Zürich, Switzerland</li>
+                        <li><i class="fas fa-phone" style="color: var(--gold); margin-right: 0.5rem;"></i> +41 44 123 4567</li>
+                        <li><i class="fas fa-envelope" style="color: var(--gold); margin-right: 0.5rem;"></i> info@clockup.com</li>
+                        <li><i class="fas fa-clock" style="color: var(--gold); margin-right: 0.5rem;"></i> Mon - Sat: 10:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 CLOCK UP. All rights reserved. | <a href="#" style="color: var(--gold);">Privacy Policy</a> | <a href="#" style="color: var(--gold);">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JavaScript Files ===== -->
+    <script src="assets/data.js"></script>
+    <script src="assets/ui.js"></script>
+    <script src="assets/animations.js"></script>
+    <script src="assets/script.js"></script>
+
 </body>
 </html>
