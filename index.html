@@ -1,31 +1,270 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ACUMEN Watches - Precision. Passion. Prestige.</title>
-    <meta name="description" content="Discover ACUMEN luxury timepieces. Exquisite craftsmanship, timeless design, and unparalleled precision in every watch." />
-    <meta name="author" content="ACUMEN Watches" />
-    <meta name="keywords" content="luxury watches, premium timepieces, ACUMEN, Swiss watches, limited edition watches" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TimeZone — Professional Watch Store</title>
+  <!-- Google Fonts (use as brand 'logo' text) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#fff; --text:#111; --muted:#6b7280; --accent:#1f2937;
+      --accent-2:#b89b6e; --glass: rgba(255,255,255,0.6);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b1020; --card:#071022; --text:#e6eef8; --muted:#9aa7bf; --accent:#e6e9ee; --accent-2:#d9b77a; --glass: rgba(10,14,24,0.6);}    
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Poppins,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);-webkit-font-smoothing:antialiased}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:var(--card);backdrop-filter: blur(6px);box-shadow:0 2px 10px rgba(2,6,23,0.06)}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{font-family:Merriweather,serif;font-weight:700;font-size:22px;letter-spacing:0.6px;color:var(--accent)}
+    .tag{font-size:12px;color:var(--muted)}
+    .search{flex:1;max-width:540px;margin:0 18px}
+    .search input{width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text)}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn{padding:8px 12px;border-radius:10px;border:none;background:var(--accent);color:white;cursor:pointer}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(0,0,0,0.06)}
+    main{padding:28px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:22px}
+    .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 30px rgba(2,6,23,0.06)}
+    .hero h1{margin:0;font-size:34px}
+    .hero p{color:var(--muted);margin-top:10px}
+    .catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:16px}
+    .product{background:var(--card);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;transition:transform .18s, box-shadow .18s}
+    .product:hover{transform:translateY(-6px);box-shadow:0 14px 50px rgba(2,6,23,0.08)}
+    .pimg{height:180px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.04))}
+    .pimg img{max-width:100%;max-height:100%;object-fit:contain}
+    .pmeta{display:flex;justify-content:space-between;align-items:center}
+    .pname{font-weight:600}
+    .price{font-weight:700;color:var(--accent-2)}
+    .actions{display:flex;gap:8px}
+    .cart-badge{background:#ff3b30;color:white;border-radius:999px;padding:4px 8px;font-size:12px}
+    /* cart drawer */
+    .cart-drawer{position:fixed;right:18px;top:70px;width:360px;max-height:80vh;background:var(--card);box-shadow:0 20px 60px rgba(2,6,23,0.2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;overflow:auto;transform:translateY(-8px)}
+    .cart-item{display:flex;gap:10px;align-items:center}
+    .qty{display:flex;gap:6px;align-items:center}
+    footer{padding:18px 28px;color:var(--muted);font-size:13px}
+    /* responsive */
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    /* utility */
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+    /* admin hint */
+    .dev-note{font-size:12px;color:var(--muted);background:var(--card);padding:10px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">TimeZone</div>
+      <div class="tag">Curated Luxury Watches</div>
+    </div>
 
-    <meta property="og:title" content="ACUMEN Watches - Luxury Timepieces" />
-    <meta property="og:description" content="Precision. Passion. Prestige. Discover our collection of luxury watches." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <div class="search">
+      <input id="q" placeholder="Search watches, e.g. 'chrono'" />
+    </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ACUMEN Watches" />
-    <meta name="twitter:description" content="Luxury timepieces crafted with precision and passion" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <div class="nav-actions">
+      <button id="themeToggle" class="btn ghost">Theme</button>
+      <button id="cartBtn" class="btn">Cart <span id="cartCount" class="cart-badge" style="margin-left:8px;display:none">0</span></button>
+    </div>
+  </header>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <h1>TimeZone — Watches that make a statement</h1>
+        <p class="muted">Luxury-style designs, quality details. Lightweight, fast, and ready to ship. Use the admin link to manage orders.</p>
+        <div style="margin-top:14px;display:flex;gap:10px">
+          <button id="exploreBtn" class="btn">Explore Collection</button>
+          <button id="contactBtn" class="btn ghost">Contact</button>
+        </div>
+      </div>
+      <div class="hero-card center">
+        <!-- simple featured product -->
+        <div style="text-align:center">
+          <div style="font-weight:600">Featured</div>
+          <img src="https://via.placeholder.com/300x220?text=Luxury+Watch" style="width:100%;border-radius:12px;margin-top:10px"/>
+          <div style="margin-top:8px;font-weight:700">Classic Chrono</div>
+          <div class="muted">Automatic • Leather strap</div>
+          <div style="margin-top:8px;font-size:18px;color:var(--accent-2)">$349</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h2 style="margin:0">Collection</h2>
+        <div class="muted">Showing <span id="shownCount">0</span> products</div>
+      </div>
+
+      <div class="catalog" id="catalog"></div>
+    </section>
+
+  </main>
+
+  <!-- cart drawer (hidden by default) -->
+  <div id="cartDrawer" class="cart-drawer" style="display:none">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="font-weight:700">Your Cart</div>
+      <button id="closeCart" class="btn ghost">Close</button>
+    </div>
+    <div id="cartList"></div>
+    <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center">
+      <div class="muted">Total</div>
+      <div id="cartTotal" style="font-weight:700">$0.00</div>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button id="checkoutBtn" class="btn">Checkout</button>
+      <button id="clearCart" class="btn ghost">Clear</button>
+    </div>
+    <div style="margin-top:10px" class="muted">Note: This demo stores orders locally (no payment). Use admin mode to view/confirm orders.</div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> TimeZone • Built with ❤️ • <span class="dev-note">Admin: open URL with #admin (example: index.html#admin) and enter password (client-side only)</span>
+  </footer>
+
+  <script>
+    // ---------- Product data (edit this array to add your actual products) ----------
+    const PRODUCTS = [
+      {id:'tz-001', name:'Classic Chrono', price:349, desc:'Automatic movement, leather strap', img:'https://via.placeholder.com/420x320?text=Classic+Chrono'},
+      {id:'tz-002', name:'Smart Minimal', price:199, desc:'Fitness features, sleek design', img:'https://via.placeholder.com/420x320?text=Smart+Minimal'},
+      {id:'tz-003', name:'Sport Pro', price:129, desc:'Shock resistant, water proof', img:'https://via.placeholder.com/420x320?text=Sport+Pro'},
+      {id:'tz-004', name:'Elegance Rose', price:479, desc:'Rose-gold plated, sapphire', img:'https://via.placeholder.com/420x320?text=Elegance+Rose'},
+      {id:'tz-005', name:'Diver 300', price:399, desc:'Diver-grade, luminous markers', img:'https://via.placeholder.com/420x320?text=Diver+300'}
+    ];
+
+    // ---------- Simple client-side storage helpers ----------
+    const storage = {
+      get(key){try{return JSON.parse(localStorage.getItem(key)||'null')}catch(e){return null}},
+      set(key,val){localStorage.setItem(key,JSON.stringify(val))}
+    }
+
+    // ---------- Cart logic using localStorage ----------
+    let cart = storage.get('tz_cart') || {};
+    function saveCart(){ storage.set('tz_cart', cart); renderCartCount(); renderCartList(); }
+    function addToCart(id){ cart[id] = (cart[id]||0)+1; saveCart(); }
+    function removeFromCart(id){ delete cart[id]; saveCart(); }
+    function changeQty(id,delta){ cart[id] = Math.max(0,(cart[id]||0)+delta); if(cart[id]===0) delete cart[id]; saveCart(); }
+
+    // ---------- Render catalog ----------
+    const catalogEl = document.getElementById('catalog');
+    function renderCatalog(filter=''){
+      catalogEl.innerHTML='';
+      const items = PRODUCTS.filter(p=> (p.name+p.desc).toLowerCase().includes(filter.toLowerCase()));
+      document.getElementById('shownCount').textContent = items.length;
+      items.forEach(p=>{
+        const el = document.createElement('div'); el.className='product';
+        el.innerHTML = `
+          <div class='pimg'><img src='${p.img}' alt='${p.name}'/></div>
+          <div style='flex:1'><div class='pname'>${p.name}</div><div class='muted' style='font-size:13px'>${p.desc}</div></div>
+          <div style='display:flex;flex-direction:column;gap:8px;align-items:flex-end'>
+            <div class='price'>$${p.price}</div>
+            <div class='actions'>
+              <button class='btn ghost' onclick="viewProduct('${p.id}')">View</button>
+              <button class='btn' onclick="addToCart('${p.id}')">Add</button>
+            </div>
+          </div>
+        `;
+        catalogEl.appendChild(el);
+      });
+    }
+
+    // ---------- Cart drawer UI ----------
+    const cartBtn = document.getElementById('cartBtn');
+    const cartDrawer = document.getElementById('cartDrawer');
+    cartBtn.addEventListener('click',()=>{ cartDrawer.style.display = cartDrawer.style.display==='none'?'flex':'none'; renderCartList(); });
+    document.getElementById('closeCart').addEventListener('click',()=>cartDrawer.style.display='none');
+
+    function renderCartCount(){
+      const count = Object.values(cart).reduce((a,b)=>a+b,0);
+      const badge = document.getElementById('cartCount');
+      if(count>0){ badge.style.display='inline-block'; badge.textContent = count; } else badge.style.display='none';
+    }
+
+    function renderCartList(){
+      const list = document.getElementById('cartList'); list.innerHTML='';
+      let total=0;
+      for(const id in cart){ const qty = cart[id]; const prod = PRODUCTS.find(p=>p.id===id); if(!prod) continue;
+        total += prod.price*qty;
+        const item = document.createElement('div'); item.className='cart-item';
+        item.innerHTML = `
+          <div style='width:56px'><img src='${prod.img}' style='width:56px;height:44px;object-fit:cover;border-radius:6px'/></div>
+          <div style='flex:1'><div style='font-weight:600'>${prod.name}</div><div class='muted' style='font-size:13px'>$${prod.price} × ${qty}</div></div>
+          <div style='display:flex;flex-direction:column;gap:6px;align-items:flex-end'>
+            <div class='qty'><button class='btn ghost' onclick="changeQty('${id}',-1)">-</button><div style='padding:6px 8px'>${qty}</div><button class='btn ghost' onclick="changeQty('${id}',1)">+</button></div>
+            <button class='btn ghost' onclick="removeFromCart('${id}')">Remove</button>
+          </div>
+        `;
+        list.appendChild(item);
+      }
+      document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+    }
+
+    // ---------- Product view / checkout demo ----------
+    function viewProduct(id){ const p = PRODUCTS.find(x=>x.id===id); if(!p) return alert('Product not found');
+      alert(p.name + "\n\n" + p.desc + "\nPrice: $" + p.price);
+    }
+
+    // ---------- Checkout (client-only): saves orders to 'tz_orders' ----------
+    document.getElementById('checkoutBtn').addEventListener('click',()=>{
+      const items = Object.keys(cart).map(id=>({id, qty:cart[id]}));
+      if(items.length===0) return alert('Cart is empty');
+      const name = prompt('Customer name'); if(!name) return; const phone = prompt('Phone / WhatsApp'); if(!phone) return;
+      const order = {id:'ORD-'+Date.now(), name, phone, items, total: Object.keys(cart).reduce((s,k)=>s + (PRODUCTS.find(p=>p.id===k).price*cart[k]),0), created:new Date().toISOString(), status:'pending'};
+      const orders = storage.get('tz_orders')||[]; orders.push(order); storage.set('tz_orders', orders);
+      // clear cart
+      cart = {}; saveCart(); alert('Order placed — order id: ' + order.id + '\nOpen admin mode to view/confirm orders (client-side).');
+    });
+
+    // ---------- Simple admin mode (client-side only) ----------
+    // To open admin: append #admin to URL (example: index.html#admin)
+    // Password is a simple client-side check. THIS IS NOT SECURE — for real business use server-side auth.
+    const ADMIN_PASSWORD = 'letmein'; // change before publishing if you like
+    function openAdmin(){
+      const pass = prompt('Enter admin password');
+      if(pass!==ADMIN_PASSWORD){ alert('Wrong password'); return; }
+      const orders = storage.get('tz_orders')||[];
+      let txt = '--- Orders (local demo) ---\n';
+      orders.forEach(o=>{ txt += `ID: ${o.id}\nName: ${o.name}\nPhone: ${o.phone}\nTotal: $${o.total}\nStatus: ${o.status}\nCreated: ${o.created}\nItems:\n`; o.items.forEach(it=>{ const p = PRODUCTS.find(x=>x.id===it.id); txt += ` - ${p.name} × ${it.qty}\n`;}); txt += '\n';});
+      if(orders.length===0) txt += 'No orders yet.';
+      // simple ability to mark confirmed:
+      if(confirm('Open orders list in copyable dialog? Press OK to view.')){
+        prompt('ADMIN ORDERS (copy/paste to keep):', txt);
+      }
+    }
+
+    // if URL has #admin, prompt for admin
+    if(location.hash==='#admin') setTimeout(openAdmin,400);
+
+    // ---------- small utilities ----------
+    document.getElementById('q').addEventListener('input',(e)=>renderCatalog(e.target.value));
+    document.getElementById('exploreBtn').addEventListener('click',()=>{ document.getElementById('q').focus(); window.scrollTo({top:600,behavior:'smooth'}); });
+    document.getElementById('contactBtn').addEventListener('click',()=>{ window.location.href = 'https://wa.me/?text=' + encodeURIComponent('Hi, I\'m interested in your watches.'); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // optional theme toggle (forces light/dark locally)
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click',()=>{
+      if(document.documentElement.hasAttribute('data-theme') && document.documentElement.getAttribute('data-theme')==='dark'){
+        document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('tz_theme');
+      } else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('tz_theme','dark'); }
+    });
+    if(localStorage.getItem('tz_theme')==='dark') document.documentElement.setAttribute('data-theme','dark');
+
+    // initialize
+    renderCatalog(); renderCartCount(); renderCartList();
+  </script>
+
+  <!--
+    NOTES & NEXT STEPS:
+    - This single-file demo is intentionally client-side so you can preview instantly.
+    - To deploy: create a GitHub repo, add this file as index.html, and enable GitHub Pages (gh-pages branch or main branch -> pages)
+    - To make admin/orders secure and persistent you must add a server (Node/Express + simple DB or use Google Sheets/Notion + Zapier integration).
+    - To accept real payments later: integrate Stripe Checkout or PayPal from the server side.
+    - Replace placeholder product images with your real photos and update PRODUCTS array.
+  -->
+</body>
 </html>
