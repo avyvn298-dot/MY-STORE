@@ -1,270 +1,155 @@
+--- FILE: README.md ---
+# Eon — Professional Watch Store (GitHub Pages ready)
+
+This repository contains a complete front-end, multi-page e-commerce template for **Eon** (your watch brand). It's ready to upload to GitHub and publish via **GitHub Pages**.
+
+How the repo is structured:
+```
+/ (root)
+  ├─ index.html        # Home / Storefront
+  ├─ about.html        # About page
+  ├─ contact.html      # Contact page (WhatsApp link + email form)
+  ├─ admin.html        # Client-side admin dashboard (for demo)
+  ├─ privacy.html      # Privacy policy
+  ├─ terms.html        # Terms & Conditions
+  ├─ css/style.css     # Shared styles
+  ├─ js/app.js         # Shared JavaScript
+  ├─ products.csv      # Sample CSV template for your products
+  └─ assets/           # demo images / icons (uses external CDN links)
+```
+
+---
+
+--- FILE: products.csv ---
+id,name,price,desc,img
+EO-001,Classic Chrono,349,Automatic movement,https://images.unsplash.com/photo-1526045612212-70caf35c14df
+EO-002,Smart Minimal,199,Fitness features,https://images.unsplash.com/photo-1519744792095-2f2205e87b6f
+EO-003,Sport Pro,129,Shock resistant,https://images.unsplash.com/photo-1510915228340-29c85a43dcfe
+EO-004,Elegance Rose,479,Rose-gold plated,https://images.unsplash.com/photo-1484704849700-f032a568e944
+EO-005,Diver 300,399,Diver-grade luminous,https://images.unsplash.com/photo-1526045612212-70caf35c14df
+
+--- FILE: css/style.css ---
+:root{--bg:#f6f7fb;--card:#fff;--text:#0b1020;--muted:#6b7280;--accent:#111827;--accent-2:#b89b6e}
+@media(prefers-color-scheme:dark){:root{--bg:#071022;--card:#081226;--text:#e6eef8;--muted:#9aa7bf;--accent:#e6e9ee;--accent-2:#d9b77a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Poppins,system-ui,Segoe UI,Roboto,Arial;color:var(--text);-webkit-font-smoothing:antialiased}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:var(--card);backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(2,6,23,0.06)}
+.logo{font-family:Merriweather,serif;font-weight:700;font-size:22px;color:var(--accent)}.tag{font-size:12px;color:var(--muted)}
+.search{flex:1;max-width:560px;margin:0 18px}.search input{width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text)}
+.btn{padding:8px 12px;border-radius:10px;border:none;background:var(--accent);color:white;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
+main{padding:24px}
+.hero{display:grid;grid-template-columns:1fr 420px;gap:20px}
+.hero-card{background:var(--card);padding:24px;border-radius:12px}
+.catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:18px}
+.product{background:var(--card);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;transition:transform .18s}
+.product:hover{transform:translateY(-6px)}.pimg{height:180px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+footer{padding:18px 28px;color:var(--muted);font-size:13px}
+.cart-drawer{position:fixed;right:18px;top:70px;width:360px;max-height:80vh;background:var(--card);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;overflow:auto;box-shadow:0 20px 60px rgba(2,6,23,0.16)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}input,textarea{font-family:inherit}
+
+--- FILE: js/app.js ---
+// Shared JS (catalog, cart, checkout, admin demo)
+const PRODUCTS = [
+  {id:'EO-001',name:'Classic Chrono',price:349,desc:'Automatic movement',img:'https://images.unsplash.com/photo-1526045612212-70caf35c14df'},
+  {id:'EO-002',name:'Smart Minimal',price:199,desc:'Fitness features',img:'https://images.unsplash.com/photo-1519744792095-2f2205e87b6f'},
+  {id:'EO-003',name:'Sport Pro',price:129,desc:'Shock resistant',img:'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe'},
+  {id:'EO-004',name:'Elegance Rose',price:479,desc:'Rose-gold plated',img:'https://images.unsplash.com/photo-1484704849700-f032a568e944'},
+  {id:'EO-005',name:'Diver 300',price:399,desc:'Diver-grade luminous',img:'https://images.unsplash.com/photo-1526045612212-70caf35c14df'}
+];
+const storage = {get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+let cart = storage.get('eon_cart')||{};
+function saveCart(){storage.set('eon_cart',cart);renderCartCount();renderCartList();}
+function addToCart(id){cart[id]=(cart[id]||0)+1;saveCart();}
+function changeQty(id,delta){cart[id]=Math.max(0,(cart[id]||0)+delta);if(cart[id]===0)delete cart[id];saveCart();}
+function removeFromCart(id){delete cart[id];saveCart();}
+function renderCartCount(){const c=Object.values(cart).reduce((a,b)=>a+b,0);const el=document.getElementById('cartCount');if(el){if(c>0){el.style.display='inline-block';el.textContent=c}else el.style.display='none'}}
+function renderCartList(){const list=document.getElementById('cartList');if(!list)return;list.innerHTML='';let total=0;for(const id in cart){const qty=cart[id];const p=PRODUCTS.find(x=>x.id===id);if(!p)continue;total+=p.price*qty;const item=document.createElement('div');item.className='cart-item';item.innerHTML=`<div style='width:56px'><img src='${p.img}' style='width:56px;height:44px;object-fit:cover;border-radius:6px'/></div><div style='flex:1'><div style='font-weight:600'>${p.name}</div><div class='muted' style='font-size:13px'>$${p.price} × ${qty}</div></div><div style='display:flex;flex-direction:column;gap:6px;align-items:flex-end'><div class='qty'><button class='btn ghost' onclick="changeQty('${id}',-1)">-</button><div style='padding:6px 8px'>${qty}</div><button class='btn ghost' onclick="changeQty('${id}',1)">+</button></div><button class='btn ghost' onclick="removeFromCart('${id}')">Remove</button></div>`;list.appendChild(item);}const totalEl=document.getElementById('cartTotal');if(totalEl)totalEl.textContent='$'+total.toFixed(2);} 
+function renderCatalog(containerId='catalog',filter=''){const container=document.getElementById(containerId);if(!container)return;container.innerHTML='';const items=PRODUCTS.filter(p=> (p.name+p.desc).toLowerCase().includes(filter.toLowerCase()));document.getElementById('shownCount')&&(document.getElementById('shownCount').textContent=items.length);items.forEach(p=>{const el=document.createElement('div');el.className='product';el.innerHTML=`<div class='pimg'><img src='${p.img}?auto=format&fit=crop&w=800&q=60' alt='${p.name}'/></div><div style='flex:1'><div class='pname'>${p.name}</div><div class='muted' style='font-size:13px'>${p.desc}</div></div><div style='display:flex;flex-direction:column;gap:8px;align-items:flex-end'><div class='price'>$${p.price}</div><div class='actions'><button class='btn ghost' onclick="viewProduct('${p.id}')">View</button><button class='btn' onclick="addToCart('${p.id}')">Add</button></div></div>`;container.appendChild(el);});}
+function viewProduct(id){const p=PRODUCTS.find(x=>x.id===id);if(!p)return alert('Product not found');alert(p.name+'\n\n'+p.desc+'\nPrice: $'+p.price);} 
+// Checkout demo: save orders to localStorage (eon_orders)
+document.addEventListener('click',e=>{if(e.target&&e.target.id==='checkoutBtn'){const items=Object.keys(cart).map(id=>({id,qty:cart[id]}));if(items.length===0)return alert('Cart is empty');const name=prompt('Customer name');if(!name)return;const phone=prompt('Phone / WhatsApp');if(!phone)return;const order={id:'ORD-'+Date.now(),name,phone,items,total:Object.keys(cart).reduce((s,k)=>s+(PRODUCTS.find(p=>p.id===k).price*cart[k]),0),created:new Date().toISOString(),status:'pending'};const orders=storage.get('eon_orders')||[];orders.push(order);storage.set('eon_orders',orders);cart={};saveCart();alert('Order placed — id: '+order.id+'\nOpen admin mode to view orders.');}})
+// Admin demo: client-side only (open admin.html)
+function adminLoad(){const pass=prompt('Admin pass');if(pass!=='eon-admin'){alert('Wrong pass');return;}const orders=storage.get('eon_orders')||[];const el=document.getElementById('orders');if(!el) return;el.innerHTML='';orders.forEach(o=>{const node=document.createElement('div');node.style.border='1px solid rgba(0,0,0,0.06)';node.style.padding='10px';node.style.marginBottom='8px';node.innerHTML=`<div style='font-weight:700'>${o.id} — ${o.name} — $${o.total.toFixed(2)}</div><div class='muted'>${o.phone} • ${o.created}</div><div style='margin-top:8px'>${o.items.map(it=>{const p=PRODUCTS.find(x=>x.id===it.id);return `<div>- ${p? p.name:it.id} × ${it.qty}</div>`}).join('')}</div><div style='margin-top:8px'><button class='btn' onclick="adminConfirm('${o.id}')">Confirm</button></div>`;el.appendChild(node);});}
+function adminConfirm(id){const orders=storage.get('eon_orders')||[];for(const o of orders) if(o.id===id) o.status='confirmed';storage.set('eon_orders',orders);adminLoad();alert('Order '+id+' marked confirmed (client-side)');}
+// init
+window.addEventListener('load',()=>{renderCatalog();renderCartCount();renderCartList();});
+
+--- FILE: index.html ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TimeZone — Professional Watch Store</title>
-  <!-- Google Fonts (use as brand 'logo' text) -->
+  <title>Eon — Luxury Watches</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f6f7fb; --card:#fff; --text:#111; --muted:#6b7280; --accent:#1f2937;
-      --accent-2:#b89b6e; --glass: rgba(255,255,255,0.6);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b1020; --card:#071022; --text:#e6eef8; --muted:#9aa7bf; --accent:#e6e9ee; --accent-2:#d9b77a; --glass: rgba(10,14,24,0.6);}    
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Poppins,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);-webkit-font-smoothing:antialiased}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:var(--card);backdrop-filter: blur(6px);box-shadow:0 2px 10px rgba(2,6,23,0.06)}
-    .brand{display:flex;gap:14px;align-items:center}
-    .logo{font-family:Merriweather,serif;font-weight:700;font-size:22px;letter-spacing:0.6px;color:var(--accent)}
-    .tag{font-size:12px;color:var(--muted)}
-    .search{flex:1;max-width:540px;margin:0 18px}
-    .search input{width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text)}
-    .nav-actions{display:flex;gap:10px;align-items:center}
-    .btn{padding:8px 12px;border-radius:10px;border:none;background:var(--accent);color:white;cursor:pointer}
-    .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(0,0,0,0.06)}
-    main{padding:28px}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:22px}
-    .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 30px rgba(2,6,23,0.06)}
-    .hero h1{margin:0;font-size:34px}
-    .hero p{color:var(--muted);margin-top:10px}
-    .catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:16px}
-    .product{background:var(--card);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;transition:transform .18s, box-shadow .18s}
-    .product:hover{transform:translateY(-6px);box-shadow:0 14px 50px rgba(2,6,23,0.08)}
-    .pimg{height:180px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.04))}
-    .pimg img{max-width:100%;max-height:100%;object-fit:contain}
-    .pmeta{display:flex;justify-content:space-between;align-items:center}
-    .pname{font-weight:600}
-    .price{font-weight:700;color:var(--accent-2)}
-    .actions{display:flex;gap:8px}
-    .cart-badge{background:#ff3b30;color:white;border-radius:999px;padding:4px 8px;font-size:12px}
-    /* cart drawer */
-    .cart-drawer{position:fixed;right:18px;top:70px;width:360px;max-height:80vh;background:var(--card);box-shadow:0 20px 60px rgba(2,6,23,0.2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;overflow:auto;transform:translateY(-8px)}
-    .cart-item{display:flex;gap:10px;align-items:center}
-    .qty{display:flex;gap:6px;align-items:center}
-    footer{padding:18px 28px;color:var(--muted);font-size:13px}
-    /* responsive */
-    @media (max-width:900px){.hero{grid-template-columns:1fr}}
-    /* utility */
-    .muted{color:var(--muted)}
-    .center{display:flex;align-items:center;justify-content:center}
-    /* admin hint */
-    .dev-note{font-size:12px;color:var(--muted);background:var(--card);padding:10px;border-radius:8px}
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <div class="brand">
-      <div class="logo">TimeZone</div>
-      <div class="tag">Curated Luxury Watches</div>
-    </div>
-
-    <div class="search">
-      <input id="q" placeholder="Search watches, e.g. 'chrono'" />
-    </div>
-
-    <div class="nav-actions">
-      <button id="themeToggle" class="btn ghost">Theme</button>
-      <button id="cartBtn" class="btn">Cart <span id="cartCount" class="cart-badge" style="margin-left:8px;display:none">0</span></button>
-    </div>
+    <div class="logo">Eon</div>
+    <div class="tag">Curated Timepieces</div>
+    <div class="search"><input id="q" placeholder="Search watches, e.g. 'Chrono'" /></div>
+    <div style="display:flex;gap:8px;align-items:center"><button id="cartBtn" class="btn">Cart <span id="cartCount" class="cart-badge" style="margin-left:8px;display:none">0</span></button></div>
   </header>
-
   <main>
     <section class="hero">
       <div class="hero-card">
-        <h1>TimeZone — Watches that make a statement</h1>
-        <p class="muted">Luxury-style designs, quality details. Lightweight, fast, and ready to ship. Use the admin link to manage orders.</p>
-        <div style="margin-top:14px;display:flex;gap:10px">
-          <button id="exploreBtn" class="btn">Explore Collection</button>
-          <button id="contactBtn" class="btn ghost">Contact</button>
-        </div>
+        <h1>Eon — Watches that last a lifetime</h1>
+        <p class="muted">A mix of classic craftsmanship and modern design. Free shipping on selected items.</p>
+        <div style="margin-top:12px"><button id="exploreBtn" class="btn">Explore Collection</button></div>
       </div>
-      <div class="hero-card center">
-        <!-- simple featured product -->
-        <div style="text-align:center">
-          <div style="font-weight:600">Featured</div>
-          <img src="https://via.placeholder.com/300x220?text=Luxury+Watch" style="width:100%;border-radius:12px;margin-top:10px"/>
-          <div style="margin-top:8px;font-weight:700">Classic Chrono</div>
-          <div class="muted">Automatic • Leather strap</div>
-          <div style="margin-top:8px;font-size:18px;color:var(--accent-2)">$349</div>
-        </div>
+      <div class="hero-card" style="display:flex;align-items:center;justify-content:center">
+        <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=60" style="width:100%;border-radius:8px;max-width:360px"/>
       </div>
     </section>
-
     <section>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <h2 style="margin:0">Collection</h2>
-        <div class="muted">Showing <span id="shownCount">0</span> products</div>
-      </div>
-
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;margin-bottom:8px"><h2 style="margin:0">Collection</h2><div class="muted">Showing <span id="shownCount">0</span> products</div></div>
       <div class="catalog" id="catalog"></div>
     </section>
-
   </main>
-
-  <!-- cart drawer (hidden by default) -->
   <div id="cartDrawer" class="cart-drawer" style="display:none">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="font-weight:700">Your Cart</div>
-      <button id="closeCart" class="btn ghost">Close</button>
-    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:700">Your Cart</div><button id="closeCart" class="btn ghost">Close</button></div>
     <div id="cartList"></div>
-    <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center">
-      <div class="muted">Total</div>
-      <div id="cartTotal" style="font-weight:700">$0.00</div>
-    </div>
-    <div style="margin-top:10px;display:flex;gap:8px">
-      <button id="checkoutBtn" class="btn">Checkout</button>
-      <button id="clearCart" class="btn ghost">Clear</button>
-    </div>
-    <div style="margin-top:10px" class="muted">Note: This demo stores orders locally (no payment). Use admin mode to view/confirm orders.</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><div class="muted">Total</div><div id="cartTotal" style="font-weight:700">$0.00</div></div>
+    <div style="margin-top:8px;display:flex;gap:8px"><button id="checkoutBtn" class="btn">Checkout</button><button id="clearCart" class="btn ghost">Clear</button></div>
+    <div class="muted" style="font-size:13px;margin-top:8px">Demo: orders are saved client-side. Use the Admin page to view them.</div>
   </div>
-
-  <footer>
-    © <span id="year"></span> TimeZone • Built with ❤️ • <span class="dev-note">Admin: open URL with #admin (example: index.html#admin) and enter password (client-side only)</span>
-  </footer>
-
-  <script>
-    // ---------- Product data (edit this array to add your actual products) ----------
-    const PRODUCTS = [
-      {id:'tz-001', name:'Classic Chrono', price:349, desc:'Automatic movement, leather strap', img:'https://via.placeholder.com/420x320?text=Classic+Chrono'},
-      {id:'tz-002', name:'Smart Minimal', price:199, desc:'Fitness features, sleek design', img:'https://via.placeholder.com/420x320?text=Smart+Minimal'},
-      {id:'tz-003', name:'Sport Pro', price:129, desc:'Shock resistant, water proof', img:'https://via.placeholder.com/420x320?text=Sport+Pro'},
-      {id:'tz-004', name:'Elegance Rose', price:479, desc:'Rose-gold plated, sapphire', img:'https://via.placeholder.com/420x320?text=Elegance+Rose'},
-      {id:'tz-005', name:'Diver 300', price:399, desc:'Diver-grade, luminous markers', img:'https://via.placeholder.com/420x320?text=Diver+300'}
-    ];
-
-    // ---------- Simple client-side storage helpers ----------
-    const storage = {
-      get(key){try{return JSON.parse(localStorage.getItem(key)||'null')}catch(e){return null}},
-      set(key,val){localStorage.setItem(key,JSON.stringify(val))}
-    }
-
-    // ---------- Cart logic using localStorage ----------
-    let cart = storage.get('tz_cart') || {};
-    function saveCart(){ storage.set('tz_cart', cart); renderCartCount(); renderCartList(); }
-    function addToCart(id){ cart[id] = (cart[id]||0)+1; saveCart(); }
-    function removeFromCart(id){ delete cart[id]; saveCart(); }
-    function changeQty(id,delta){ cart[id] = Math.max(0,(cart[id]||0)+delta); if(cart[id]===0) delete cart[id]; saveCart(); }
-
-    // ---------- Render catalog ----------
-    const catalogEl = document.getElementById('catalog');
-    function renderCatalog(filter=''){
-      catalogEl.innerHTML='';
-      const items = PRODUCTS.filter(p=> (p.name+p.desc).toLowerCase().includes(filter.toLowerCase()));
-      document.getElementById('shownCount').textContent = items.length;
-      items.forEach(p=>{
-        const el = document.createElement('div'); el.className='product';
-        el.innerHTML = `
-          <div class='pimg'><img src='${p.img}' alt='${p.name}'/></div>
-          <div style='flex:1'><div class='pname'>${p.name}</div><div class='muted' style='font-size:13px'>${p.desc}</div></div>
-          <div style='display:flex;flex-direction:column;gap:8px;align-items:flex-end'>
-            <div class='price'>$${p.price}</div>
-            <div class='actions'>
-              <button class='btn ghost' onclick="viewProduct('${p.id}')">View</button>
-              <button class='btn' onclick="addToCart('${p.id}')">Add</button>
-            </div>
-          </div>
-        `;
-        catalogEl.appendChild(el);
-      });
-    }
-
-    // ---------- Cart drawer UI ----------
-    const cartBtn = document.getElementById('cartBtn');
-    const cartDrawer = document.getElementById('cartDrawer');
-    cartBtn.addEventListener('click',()=>{ cartDrawer.style.display = cartDrawer.style.display==='none'?'flex':'none'; renderCartList(); });
-    document.getElementById('closeCart').addEventListener('click',()=>cartDrawer.style.display='none');
-
-    function renderCartCount(){
-      const count = Object.values(cart).reduce((a,b)=>a+b,0);
-      const badge = document.getElementById('cartCount');
-      if(count>0){ badge.style.display='inline-block'; badge.textContent = count; } else badge.style.display='none';
-    }
-
-    function renderCartList(){
-      const list = document.getElementById('cartList'); list.innerHTML='';
-      let total=0;
-      for(const id in cart){ const qty = cart[id]; const prod = PRODUCTS.find(p=>p.id===id); if(!prod) continue;
-        total += prod.price*qty;
-        const item = document.createElement('div'); item.className='cart-item';
-        item.innerHTML = `
-          <div style='width:56px'><img src='${prod.img}' style='width:56px;height:44px;object-fit:cover;border-radius:6px'/></div>
-          <div style='flex:1'><div style='font-weight:600'>${prod.name}</div><div class='muted' style='font-size:13px'>$${prod.price} × ${qty}</div></div>
-          <div style='display:flex;flex-direction:column;gap:6px;align-items:flex-end'>
-            <div class='qty'><button class='btn ghost' onclick="changeQty('${id}',-1)">-</button><div style='padding:6px 8px'>${qty}</div><button class='btn ghost' onclick="changeQty('${id}',1)">+</button></div>
-            <button class='btn ghost' onclick="removeFromCart('${id}')">Remove</button>
-          </div>
-        `;
-        list.appendChild(item);
-      }
-      document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
-    }
-
-    // ---------- Product view / checkout demo ----------
-    function viewProduct(id){ const p = PRODUCTS.find(x=>x.id===id); if(!p) return alert('Product not found');
-      alert(p.name + "\n\n" + p.desc + "\nPrice: $" + p.price);
-    }
-
-    // ---------- Checkout (client-only): saves orders to 'tz_orders' ----------
-    document.getElementById('checkoutBtn').addEventListener('click',()=>{
-      const items = Object.keys(cart).map(id=>({id, qty:cart[id]}));
-      if(items.length===0) return alert('Cart is empty');
-      const name = prompt('Customer name'); if(!name) return; const phone = prompt('Phone / WhatsApp'); if(!phone) return;
-      const order = {id:'ORD-'+Date.now(), name, phone, items, total: Object.keys(cart).reduce((s,k)=>s + (PRODUCTS.find(p=>p.id===k).price*cart[k]),0), created:new Date().toISOString(), status:'pending'};
-      const orders = storage.get('tz_orders')||[]; orders.push(order); storage.set('tz_orders', orders);
-      // clear cart
-      cart = {}; saveCart(); alert('Order placed — order id: ' + order.id + '\nOpen admin mode to view/confirm orders (client-side).');
-    });
-
-    // ---------- Simple admin mode (client-side only) ----------
-    // To open admin: append #admin to URL (example: index.html#admin)
-    // Password is a simple client-side check. THIS IS NOT SECURE — for real business use server-side auth.
-    const ADMIN_PASSWORD = 'letmein'; // change before publishing if you like
-    function openAdmin(){
-      const pass = prompt('Enter admin password');
-      if(pass!==ADMIN_PASSWORD){ alert('Wrong password'); return; }
-      const orders = storage.get('tz_orders')||[];
-      let txt = '--- Orders (local demo) ---\n';
-      orders.forEach(o=>{ txt += `ID: ${o.id}\nName: ${o.name}\nPhone: ${o.phone}\nTotal: $${o.total}\nStatus: ${o.status}\nCreated: ${o.created}\nItems:\n`; o.items.forEach(it=>{ const p = PRODUCTS.find(x=>x.id===it.id); txt += ` - ${p.name} × ${it.qty}\n`;}); txt += '\n';});
-      if(orders.length===0) txt += 'No orders yet.';
-      // simple ability to mark confirmed:
-      if(confirm('Open orders list in copyable dialog? Press OK to view.')){
-        prompt('ADMIN ORDERS (copy/paste to keep):', txt);
-      }
-    }
-
-    // if URL has #admin, prompt for admin
-    if(location.hash==='#admin') setTimeout(openAdmin,400);
-
-    // ---------- small utilities ----------
-    document.getElementById('q').addEventListener('input',(e)=>renderCatalog(e.target.value));
-    document.getElementById('exploreBtn').addEventListener('click',()=>{ document.getElementById('q').focus(); window.scrollTo({top:600,behavior:'smooth'}); });
-    document.getElementById('contactBtn').addEventListener('click',()=>{ window.location.href = 'https://wa.me/?text=' + encodeURIComponent('Hi, I\'m interested in your watches.'); });
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // optional theme toggle (forces light/dark locally)
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click',()=>{
-      if(document.documentElement.hasAttribute('data-theme') && document.documentElement.getAttribute('data-theme')==='dark'){
-        document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('tz_theme');
-      } else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('tz_theme','dark'); }
-    });
-    if(localStorage.getItem('tz_theme')==='dark') document.documentElement.setAttribute('data-theme','dark');
-
-    // initialize
-    renderCatalog(); renderCartCount(); renderCartList();
-  </script>
-
-  <!--
-    NOTES & NEXT STEPS:
-    - This single-file demo is intentionally client-side so you can preview instantly.
-    - To deploy: create a GitHub repo, add this file as index.html, and enable GitHub Pages (gh-pages branch or main branch -> pages)
-    - To make admin/orders secure and persistent you must add a server (Node/Express + simple DB or use Google Sheets/Notion + Zapier integration).
-    - To accept real payments later: integrate Stripe Checkout or PayPal from the server side.
-    - Replace placeholder product images with your real photos and update PRODUCTS array.
-  -->
+  <footer>© <span id="year"></span> Eon • Built with care • <a href="privacy.html">Privacy</a> • <a href="terms.html">Terms</a></footer>
+  <script src="js/app.js"></script>
+  <script>document.getElementById('q').addEventListener('input',e=>renderCatalog('catalog',e.target.value));document.getElementById('cartBtn').addEventListener('click',()=>{const d=document.getElementById('cartDrawer');d.style.display=d.style.display==='none'?'flex':'none';renderCartList()});document.getElementById('closeCart').addEventListener('click',()=>document.getElementById('cartDrawer').style.display='none');document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
+
+--- FILE: about.html ---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>About — Eon</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body><header><div class="logo">Eon</div><div class="tag">Curated Timepieces</div></header><main style="padding:28px"><div class="hero-card"><h1>About Eon</h1><p class="muted">Eon blends classic horology with contemporary design. Each watch is selected for quality and style.</p><h3 style="margin-top:16px">Our Promise</h3><p class="muted">Authentic products, secure shipping, and attentive support. We're a small boutique dedicated to timeless craftsmanship.</p></div></main><footer>© <span id="year"></span> Eon</footer><script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
+
+--- FILE: contact.html ---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Contact — Eon</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body><header><div class="logo">Eon</div><div class="tag">Curated Timepieces</div></header><main style="padding:28px"><div class="hero-card"><h1>Contact Us</h1><p class="muted">For orders & inquiries, use WhatsApp or the form below.</p><div style="margin-top:12px"><a class="btn" href="https://wa.me/?text=Hi%20Eon%20I%20want%20to%20ask%20about%20a%20watch">Message on WhatsApp</a></div><div style="margin-top:18px"><h3>Send a message</h3><form onsubmit="event.preventDefault();alert('Thank you — we will contact you via WhatsApp');"><div style="display:flex;flex-direction:column;gap:8px;max-width:420px"><input placeholder="Your name" required><input placeholder="Your email (optional)"><textarea placeholder="Message" rows="5"></textarea><button class="btn">Send</button></div></form></div></div></main><footer>© <span id="year"></span> Eon</footer><script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
+
+--- FILE: admin.html ---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Admin — Eon</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body><header><div class="logo">Eon Admin</div><div class="tag">Orders Dashboard</div></header><main style="padding:24px"><div class="hero-card"><h1>Admin (Demo)</h1><p class="muted">This is a client-side demo. To view orders, enter the admin password.</p><div style="margin-top:12px"><button class="btn" onclick="adminLoad()">Load Orders</button></div><div id="orders" style="margin-top:12px"></div></div></main><footer>© <span id="year"></span> Eon</footer><script src="js/app.js"></script><script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
+
+--- FILE: privacy.html ---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Privacy — Eon</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body><header><div class="logo">Eon</div><div class="tag">Curated Timepieces</div></header><main style="padding:24px"><div class="hero-card"><h1>Privacy Policy</h1><p class="muted">This site demo collects minimal order details and stores them in the browser for demo purposes. For a production site, orders should be stored on a secure server.</p></div></main><footer>© <span id="year"></span> Eon</footer><script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
+
+--- FILE: terms.html ---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Terms — Eon</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body><header><div class="logo">Eon</div><div class="tag">Curated Timepieces</div></header><main style="padding:24px"><div class="hero-card"><h1>Terms & Conditions</h1><p class="muted">Standard demo terms. Actual site should include return policy, shipping terms and warranty info.</p></div></main><footer>© <span id="year"></span> Eon</footer><script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
+
+--- FILE: DEPLOY.md ---
+# Deploying to GitHub Pages (quick)
+1. Create a new GitHub repository (e.g., `eon-store`).
+2. Upload all files from this repo root to GitHub (you can drag-and-drop in the web UI).
+3. In the repo settings → Pages, set the source to `main` (or `gh-pages`) branch and root.
+4. Wait a minute — your site will be live at: `https://<your-username>.github.io/<repo-name>/`
+
+--- FILE: NOTES.md ---
+- Admin is client-side demo only. For production, create a small server (Node/Express) or use Google Sheets as a backend.
+- Payments: Stripe is free to sign up; it charges per-transaction fees. No monthly cost.
+- If you want, I can prepare a Git commit bundle or create the repo for you and push these files.
+
+--- END ---
