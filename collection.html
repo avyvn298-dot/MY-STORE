@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Explore ACUMEN Collections — Carrera, Monaco, Aquaracer and more."/>
 </head>
-
 <body>
   <!-- Header -->
   <header id="siteHeader" class="header">
@@ -41,55 +41,65 @@
     <section class="section">
       <div class="container">
         <h2 class="section-title">OUR COLLECTIONS</h2>
+
         <div class="collections-grid">
-          <div class="collection-card" data-aos="fade-up">
+          <div class="collection-card" data-collection="carrera">
             <div class="collection-image">
               <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=800" alt="Carrera Collection">
             </div>
             <div class="collection-info">
               <h3>CARRERA</h3>
-              <p>Racing heritage meets modern elegance</p>
-              <a href="product.html?id=carrera01" class="collection-link">Explore →</a>
+              <p>Racing Heritage Meets Modern Elegance</p>
+              <a href="#carrera" class="collection-link">Discover →</a>
             </div>
           </div>
 
-          <div class="collection-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="collection-card" data-collection="monaco">
             <div class="collection-image">
               <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=800" alt="Monaco Collection">
             </div>
             <div class="collection-info">
               <h3>MONACO</h3>
-              <p>Iconic square case redefined</p>
-              <a href="product.html?id=monaco01" class="collection-link">Explore →</a>
+              <p>Iconic Square Case Since 1969</p>
+              <a href="#monaco" class="collection-link">Discover →</a>
             </div>
           </div>
 
-          <div class="collection-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="collection-card" data-collection="aquaracer">
             <div class="collection-image">
               <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=800" alt="Aquaracer Collection">
             </div>
             <div class="collection-info">
               <h3>AQUARACER</h3>
-              <p>Designed for water, refined for life</p>
-              <a href="product.html?id=aquaracer01" class="collection-link">Explore →</a>
+              <p>Professional Diving Precision</p>
+              <a href="#aquaracer" class="collection-link">Discover →</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Filter + Products -->
     <section class="section">
       <div class="container">
         <h2 class="section-title">FEATURED TIMEPIECES</h2>
-        <div class="watches-grid" id="watchesGrid">
-          <!-- The same JS/data logic from your script.js will populate product cards here -->
+
+        <!-- Filter buttons will be injected here -->
+        <div id="collectionFilters" class="filter-tabs" role="tablist" aria-label="Filter watches">
+          <!-- fallback static buttons (will be replaced by JS if data exists) -->
+          <button class="filter-btn active" data-filter="all">All Watches</button>
+        </div>
+
+        <!-- Watches grid -->
+        <div class="watches-grid" id="watchesGrid" aria-live="polite" aria-atomic="true" style="margin-top:1.25rem">
+          <!-- JS will populate product cards here -->
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer (copy from index) -->
-  <footer class="footer">
+  <!-- Footer (keeps your content) -->
+  <footer class="footer" role="contentinfo">
     <div class="container footer-content">
       <div class="footer-section">
         <h3 class="logo">ACUMEN</h3>
@@ -98,6 +108,36 @@
           <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
           <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
           <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        </div>
+
+        <div class="footer-section">
+          <h4>Collections</h4>
+          <ul class="footer-links">
+            <li><a href="collection.html#carrera">Carrera</a></li>
+            <li><a href="collection.html#monaco">Monaco</a></li>
+            <li><a href="collection.html#aquaracer">Aquaracer</a></li>
+            <li><a href="collection.html#formula1">Formula 1</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Customer Service</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Store Locator</a></li>
+            <li><a href="about.html#warranty">Warranty</a></li>
+            <li><a href="about.html#care">Care & Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>About</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">Our Heritage</a></li>
+            <li><a href="about.html#innovation">Innovation</a></li>
+            <li><a href="about.html#ambassadors">Ambassadors</a></li>
+            <li><a href="about.html#careers">Careers</a></li>
+          </ul>
         </div>
       </div>
 
@@ -110,11 +150,244 @@
         </div>
       </div>
     </footer>
+  </main>
 
-  <!-- Include script.js to render watch cards -->
+  <!-- script.js (your existing site script) -->
   <script src="assets/js/script.js"></script>
 
-  <!-- Include minimal nav toggle script -->
+  <!-- Collection rendering + filter logic (keeps tag heuer styling, uses your data.js if present) -->
+  <script>
+    (function () {
+      'use strict';
+
+      const watchesGrid = document.getElementById('watchesGrid');
+      const filtersWrap = document.getElementById('collectionFilters');
+
+      // Utility: currency formatter (use Acumen utils if available)
+      function formatMoney(v, currency = 'USD') {
+        try {
+          if (window.Acumen && window.Acumen.utils && window.Acumen.utils.formatCurrency) {
+            return window.Acumen.utils.formatCurrency(v, currency);
+          }
+          return new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(v);
+        } catch (e) {
+          return (currency === 'USD' ? '$' : '') + Number(v).toFixed(2);
+        }
+      }
+
+      // Fallback product set (in case data.js isn't loaded)
+      const fallbackProducts = [
+        {
+          id: 'carrera01',
+          name: 'Carrera Chronograph',
+          shortDesc: 'Racing-inspired chronograph with precision movement.',
+          price: 8999,
+          currency: 'USD',
+          collection: 'carrera',
+          categories: ['chronograph'],
+          images: ['https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200']
+        },
+        {
+          id: 'monaco01',
+          name: 'Monaco Square',
+          shortDesc: 'Iconic square-case watch with bold presence.',
+          price: 10999,
+          currency: 'USD',
+          collection: 'monaco',
+          categories: ['automatic'],
+          images: ['https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=1200']
+        },
+        {
+          id: 'aquaracer01',
+          name: 'Aquaracer Pro',
+          shortDesc: 'Robust diver built for the deep sea.',
+          price: 7499,
+          currency: 'USD',
+          collection: 'aquaracer',
+          categories: ['sport','limited'],
+          images: ['https://images.unsplash.com/photo-1622434641406-a158123450f9?w=1200']
+        }
+      ];
+
+      // Get products: prefer window.Acumen.data.products
+      const PRODUCTS = (window.Acumen && window.Acumen.data && Array.isArray(window.Acumen.data.products) && window.Acumen.data.products.length)
+        ? window.Acumen.data.products.map(p => ({
+            id: p.id || (p.sku ?? Math.random().toString(36).slice(2,9)),
+            name: p.name || 'Unnamed',
+            shortDesc: p.shortDesc || p.excerpt || p.description || '',
+            price: p.price || p.amount || 0,
+            currency: p.currency || 'USD',
+            collection: p.collection || 'uncategorized',
+            categories: p.tags || [],
+            images: (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []),
+            sku: p.sku || ''
+          }))
+        : fallbackProducts;
+
+      // Build categories from collections or product.collection
+      const collectionsFromData = (window.Acumen && window.Acumen.data && Array.isArray(window.Acumen.data.collections))
+        ? window.Acumen.data.collections.map(c => ({ id: c.id, name: c.name }))
+        : [];
+
+      // If collectionsFromData empty, infer from products
+      const inferredCollections = collectionsFromData.length
+        ? collectionsFromData
+        : Array.from(new Set(PRODUCTS.map(p => p.collection))).map(id => ({ id, name: id.charAt(0).toUpperCase() + id.slice(1) }));
+
+      // Build filter buttons
+      function buildFilters() {
+        filtersWrap.innerHTML = '';
+        const allBtn = document.createElement('button');
+        allBtn.className = 'filter-btn active';
+        allBtn.dataset.filter = 'all';
+        allBtn.textContent = 'All Watches';
+        filtersWrap.appendChild(allBtn);
+
+        inferredCollections.forEach(col => {
+          const btn = document.createElement('button');
+          btn.className = 'filter-btn';
+          btn.dataset.filter = col.id;
+          btn.textContent = col.name;
+          filtersWrap.appendChild(btn);
+        });
+
+        // hook events
+        filtersWrap.querySelectorAll('.filter-btn').forEach(b => {
+          b.addEventListener('click', (e) => {
+            filtersWrap.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            const filter = b.dataset.filter;
+            applyFilter(filter);
+            // update url hash quietly
+            if (filter !== 'all') history.replaceState(null, '', 'collection.html#' + filter);
+            else history.replaceState(null, '', 'collection.html');
+          });
+        });
+      }
+
+      // Render product card (keeps your watch-card markup and classes)
+      function renderProductCard(p) {
+        const col = document.createElement('article');
+        col.className = 'watch-card reveal fade-up';
+        col.dataset.collection = p.collection || 'uncategorized';
+        col.innerHTML = `
+          <div class="watch-image">
+            <img src="${(p.images && p.images[0]) ? p.images[0] : 'assets/images/products/placeholder.png'}" alt="${escapeHtml(p.name)}">
+            ${p.collection ? `<div class="watch-badge">${escapeHtml(p.collection.toUpperCase())}</div>` : ''}
+          </div>
+          <div class="watch-info">
+            <div class="watch-name">${escapeHtml(p.name)}</div>
+            <div class="watch-model">${escapeHtml(p.shortDesc || '')}</div>
+            <div class="watch-specs">
+              <!-- optional specs placeholder -->
+              <div class="watch-spec">${p.sku ? 'SKU: ' + escapeHtml(p.sku) : ''}</div>
+            </div>
+            <div class="watch-price">${formatMoney(p.price, p.currency)}</div>
+            <div class="watch-actions" style="margin-top:12px">
+              <a class="btn btn-secondary" href="product.html?id=${encodeURIComponent(p.id)}">View</a>
+              <button class="btn btn-primary quick-add" data-id="${escapeHtml(p.id)}" style="margin-left:8px">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        return col;
+      }
+
+      // escape
+      function escapeHtml(s) { return ('' + (s ?? '')).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c])); }
+
+      // populate grid
+      function populateGrid(products) {
+        watchesGrid.innerHTML = '';
+        if (!products.length) {
+          watchesGrid.innerHTML = '<p class="muted">No products found for this filter.</p>';
+          return;
+        }
+        const frag = document.createDocumentFragment();
+        products.forEach(p => frag.appendChild(renderProductCard(p)));
+        watchesGrid.appendChild(frag);
+
+        // attach quick-add handlers (uses window.Acumen.app.Cart if present)
+        Array.from(document.querySelectorAll('.quick-add')).forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = btn.dataset.id;
+            if (window.Acumen && window.Acumen.app && window.Acumen.app.Cart) {
+              window.Acumen.app.Cart.add(id, 1);
+              btn.textContent = 'Added ✓';
+              setTimeout(() => btn.textContent = 'Add to Cart', 900);
+            } else {
+              // fallback: simple visual feedback
+              btn.textContent = 'Added ✓';
+              setTimeout(() => btn.textContent = 'Add to Cart', 900);
+            }
+          });
+        });
+      }
+
+      // apply filter
+      function applyFilter(filterId) {
+        if (!filterId || filterId === 'all') {
+          populateGrid(PRODUCTS);
+          return;
+        }
+        const filtered = PRODUCTS.filter(p => {
+          // match by collection id or category tag
+          if ((p.collection || '').toLowerCase() === filterId.toLowerCase()) return true;
+          if (Array.isArray(p.categories) && p.categories.includes(filterId.toLowerCase())) return true;
+          return false;
+        });
+        populateGrid(filtered);
+      }
+
+      // initialize: build filters and populate
+      function init() {
+        buildFilters();
+
+        // If URL has hash (e.g. #carrera) try to filter
+        const hash = (location.hash || '').replace('#', '');
+        if (hash) {
+          const btn = filtersWrap.querySelector(`button[data-filter="${hash}"]`);
+          if (btn) {
+            btn.click();
+          } else {
+            applyFilter('all');
+            populateGrid(PRODUCTS);
+          }
+        } else {
+          populateGrid(PRODUCTS);
+        }
+
+        // Also wire collection-links on top to filter
+        document.querySelectorAll('.collection-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href') || '';
+            const target = href.split('#')[1];
+            if (target) {
+              const btn = filtersWrap.querySelector(`button[data-filter="${target}"]`);
+              if (btn) btn.click();
+              // smooth scroll to grid
+              document.getElementById('watchesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              // fallback
+              document.getElementById('watchesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+      }
+
+      // wait for DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else init();
+
+      // Expose for debugging if needed
+      window.Acumen = window.Acumen || {};
+      window.Acumen.collectionPage = { PRODUCTS, applyFilter, populateGrid };
+
+    })();
+  </script>
+
+  <!-- small nav toggle logic (same as index) -->
   <script>
     (function(){
       const navToggle = document.getElementById('navToggle');
