@@ -1,193 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ACUMEN WATCHES – Our Timepieces</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Products | LuxTime</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsive.css" />
+  <link rel="icon" href="assets/images/logo.png" />
 </head>
 <body>
+
   <!-- Header -->
-  <header id="header">
-    <nav class="navbar">
-      <div class="logo">ACUMEN</div>
-      <ul class="nav-links" id="navLinks">
+  <header class="main-header">
+    <div class="logo">LUXTIME</div>
+    <nav>
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
         <li><a href="products.html" class="active">Products</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-icons">
-        <button class="icon-btn search-btn" aria-label="Search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-          </svg>
-        </button>
-        <button class="icon-btn cart-btn" aria-label="Cart">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-          </svg>
-          <span class="cart-count">0</span>
-        </button>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
     </nav>
   </header>
 
-  <!-- Hero Banner -->
-  <section class="product-hero">
-    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1920');"></div>
-    <div class="hero-overlay"></div>
+  <!-- Hero Section -->
+  <section class="hero-banner products-hero">
     <div class="hero-content">
-      <h1 class="hero-title">OUR TIMEPIECES</h1>
-      <p class="hero-description">Discover precision, innovation, and timeless style — crafted the Swiss way.</p>
+      <h1>Our Exclusive Watches</h1>
+      <p>Discover craftsmanship and innovation in every detail.</p>
     </div>
   </section>
 
-  <!-- Filters -->
-  <section class="product-filter section">
-    <div class="container">
-      <div class="filter-header">
-        <h2 class="section-title">FILTER BY CATEGORY</h2>
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="chronograph">Chronograph</button>
-          <button class="filter-btn" data-filter="automatic">Automatic</button>
-          <button class="filter-btn" data-filter="limited">Limited Edition</button>
-        </div>
-      </div>
+  <!-- Filter & Sort Bar -->
+  <section class="filter-bar">
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="men">Men</button>
+      <button class="filter-btn" data-filter="women">Women</button>
+      <button class="filter-btn" data-filter="limited">Limited Edition</button>
+      <button class="filter-btn" data-filter="smart">Smart</button>
+      <button class="filter-btn" data-filter="automatic">Automatic</button>
+    </div>
+    <div class="sort">
+      <label for="sort-options">Sort by:</label>
+      <select id="sort-options">
+        <option value="featured">Featured</option>
+        <option value="newest">Newest</option>
+        <option value="low-high">Price: Low–High</option>
+        <option value="high-low">Price: High–Low</option>
+      </select>
     </div>
   </section>
 
   <!-- Product Grid -->
-  <section class="product-grid section">
-    <div class="container">
-      <div class="products-grid" id="productsGrid">
+  <section class="products-section">
+    <div class="products-grid">
 
-        <!-- Product 1 -->
-        <div class="product-card" data-category="chronograph">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=800" alt="Carrera Chronograph">
-            <div class="product-overlay">
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Carrera Chronograph</h3>
-            <p class="product-desc">Racing heritage meets modern precision</p>
-            <span class="product-price">$6,500</span>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card" data-category="automatic">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=800" alt="Monaco Automatic">
-            <div class="product-overlay">
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Monaco Automatic</h3>
-            <p class="product-desc">Iconic square case, automatic movement</p>
-            <span class="product-price">$5,900</span>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card" data-category="limited">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=800" alt="Aquaracer Limited Edition">
-            <div class="product-overlay">
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Aquaracer Limited Edition</h3>
-            <p class="product-desc">Professional diving precision</p>
-            <span class="product-price">$7,800</span>
-          </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card" data-category="automatic">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1611148881051-02e80bcb5256?w=800" alt="Formula 1 Automatic">
-            <div class="product-overlay">
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Formula 1 Automatic</h3>
-            <p class="product-desc">Sporty, dynamic, Swiss-engineered</p>
-            <span class="product-price">$4,950</span>
-          </div>
-        </div>
-
+      <!-- Product Card -->
+      <div class="product-card" data-category="men">
+        <img src="assets/images/watch1.jpg" alt="Chronograph Silver Edition">
+        <h3>Chronograph Silver Edition</h3>
+        <p>$1,250</p>
       </div>
+
+      <div class="product-card" data-category="men">
+        <img src="assets/images/watch2.jpg" alt="Automatic Racing Spirit">
+        <h3>Automatic Racing Spirit</h3>
+        <p>$1,850</p>
+      </div>
+
+      <div class="product-card" data-category="women">
+        <img src="assets/images/watch3.jpg" alt="Rose Gold Elegance">
+        <h3>Rose Gold Elegance</h3>
+        <p>$1,650</p>
+      </div>
+
+      <div class="product-card" data-category="limited">
+        <img src="assets/images/watch4.jpg" alt="Limited Edition Monaco">
+        <h3>Limited Edition Monaco</h3>
+        <p>$2,450</p>
+      </div>
+
+      <div class="product-card" data-category="smart">
+        <img src="assets/images/watch5.jpg" alt="Connected Smart Chrono">
+        <h3>Connected Smart Chrono</h3>
+        <p>$1,950</p>
+      </div>
+
+      <div class="product-card" data-category="automatic">
+        <img src="assets/images/watch6.jpg" alt="Classic Automatic">
+        <h3>Classic Automatic</h3>
+        <p>$1,400</p>
+      </div>
+
+      <div class="product-card" data-category="men">
+        <img src="assets/images/watch7.jpg" alt="Carrera Blue Steel">
+        <h3>Carrera Blue Steel</h3>
+        <p>$1,720</p>
+      </div>
+
+      <div class="product-card" data-category="limited">
+        <img src="assets/images/watch8.jpg" alt="Carbon Fiber Edition">
+        <h3>Carbon Fiber Edition</h3>
+        <p>$2,950</p>
+      </div>
+
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3 class="logo">ACUMEN</h3>
-          <p>Swiss Luxury Timepieces</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="collection.html">Collections</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Follow Us</h4>
-          <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 ACUMEN Watches. All rights reserved.</p>
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p>© 2025 LuxTime. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
   </footer>
 
-  <script>
-    // Product Filtering
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const products = document.querySelectorAll('.product-card');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-        products.forEach(product => {
-          product.style.display =
-            filter === 'all' || product.dataset.category === filter
-              ? 'block'
-              : 'none';
-        });
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
