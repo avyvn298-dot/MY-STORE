@@ -1,466 +1,611 @@
-// ================================
-// script.js — Master controller for Acumen Watches
-// - Dynamic rendering (home, collection, product, blog)
-// - Quick View modal and product detail rendering
-// - Full cart system (add/remove/update/localStorage)
-// - Navigation, smooth scroll, reveal hookup
-// - Lazy loading hooks and image optimizations
-// - Uses data from window.Acumen.data
-// ================================
+// ==========================================
+// ACUMEN WATCHES - Complete JavaScript
+// ==========================================
 
-(function () {
-  'use strict';
-
-  const { qsa, qs, debounce, formatCurrency } = window.Acumen.utils;
-  const DATA = window.Acumen?.data ?? { products: [], collections: [], blogPosts: [], contactInfo: {}, socialLinks: {} };
-
-  // Cart structure
-  const Cart = {
-    items: [], // { id, qty, price }
-    key: 'acumen_cart_v1',
-    load() {
-      try {
-        const raw = localStorage.getItem(this.key);
-        this.items = raw ? JSON.parse(raw) : [];
-      } catch (e) {
-        this.items = [];
-      }
+// Watch Data
+const watches = [
+    {
+        id: 1,
+        name: "CARRERA CHRONOGRAPH",
+        model: "CBN2A1A.BA0643",
+        price: "$5,850",
+        category: "chronograph",
+        badge: "New",
+        specs: ["Automatic", "43mm", "100m"],
+        image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800"
     },
-    save() {
-      localStorage.setItem(this.key, JSON.stringify(this.items));
-      this.dispatchChange();
+    {
+        id: 2,
+        name: "MONACO AUTOMATIC",
+        model: "CAW211P.FC6356",
+        price: "$6,200",
+        category: "automatic",
+        badge: "Limited",
+        specs: ["Automatic", "39mm", "100m"],
+        image: "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=800"
     },
-    add(productId, qty = 1) {
-      const prod = DATA.products.find(p => p.id === productId);
-      if (!prod) return false;
-      const existing = this.items.find(i => i.id === productId);
-      if (existing) existing.qty += qty;
-      else this.items.push({ id: productId, qty, price: prod.price, currency: prod.currency, name: prod.name, image: prod.images?.[0] ?? '' });
-      this.save();
-      return true;
+    {
+        id: 3,
+        name: "AQUARACER PROFESSIONAL",
+        model: "WBP208C.FT6201",
+        price: "$3,950",
+        category: "automatic",
+        badge: "",
+        specs: ["Automatic", "43mm", "300m"],
+        image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=800"
     },
-    remove(productId) {
-      this.items = this.items.filter(i => i.id !== productId);
-      this.save();
+    {
+        id: 4,
+        name: "CARRERA SPORT",
+        model: "CBN2013.BA0642",
+        price: "$7,100",
+        category: "chronograph",
+        badge: "Limited",
+        specs: ["Chronograph", "44mm", "100m"],
+        image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=800"
     },
-    update(productId, qty) {
-      const it = this.items.find(i => i.id === productId);
-      if (!it) return;
-      it.qty = Math.max(0, Number(qty));
-      if (it.qty === 0) this.remove(productId);
-      else this.save();
+    {
+        id: 5,
+        name: "FORMULA 1 CHRONOGRAPH",
+        model: "CAZ101AG.BA0842",
+        price: "$1,650",
+        category: "chronograph",
+        badge: "",
+        specs: ["Quartz", "43mm", "200m"],
+        image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=800"
     },
-    clear() {
-      this.items = [];
-      this.save();
-    },
-    subtotal() {
-      return this.items.reduce((s, i) => s + (i.price * i.qty), 0);
-    },
-    count() {
-      return this.items.reduce((s, i) => s + i.qty, 0);
-    },
-    dispatchChange() {
-      document.dispatchEvent(new CustomEvent('acumen.cart.change', { detail: { items: this.items } }));
+    {
+        id: 6,
+        name: "AUTAVIA CHRONOGRAPH",
+        model: "CBE5110.FC8266",
+        price: "$4,900",
+        category: "chronograph",
+        badge: "New",
+        specs: ["Automatic", "42mm", "100m"],
+        image: "https://images.unsplash.com/photo-1611148881051-02e80bcb5256?w=800"
     }
-  };
+];
 
-  // Initialize app
-  document.addEventListener('DOMContentLoaded', () => {
-    Cart.load();
-    renderLogo();
-    enhanceImages();
-    route();
-    bindGlobalUI();
-    // react to cart changes
-    document.addEventListener('acumen.cart.change', () => {
-      renderCartBadge();
-      renderCartPreview();
-    });
-    renderCartBadge();
-    renderCartPreview();
-  });
+// ==========================================
+// Header Scroll Effect
+// ==========================================
+const header = document.getElementById('header');
+let lastScroll = 0;
 
-  // Basic client-side routing to decide which page to render dynamic parts for
-  function route() {
-    const path = window.location.pathname.split('/').pop() || 'index.html';
-    if (path === '' || path === 'index.html') {
-      renderHome();
-    } else if (path === 'collection.html') {
-      renderCollection();
-    } else if (path === 'product.html') {
-      renderProductFromQuery();
-    } else if (path === 'blog.html') {
-      renderBlog();
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        header.classList.add('scrolled');
     } else {
-      // other pages don't need dynamic rendering
+        header.classList.remove('scrolled');
     }
-  }
+    
+    lastScroll = currentScroll;
+});
 
-  /* ================== RENDER LOGO ================== */
-  function renderLogo() {
-    // If assets/icons/logo.svg exists, use it, otherwise fallback to text
-    const logoEls = qsa('.logo');
-    const logoPath = 'assets/icons/logo.svg';
-    logoEls.forEach(el => {
-      // try to load image silently and swap if exists
-      fetch(logoPath, { method: 'HEAD' }).then(res => {
-        if (res.ok) {
-          el.innerHTML = `<img src="${logoPath}" alt="Acumen Watches logo" style="height:36px;">`;
-        } else {
-          el.textContent = 'ACUMEN';
-        }
-      }).catch(() => { el.textContent = 'ACUMEN'; });
+// ==========================================
+// Mobile Navigation Toggle
+// ==========================================
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    navToggle.classList.toggle('active');
+});
+
+// Close mobile nav when clicking on a link
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        navToggle.classList.remove('active');
     });
-  }
+});
 
-  /* ============== ENHANCEMENTS ============== */
-  function enhanceImages() {
-    // Convert standard images to lazy loading if not already using native attribute
-    qsa('img').forEach(img => {
-      if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
-      // add class for fade-in handled by animations.js
-      if (!img.classList.contains('fade-in')) img.classList.add('fade-in');
-    });
-  }
+// ==========================================
+// Hero Slider
+// ==========================================
+const heroSlides = [
+    {
+        image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1920",
+        subtitle: "NEW COLLECTION 2025",
+        title: "CARRERA CHRONOGRAPH",
+        description: "Precision engineered. Elegantly designed. Swiss craftsmanship redefined."
+    },
+    {
+        image: "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=1920",
+        subtitle: "ICONIC DESIGN",
+        title: "MONACO HERITAGE",
+        description: "The legendary square case that revolutionized watchmaking since 1969."
+    },
+    {
+        image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=1920",
+        subtitle: "PROFESSIONAL DIVING",
+        title: "AQUARACER 300M",
+        description: "Engineered for the depths. Built for adventure."
+    }
+];
 
-  /* ================== HOME PAGE RENDER ================== */
-  function renderHome() {
-    // Featured products: top 3 by price or first 3
-    const featuredContainer = qs('.featured-grid');
-    if (!featuredContainer) return;
-    featuredContainer.innerHTML = '';
-    const featured = DATA.products.slice(0, 3);
-    featured.forEach(p => {
-      const card = document.createElement('article');
-      card.className = 'watch-card reveal fade-up';
-      card.innerHTML = `
-        <img src="${p.images?.[0] || 'assets/images/products/placeholder.png'}" alt="${p.name}" class="watch-img">
-        <h3>${p.name}</h3>
-        <p class="muted">${p.shortDesc}</p>
-        <div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-top:12px">
-          <a href="product.html?id=${encodeURIComponent(p.id)}" class="btn-secondary">View Details</a>
-          <button class="btn-primary quick-add" data-id="${p.id}">Add to Cart</button>
+let currentSlide = 0;
+const sliderContainer = document.querySelector('.hero-slider');
+const sliderDotsContainer = document.querySelector('.slider-dots');
+
+// Create slider slides
+heroSlides.forEach((slide, index) => {
+    const slideElement = document.createElement('div');
+    slideElement.className = `hero-slide ${index === 0 ? 'active' : ''}`;
+    slideElement.innerHTML = `
+        <div class="hero-bg" style="background-image: url('${slide.image}')"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">${slide.subtitle}</span>
+            <h1 class="hero-title">${slide.title}</h1>
+            <p class="hero-description">${slide.description}</p>
+            <div class="hero-buttons">
+                <a href="#collections" class="btn btn-primary">Explore Collection</a>
+                <a href="#watches" class="btn btn-secondary">View All Watches</a>
+            </div>
         </div>
-      `;
-      featuredContainer.appendChild(card);
-    });
-
-    // bind quick-add handlers
-    qsa('.quick-add').forEach(btn => btn.addEventListener('click', (e) => {
-      const id = btn.dataset.id;
-      Cart.add(id, 1);
-      // micro-feedback
-      btn.textContent = 'Added ✓';
-      setTimeout(() => btn.textContent = 'Add to Cart', 900);
-    }));
-  }
-
-  /* ================== COLLECTION PAGE RENDER ================== */
-  function renderCollection() {
-    const grid = qs('#collectionGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    const mapCard = (p) => {
-      const el = document.createElement('div');
-      el.className = 'watch-card reveal fade-up';
-      el.innerHTML = `
-        <img src="${p.images?.[0] || 'assets/images/products/placeholder.png'}" alt="${p.name}" class="watch-img" loading="lazy">
-        <h3>${p.name}</h3>
-        <p class="muted">${p.shortDesc}</p>
-        <div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-top:12px">
-          <a href="product.html?id=${encodeURIComponent(p.id)}" class="btn-secondary">View</a>
-          <button class="btn-primary add-to-cart" data-id="${p.id}">Add</button>
-          <button class="btn-secondary quick-view" data-id="${p.id}">Quick View</button>
-        </div>
-      `;
-      return el;
-    };
-
-    DATA.products.forEach(p => grid.appendChild(mapCard(p)));
-
-    // attach handlers
-    qsa('.add-to-cart').forEach(b => b.addEventListener('click', () => {
-      Cart.add(b.dataset.id, 1);
-    }));
-
-    qsa('.quick-view').forEach(b => b.addEventListener('click', (e) => {
-      const id = b.dataset.id;
-      openQuickView(id);
-    }));
-  }
-
-  /* ================== PRODUCT PAGE RENDER ================== */
-  function renderProductFromQuery() {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
-    if (!id) return renderProductNotFound();
-    const product = DATA.products.find(p => p.id === id);
-    if (!product) return renderProductNotFound();
-
-    const wrapper = qs('#productWrapper');
-    if (!wrapper) return;
-
-    wrapper.innerHTML = productTemplate(product);
-    bindProductControls(product);
-  }
-
-  function renderProductNotFound() {
-    const wrapper = qs('#productWrapper');
-    if (!wrapper) return;
-    wrapper.innerHTML = `<div class="card"><h2>Product not found</h2><p class="muted">The product you requested could not be located.</p></div>`;
-  }
-
-  function productTemplate(p) {
-    return `
-      <div class="product-grid reveal fade-up">
-        <div class="product-media">
-          <div class="product-gallery">
-            ${p.images.map((src, i) => `<img src="${src}" data-index="${i}" class="product-thumb" loading="lazy" alt="${p.name} view ${i+1}">`).join('')}
-          </div>
-          <div class="product-main">
-            <img src="${p.images[0]}" alt="${p.name} main" id="productMainImage" loading="lazy" class="fade-in">
-          </div>
-        </div>
-        <div class="product-details">
-          <h1>${p.name}</h1>
-          <div class="muted">${p.specs.movement} · ${p.specs.materials}</div>
-          <p class="price" data-price="${p.price}">${formatCurrency(p.price, p.currency)}</p>
-          <p class="lead">${p.longDesc}</p>
-
-          <div class="product-options">
-            <label>Quantity</label>
-            <input type="number" id="productQty" value="1" min="1" style="width:70px;padding:8px;border-radius:6px;border:none">
-          </div>
-
-          <div style="display:flex;gap:10px;margin-top:18px">
-            <button class="btn-primary" id="addToCartBtn" data-id="${p.id}">Add to Cart</button>
-            <button class="btn-secondary" id="buyNowBtn">Buy Now</button>
-          </div>
-
-          <section class="specs card" style="margin-top:18px">
-            <h4>Specifications</h4>
-            <ul class="muted">
-              <li>Movement: ${p.specs.movement}</li>
-              <li>Water Resistance: ${p.specs.waterResistance}</li>
-              <li>Materials: ${p.specs.materials}</li>
-              <li>Strap: ${p.specs.strap}</li>
-            </ul>
-          </section>
-        </div>
-      </div>
     `;
-  }
+    if (index > 0) sliderContainer.appendChild(slideElement);
+});
 
-  function bindProductControls(product) {
-    const mainImg = qs('#productMainImage');
-    qsa('.product-thumb').forEach(t => t.addEventListener('click', () => {
-      mainImg.src = t.src;
-    }));
+// Create slider dots
+heroSlides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+    dot.addEventListener('click', () => goToSlide(index));
+    sliderDotsContainer.appendChild(dot);
+});
 
-    const addBtn = qs('#addToCartBtn');
-    const qtyInput = qs('#productQty');
-    if (addBtn && qtyInput) {
-      addBtn.addEventListener('click', () => {
-        const qty = Number(qtyInput.value) || 1;
-        Cart.add(product.id, qty);
-        addBtn.textContent = 'Added ✓';
-        setTimeout(() => addBtn.textContent = 'Add to Cart', 900);
-      });
-    }
+function goToSlide(index) {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    
+    currentSlide = index;
+    
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
 
-    const buyBtn = qs('#buyNowBtn');
-    if (buyBtn) {
-      buyBtn.addEventListener('click', () => {
-        // for demo: add to cart and navigate to cart page
-        const qty = Number(qtyInput.value) || 1;
-        Cart.add(product.id, qty);
-        window.location.href = 'cart.html';
-      });
-    }
-  }
+function nextSlide() {
+    goToSlide((currentSlide + 1) % heroSlides.length);
+}
 
-  /* ================== QUICK VIEW MODAL ================== */
-  function openQuickView(productId) {
-    const product = DATA.products.find(p => p.id === productId);
-    if (!product) return;
-    // create modal if not exists
-    let modal = qs('#quickViewModal');
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.id = 'quickViewModal';
-      modal.className = 'modal';
-      modal.innerHTML = `
-        <div class="modal-dialog">
-          <button class="modal-close" aria-label="Close">×</button>
-          <div class="modal-body">
-            <div class="quick-media">
-              <img src="${product.images[0]}" alt="${product.name}" style="width:100%;max-width:420px;display:block;margin:0 auto;">
+function prevSlide() {
+    goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length);
+}
+
+document.querySelector('.next-btn').addEventListener('click', nextSlide);
+document.querySelector('.prev-btn').addEventListener('click', prevSlide);
+
+// Auto-play slider
+setInterval(nextSlide, 5000);
+
+// ==========================================
+// Watches Grid & Filter
+// ==========================================
+const watchesGrid = document.getElementById('watchesGrid');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+function renderWatches(category = 'all') {
+    watchesGrid.innerHTML = '';
+    
+    const filteredWatches = category === 'all' 
+        ? watches 
+        : watches.filter(watch => watch.category === category);
+    
+    filteredWatches.forEach((watch, index) => {
+        const watchCard = document.createElement('div');
+        watchCard.className = 'watch-card';
+        watchCard.style.animationDelay = `${index * 0.1}s`;
+        watchCard.setAttribute('data-aos', 'fade-up');
+        
+        watchCard.innerHTML = `
+            <div class="watch-image">
+                <img src="${watch.image}" alt="${watch.name}">
+                ${watch.badge ? `<span class="watch-badge">${watch.badge}</span>` : ''}
             </div>
-            <div class="quick-details">
-              <h3>${product.name}</h3>
-              <p class="muted">${product.shortDesc}</p>
-              <p class="price">${formatCurrency(product.price, product.currency)}</p>
-              <div style="display:flex;gap:8px;margin-top:12px">
-                <button class="btn-primary" id="qvAdd" data-id="${product.id}">Add to Cart</button>
-                <a href="product.html?id=${encodeURIComponent(product.id)}" class="btn-secondary">View Page</a>
-              </div>
+            <div class="watch-info">
+                <h3 class="watch-name">${watch.name}</h3>
+                <p class="watch-model">${watch.model}</p>
+                <div class="watch-specs">
+                    ${watch.specs.map(spec => `<span class="watch-spec">${spec}</span>`).join('')}
+                </div>
+                <div class="watch-price">${watch.price}</div>
+                <div class="watch-actions">
+                    <button class="btn btn-primary" onclick="addToCart(${watch.id})">Add to Cart</button>
+                    <button class="btn btn-secondary" onclick="viewDetails(${watch.id})">Details</button>
+                </div>
             </div>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-      // close handler
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
-      modal.querySelector('.modal-close')?.addEventListener('click', () => closeModal(modal));
+        `;
+        
+        watchesGrid.appendChild(watchCard);
+    });
+    
+    // Trigger AOS animations
+    initAOS();
+}
+
+// Filter functionality
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.getAttribute('data-filter');
+        renderWatches(category);
+    });
+});
+
+// Initial render
+renderWatches();
+
+// ==========================================
+// Shopping Cart
+// ==========================================
+let cart = [];
+const cartCount = document.querySelector('.cart-count');
+
+function updateCartCount() {
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(watchId) {
+    const watch = watches.find(w => w.id === watchId);
+    if (watch) {
+        cart.push(watch);
+        updateCartCount();
+        showNotification(`${watch.name} added to cart!`);
+    }
+}
+
+function viewDetails(watchId) {
+    const watch = watches.find(w => w.id === watchId);
+    if (watch) {
+        showNotification(`Viewing details for ${watch.name}`);
+    }
+}
+
+// ==========================================
+// Notification System
+// ==========================================
+function showNotification(message) {
+    // Remove existing notification if any
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: linear-gradient(135deg, #c7a661, #f1d48c);
+        color: #0b0b0b;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        z-index: 9999;
+        animation: slideInRight 0.3s ease;
+        box-shadow: 0 8px 30px rgba(199, 166, 97, 0.3);
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Add notification animations to CSS dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// ==========================================
+// Forms
+// ==========================================
+const newsletterForm = document.getElementById('newsletterForm');
+const contactForm = document.getElementById('contactForm');
+
+newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = newsletterForm.querySelector('input[type="email"]').value;
+    showNotification('Thank you for subscribing!');
+    newsletterForm.reset();
+});
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showNotification('Message sent successfully! We\'ll get back to you soon.');
+    contactForm.reset();
+});
+
+// ==========================================
+// Scroll to Top Button
+// ==========================================
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('visible');
     } else {
-      // update content
-      modal.querySelector('.quick-media img').src = product.images[0];
-      modal.querySelector('.quick-details h3').textContent = product.name;
-      modal.querySelector('.quick-details .muted').textContent = product.shortDesc;
-      modal.querySelector('.quick-details .price').textContent = formatCurrency(product.price, product.currency);
-      modal.querySelector('#qvAdd').dataset.id = product.id;
+        scrollTopBtn.classList.remove('visible');
     }
-    modal.classList.add('active');
+});
 
-    const qvAdd = qs('#qvAdd');
-    qvAdd?.addEventListener('click', () => { Cart.add(product.id, 1); });
-
-    function closeModal(m) { m.classList.remove('active'); }
-  }
-
-  /* ================== CART UI ================== */
-  function renderCartBadge() {
-    const badge = qs('.cart-badge');
-    if (!badge) return;
-    const count = Cart.count();
-    badge.textContent = count ? count : '';
-  }
-
-  function renderCartPreview() {
-    // small dropdown preview in nav if exists
-    const preview = qs('#cartPreview');
-    if (!preview) return;
-    preview.innerHTML = '';
-    if (!Cart.items.length) { preview.innerHTML = '<div class="muted">Your cart is empty.</div>'; return; }
-
-    Cart.items.forEach(it => {
-      const prod = DATA.products.find(p => p.id === it.id) || {};
-      const row = document.createElement('div');
-      row.className = 'cart-preview-row';
-      row.innerHTML = `
-        <img src="${it.image || 'assets/images/products/placeholder.png'}" alt="${it.name}" style="width:64px;height:64px;object-fit:cover;border-radius:6px;margin-right:10px">
-        <div style="flex:1">
-          <div style="font-weight:600">${it.name}</div>
-          <div class="muted">${it.qty} × ${formatCurrency(it.price, it.currency)}</div>
-        </div>
-        <button class="muted remove-cart" data-id="${it.id}" aria-label="Remove">✕</button>
-      `;
-      preview.appendChild(row);
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
+});
 
-    const checkoutBtn = document.createElement('a');
-    checkoutBtn.href = 'cart.html';
-    checkoutBtn.className = 'btn-primary';
-    checkoutBtn.textContent = 'View Cart';
-    preview.appendChild(checkoutBtn);
-
-    qsa('.remove-cart').forEach(b => b.addEventListener('click', () => Cart.remove(b.dataset.id)));
-  }
-
-  /* ================== CART PAGE RENDER ================== */
-  function renderCartPage() {
-    const itemsWrap = qs('#cartItems');
-    const summaryWrap = qs('#cartSummary');
-    if (!itemsWrap || !summaryWrap) return;
-
-    itemsWrap.innerHTML = '';
-    if (!Cart.items.length) { itemsWrap.innerHTML = '<p class="muted">Your cart is empty.</p>'; return; }
-
-    Cart.items.forEach(it => {
-      const prod = DATA.products.find(p => p.id === it.id) || {};
-      const row = document.createElement('div');
-      row.className = 'cart-row';
-      row.innerHTML = `
-        <div style="display:flex;gap:12px;align-items:center">
-          <img src="${it.image || 'assets/images/products/placeholder.png'}" alt="${it.name}" style="width:96px;height:96px;object-fit:cover;border-radius:8px">
-          <div>
-            <div style="font-weight:700">${it.name}</div>
-            <div class="muted">${formatCurrency(it.price, it.currency)}</div>
-            <div style="margin-top:8px">
-              <input type="number" min="0" value="${it.qty}" class="cart-qty" data-id="${it.id}" style="width:68px;padding:6px;border-radius:6px;border:none">
-              <button class="muted remove-cart" data-id="${it.id}" style="margin-left:8px">Remove</button>
-            </div>
-          </div>
-        </div>
-      `;
-      itemsWrap.appendChild(row);
+// ==========================================
+// Smooth Scroll for Anchor Links
+// ==========================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        e.preventDefault();
+        const target = document.querySelector(href);
+        
+        if (target) {
+            const headerHeight = document.getElementById('header').offsetHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
     });
+});
 
-    // summary
-    summaryWrap.querySelector('#cartSubtotal') && (summaryWrap.querySelector('#cartSubtotal').textContent = formatCurrency(Cart.subtotal(), 'USD'));
-    summaryWrap.querySelector('#cartTotal') && (summaryWrap.querySelector('#cartTotal').textContent = formatCurrency(Cart.subtotal(), 'USD'));
-    summaryWrap.querySelector('#checkoutBtn') && (summaryWrap.querySelector('#checkoutBtn').disabled = Cart.items.length === 0);
-
-    // bind qty changes & remove
-    qsa('.cart-qty').forEach(input => input.addEventListener('change', (e) => {
-      const id = input.dataset.id; const val = Number(input.value) || 0; Cart.update(id, val);
-    }));
-    qsa('.remove-cart').forEach(b => b.addEventListener('click', () => Cart.remove(b.dataset.id)));
-  }
-
-  /* ================== BLOG RENDER ================== */
-  function renderBlog() {
-    const grid = qs('#blogGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-    DATA.blogPosts.forEach(post => {
-      const art = document.createElement('article');
-      art.className = 'news-card reveal fade-up';
-      art.innerHTML = `
-        <img src="${post.image}" alt="${post.title}">
-        <div style="padding:12px">
-          <h3>${post.title}</h3>
-          <p class="muted">${post.excerpt}</p>
-          <a href="blog.html#${post.id}" class="btn-secondary">Read More</a>
-        </div>
-      `;
-      grid.appendChild(art);
+// ==========================================
+// AOS (Animate On Scroll) Implementation
+// ==========================================
+function initAOS() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('[data-aos]').forEach(element => {
+        observer.observe(element);
     });
-  }
+}
 
-  /* ================== GLOBAL UI BINDINGS ================== */
-  function bindGlobalUI() {
-    // open cart preview on hover or click
-    const cartBtn = qs('.icon-btn[href="cart.html"]');
-    if (cartBtn) {
-      cartBtn.addEventListener('mouseenter', () => { const p = qs('#cartPreview'); if (p) p.classList.add('open'); });
-      cartBtn.addEventListener('mouseleave', () => { const p = qs('#cartPreview'); if (p) p.classList.remove('open'); });
-    }
+// Initialize AOS on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initAOS();
+});
 
-    // If on cart page, render full cart
-    if (window.location.pathname.split('/').pop() === 'cart.html') renderCartPage();
+// ==========================================
+// Search Functionality
+// ==========================================
+const searchBtn = document.querySelector('.search-btn');
 
-    // expose quick view global (for other scripts)
-    window.Acumen.openQuickView = openQuickView;
+searchBtn.addEventListener('click', () => {
+    // Create search overlay
+    const searchOverlay = document.createElement('div');
+    searchOverlay.className = 'search-overlay';
+    searchOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(11, 11, 11, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+    `;
+    
+    searchOverlay.innerHTML = `
+        <div class="search-container" style="max-width: 600px; width: 90%; position: relative;">
+            <button class="close-search" style="
+                position: absolute;
+                top: -40px;
+                right: 0;
+                background: transparent;
+                color: #c7a661;
+                font-size: 2rem;
+                cursor: pointer;
+            ">&times;</button>
+            <input type="text" placeholder="Search watches..." style="
+                width: 100%;
+                padding: 1.5rem;
+                font-size: 1.2rem;
+                background: rgba(20, 20, 20, 0.8);
+                border: 2px solid rgba(199, 166, 97, 0.3);
+                border-radius: 10px;
+                color: rgba(255, 255, 255, 0.9);
+                font-family: 'Poppins', sans-serif;
+            ">
+            <div class="search-results" style="
+                margin-top: 2rem;
+                max-height: 400px;
+                overflow-y: auto;
+            "></div>
+        </div>
+    `;
+    
+    document.body.appendChild(searchOverlay);
+    
+    const closeBtn = searchOverlay.querySelector('.close-search');
+    const searchInput = searchOverlay.querySelector('input');
+    const searchResults = searchOverlay.querySelector('.search-results');
+    
+    closeBtn.addEventListener('click', () => {
+        searchOverlay.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => searchOverlay.remove(), 300);
+    });
+    
+    searchInput.focus();
+    
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        
+        if (query.length > 0) {
+            const results = watches.filter(watch => 
+                watch.name.toLowerCase().includes(query) || 
+                watch.model.toLowerCase().includes(query)
+            );
+            
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(watch => `
+                    <div style="
+                        background: rgba(20, 20, 20, 0.8);
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        border-radius: 10px;
+                        border: 1px solid rgba(199, 166, 97, 0.2);
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.borderColor='#c7a661'" onmouseout="this.style.borderColor='rgba(199, 166, 97, 0.2)'">
+                        <h4 style="color: #c7a661; margin-bottom: 0.5rem;">${watch.name}</h4>
+                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">${watch.model}</p>
+                        <p style="color: #c7a661; font-weight: 700; margin-top: 0.5rem;">${watch.price}</p>
+                    </div>
+                `).join('');
+            } else {
+                searchResults.innerHTML = `
+                    <p style="text-align: center; color: rgba(255, 255, 255, 0.5); padding: 2rem;">
+                        No watches found matching "${query}"
+                    </p>
+                `;
+            }
+        } else {
+            searchResults.innerHTML = '';
+        }
+    });
+    
+    // Close on overlay click
+    searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) {
+            searchOverlay.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => searchOverlay.remove(), 300);
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function escHandler(e) {
+        if (e.key === 'Escape') {
+            searchOverlay.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => searchOverlay.remove(), 300);
+            document.removeEventListener('keydown', escHandler);
+        }
+    });
+});
 
-    // close modal with ESC
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { const m = qs('.modal.active'); if (m) m.classList.remove('active'); } });
+// ==========================================
+// Lazy Loading Images
+// ==========================================
+const images = document.querySelectorAll('img[data-src]');
 
-    // Listen to cart changes to re-render cart page if present
-    document.addEventListener('acumen.cart.change', debounce(() => { if (window.location.pathname.split('/').pop() === 'cart.html') renderCartPage(); }, 120));
-  }
+const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
+        }
+    });
+});
 
-  // expose app API
-  window.Acumen.app = {
-    Cart,
-    renderHome,
-    renderCollection,
-    renderProductFromQuery,
-    renderBlog,
-    renderCartPage,
-    openQuickView
-  };
+images.forEach(img => imageObserver.observe(img));
 
-})();
+// ==========================================
+// Performance Optimization
+// ==========================================
+// Debounce function for scroll events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Apply debounce to scroll-heavy functions
+const debouncedScroll = debounce(() => {
+    // Scroll-related operations here
+}, 100);
+
+window.addEventListener('scroll', debouncedScroll);
+
+// ==========================================
+// Console Easter Egg
+// ==========================================
+console.log('%c ACUMEN WATCHES ', 'background: linear-gradient(135deg, #c7a661, #f1d48c); color: #0b0b0b; font-size: 24px; font-weight: bold; padding: 10px 20px; border-radius: 5px;');
+console.log('%c Swiss Luxury Timepieces Since 1860 ', 'color: #c7a661; font-size: 14px; font-style: italic;');
+console.log('%c Interested in our code? We\'re hiring! Visit acumenwatches.com/careers ', 'color: rgba(255, 255, 255, 0.7); font-size: 12px;');
+
+// ==========================================
+// Page Load Animation
+// ==========================================
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// ==========================================
+// Initialize Everything
+// ==========================================
+console.log('✓ ACUMEN Watches website loaded successfully');
+console.log(`✓ ${watches.length} watches available`);
+console.log('✓ All systems operational');
