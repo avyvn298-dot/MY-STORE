@@ -1,125 +1,405 @@
+<!-- products.html — rebuilt, Tag Heuer experience, uses assets/css/style.css -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Products | LuxTime</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ACUMEN — Products</title>
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="icon" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Explore Acumen timepieces — Carrera, Monaco, Aquaracer and more." />
 </head>
 <body>
-
-  <!-- Header -->
-  <header class="main-header">
-    <div class="logo">LUXTIME</div>
-    <nav>
-      <ul>
+  <!-- Header (matches your index.html header) -->
+  <header id="siteHeader" class="header">
+    <nav class="navbar container" role="navigation" aria-label="Main navigation">
+      <div class="logo">ACUMEN</div>
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
         <li><a href="products.html" class="active">Products</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="nav-icons">
+        <button class="icon-btn search-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+        </button>
+        <a class="icon-btn" href="cart.html" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-banner products-hero">
-    <div class="hero-content">
-      <h1>Our Exclusive Watches</h1>
-      <p>Discover craftsmanship and innovation in every detail.</p>
+  <!-- Hero (cinematic) -->
+  <section class="hero section product-hero" aria-hidden="false" style="padding:5rem 0 3rem;">
+    <div class="container">
+      <div style="text-align:center;max-width:900px;margin:0 auto;">
+        <span class="kicker muted">The Collection</span>
+        <h1 style="font-family:var(--font-luxury);font-size:3rem;margin:.6rem 0;">Explore our Timepieces</h1>
+        <p class="muted" style="max-width:900px;margin:0 auto;">Precision-driven mechanics meet refined design. Browse the Acumen collections and discover the watch that defines your moment.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Filter & Sort Bar -->
-  <section class="filter-bar">
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="men">Men</button>
-      <button class="filter-btn" data-filter="women">Women</button>
-      <button class="filter-btn" data-filter="limited">Limited Edition</button>
-      <button class="filter-btn" data-filter="smart">Smart</button>
-      <button class="filter-btn" data-filter="automatic">Automatic</button>
+  <!-- Main content: left filters, right grid -->
+  <main class="section" style="padding-top:0;">
+    <div class="container" style="display:grid;grid-template-columns:280px 1fr;gap:2rem;align-items:start;">
+      <!-- Filters panel -->
+      <aside aria-label="Filters" class="card" style="position:sticky;top:96px;height:min-content;">
+        <h4 style="margin-bottom:1rem;color:var(--color-gold);font-family:var(--font-luxury);">Filter</h4>
+
+        <div style="margin-bottom:1rem;">
+          <div class="kicker muted">Collection</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.6rem;">
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="collection" value="carrera" checked> Carrera</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="collection" value="monaco" checked> Monaco</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="collection" value="aquaracer" checked> Aquaracer</label>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <div class="kicker muted">Type</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.6rem;">
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="type" value="chronograph" checked> Chronograph</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="type" value="automatic" checked> Automatic</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="type" value="sport" checked> Sport</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="type" value="limited" checked> Limited</label>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <div class="kicker muted">Material</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.6rem;">
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="material" value="steel" checked> Steel</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="material" value="ceramic" checked> Ceramic</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-type="material" value="gold" checked> Gold</label>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:.6rem;margin-top:1rem;">
+          <button id="clearFilters" class="btn btn-secondary">Reset</button>
+        </div>
+      </aside>
+
+      <!-- Products area -->
+      <section aria-label="Products" style="min-height:400px;">
+        <!-- top bar: result count + sorting -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+          <div><strong id="resultCount">0</strong> results</div>
+          <div style="display:flex;gap:1rem;align-items:center;">
+            <label class="muted">Sort</label>
+            <select id="sortSelect" style="padding:.5rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--color-white);">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- grid -->
+        <div id="productsGrid" class="watches-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem;">
+          <!-- populated by JS -->
+        </div>
+
+        <!-- pagination (simple) -->
+        <div id="pagination" style="display:flex;justify-content:center;margin-top:2rem;gap:.6rem;"></div>
+      </section>
     </div>
-    <div class="sort">
-      <label for="sort-options">Sort by:</label>
-      <select id="sort-options">
-        <option value="featured">Featured</option>
-        <option value="newest">Newest</option>
-        <option value="low-high">Price: Low–High</option>
-        <option value="high-low">Price: High–Low</option>
-      </select>
+  </main>
+
+  <!-- Quick View Modal -->
+  <div id="quickView" class="modal" aria-hidden="true" role="dialog" aria-modal="true" style="display:none;">
+    <div class="modal-dialog">
+      <button class="modal-close" aria-label="Close quick view">✕</button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;">
+        <div style="min-height:320px;">
+          <img id="qvImage" src="" alt="" style="width:100%;border-radius:10px;object-fit:cover;">
+        </div>
+        <div>
+          <h3 id="qvTitle"></h3>
+          <p id="qvCollection" class="muted"></p>
+          <div id="qvPrice" style="font-family:var(--font-luxury);font-size:1.5rem;color:var(--color-gold);margin:8px 0;"></div>
+          <p id="qvDesc" class="muted" style="margin-bottom:1rem;"></p>
+          <div style="display:flex;gap:.6rem;">
+            <button id="qvView" class="btn btn-secondary">View Product</button>
+            <button id="qvAdd" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Product Grid -->
-  <section class="products-section">
-    <div class="products-grid">
-
-      <!-- Product Card -->
-      <div class="product-card" data-category="men">
-        <img src="assets/images/watch1.jpg" alt="Chronograph Silver Edition">
-        <h3>Chronograph Silver Edition</h3>
-        <p>$1,250</p>
-      </div>
-
-      <div class="product-card" data-category="men">
-        <img src="assets/images/watch2.jpg" alt="Automatic Racing Spirit">
-        <h3>Automatic Racing Spirit</h3>
-        <p>$1,850</p>
-      </div>
-
-      <div class="product-card" data-category="women">
-        <img src="assets/images/watch3.jpg" alt="Rose Gold Elegance">
-        <h3>Rose Gold Elegance</h3>
-        <p>$1,650</p>
-      </div>
-
-      <div class="product-card" data-category="limited">
-        <img src="assets/images/watch4.jpg" alt="Limited Edition Monaco">
-        <h3>Limited Edition Monaco</h3>
-        <p>$2,450</p>
-      </div>
-
-      <div class="product-card" data-category="smart">
-        <img src="assets/images/watch5.jpg" alt="Connected Smart Chrono">
-        <h3>Connected Smart Chrono</h3>
-        <p>$1,950</p>
-      </div>
-
-      <div class="product-card" data-category="automatic">
-        <img src="assets/images/watch6.jpg" alt="Classic Automatic">
-        <h3>Classic Automatic</h3>
-        <p>$1,400</p>
-      </div>
-
-      <div class="product-card" data-category="men">
-        <img src="assets/images/watch7.jpg" alt="Carrera Blue Steel">
-        <h3>Carrera Blue Steel</h3>
-        <p>$1,720</p>
-      </div>
-
-      <div class="product-card" data-category="limited">
-        <img src="assets/images/watch8.jpg" alt="Carbon Fiber Edition">
-        <h3>Carbon Fiber Edition</h3>
-        <p>$2,950</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <p>© 2025 Acumen. All Rights Reserved.</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+  <!-- Footer (same style) -->
+  <footer class="main-footer" style="margin-top:3rem;">
+    <div class="container footer-bottom">
+      <p>&copy; 2025 ACUMEN Watches. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/script.js"></script>
+  <!-- Script: builds products, filters, sorting, quick view -->
+  <script>
+  (function(){
+    // Product dataset (uses the same images that appear in your collection.html)
+    const PRODUCTS = [
+      {
+        id: 'carrera01',
+        name: 'Carrera Chronograph',
+        collection: 'carrera',
+        type: 'chronograph',
+        material: 'steel',
+        price: 6500,
+        year: 2025,
+        desc: 'Racing-inspired chronograph with precision movement.',
+        images: ['https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200']
+      },
+      {
+        id: 'monaco01',
+        name: 'Monaco Heritage',
+        collection: 'monaco',
+        type: 'automatic',
+        material: 'steel',
+        price: 7200,
+        year: 2024,
+        desc: 'Iconic square case reinterpreted for modern wrists.',
+        images: ['https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=1200']
+      },
+      {
+        id: 'aquaracer01',
+        name: 'Aquaracer Pro',
+        collection: 'aquaracer',
+        type: 'sport',
+        material: 'ceramic',
+        price: 7800,
+        year: 2025,
+        desc: 'Dive-ready build with professional water resistance.',
+        images: ['https://images.unsplash.com/photo-1622434641406-a158123450f9?w=1200']
+      },
+      // more variants using same images to reach 8 items
+      { id:'carrera02', name:'Carrera Black Edition', collection:'carrera', type:'chronograph', material:'steel', price:6800, year:2023, desc:'Stealth black chronograph.', images:['https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200'] },
+      { id:'monaco02', name:'Monaco Blue', collection:'monaco', type:'automatic', material:'steel', price:8500, year:2025, desc:'Blue dial, bold presence.', images:['https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=1200'] },
+      { id:'aquaracer02', name:'Aquaracer Titanium', collection:'aquaracer', type:'sport', material:'steel', price:7900, year:2021, desc:'Lightweight, robust diver.', images:['https://images.unsplash.com/photo-1622434641406-a158123450f9?w=1200'] },
+      { id:'limited01', name:'Carrera Limited', collection:'carrera', type:'limited', material:'gold', price:12900, year:2025, desc:'Limited release, numbered edition.', images:['https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200'] },
+      { id:'special01', name:'Formula 1 Sport', collection:'carrera', type:'sport', material:'steel', price:5200, year:2022, desc:'Sporty and precise.', images:['https://images.unsplash.com/photo-1611148881051-02e80bcb5256?w=1200'] }
+    ];
+
+    // DOM
+    const grid = document.getElementById('productsGrid');
+    const resultCount = document.getElementById('resultCount');
+    const filters = Array.from(document.querySelectorAll('.filter-checkbox'));
+    const clearBtn = document.getElementById('clearFilters');
+    const sortSelect = document.getElementById('sortSelect');
+    const paginationEl = document.getElementById('pagination');
+
+    // Quick view elements
+    const qv = document.getElementById('quickView');
+    const qvImage = document.getElementById('qvImage');
+    const qvTitle = document.getElementById('qvTitle');
+    const qvCollection = document.getElementById('qvCollection');
+    const qvPrice = document.getElementById('qvPrice');
+    const qvDesc = document.getElementById('qvDesc');
+    const qvView = document.getElementById('qvView');
+    const qvAdd = document.getElementById('qvAdd');
+    const qvClose = document.querySelector('.modal-close');
+
+    // Pagination
+    const PAGE_SIZE = 8;
+    let currentPage = 1;
+
+    // Helpers
+    function formatCurrency(n){ try { return new Intl.NumberFormat(undefined,{style:'currency',currency:'USD'}).format(n); } catch(e){ return '$' + n; } }
+    function createProductCard(p){
+      const div = document.createElement('article');
+      div.className = 'watch-card';
+      div.dataset.id = p.id;
+      div.dataset.collection = p.collection;
+      div.dataset.type = p.type;
+      div.dataset.material = p.material;
+      div.innerHTML = `
+        <div class="watch-image" aria-hidden="true">
+          <img src="${p.images[0]}" alt="${escapeHtml(p.name)}">
+          <div class="watch-badge">${escapeHtml(p.collection.toUpperCase())}</div>
+          <div class="product-overlay" style="position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:16px;opacity:0;transition:opacity .24s;">
+            <button class="btn btn-primary quick-view">Quick view</button>
+          </div>
+        </div>
+        <div class="watch-info">
+          <div class="watch-name">${escapeHtml(p.name)}</div>
+          <div class="watch-model muted">${escapeHtml(p.desc)}</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.8rem;">
+            <div class="watch-price">${formatCurrency(p.price)}</div>
+            <a href="product.html?id=${encodeURIComponent(p.id)}" class="btn btn-secondary">Details</a>
+          </div>
+        </div>
+      `;
+      // hover overlay show
+      div.querySelector('.watch-image').addEventListener('mouseenter', (e) => {
+        const overlay = e.currentTarget.querySelector('.product-overlay');
+        overlay.style.opacity = 1;
+      });
+      div.querySelector('.watch-image').addEventListener('mouseleave', (e) => {
+        const overlay = e.currentTarget.querySelector('.product-overlay');
+        overlay.style.opacity = 0;
+      });
+      // quick view
+      div.querySelector('.quick-view').addEventListener('click', () => openQuickView(p));
+      return div;
+    }
+
+    function escapeHtml(s){ return (''+(s||'')).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c])); }
+
+    // Filtering & sorting logic
+    function getActiveFilters(){
+      const active = { collection: new Set(), type: new Set(), material: new Set() };
+      filters.forEach(cb=>{
+        if(cb.checked){
+          const t = cb.dataset.filterType;
+          active[t].add(cb.value.toLowerCase());
+        }
+      });
+      return active;
+    }
+
+    function applyFiltersAndRender(page = 1){
+      const active = getActiveFilters();
+      const sort = sortSelect.value;
+      // filter
+      let out = PRODUCTS.filter(p=>{
+        const collOk = active.collection.size ? active.collection.has(p.collection.toLowerCase()) : true;
+        const typeOk = active.type.size ? active.type.has(p.type.toLowerCase()) : true;
+        const matOk  = active.material.size ? active.material.has(p.material.toLowerCase()) : true;
+        return collOk && typeOk && matOk;
+      });
+      // sort
+      if(sort === 'price-asc') out.sort((a,b)=>a.price-b.price);
+      else if(sort === 'price-desc') out.sort((a,b)=>b.price-a.price);
+      else if(sort === 'newest') out.sort((a,b)=>b.year - a.year);
+      else out = out; // featured default order
+
+      // pagination
+      const total = out.length;
+      const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if(page < 1) page = 1;
+      if(page > pages) page = pages;
+      currentPage = page;
+      const start = (page-1)*PAGE_SIZE;
+      const slice = out.slice(start, start + PAGE_SIZE);
+
+      // render grid
+      grid.innerHTML = '';
+      if(!slice.length){
+        grid.innerHTML = '<p class="muted">No products match your filters.</p>';
+      } else {
+        const frag = document.createDocumentFragment();
+        slice.forEach(p => frag.appendChild(createProductCard(p)));
+        grid.appendChild(frag);
+      }
+      resultCount.textContent = total;
+      renderPagination(pages, page);
+    }
+
+    function renderPagination(totalPages, activePage){
+      paginationEl.innerHTML = '';
+      if(totalPages <= 1) return;
+      // show prev
+      const prev = document.createElement('button');
+      prev.className = 'btn btn-secondary';
+      prev.textContent = '‹';
+      prev.disabled = activePage === 1;
+      prev.addEventListener('click', ()=>applyFiltersAndRender(activePage-1));
+      paginationEl.appendChild(prev);
+
+      // pages (compact)
+      for(let i=1;i<=totalPages;i++){
+        const b = document.createElement('button');
+        b.className = 'btn';
+        if(i===activePage) b.classList.add('btn-primary');
+        b.textContent = i;
+        b.addEventListener('click', ()=>applyFiltersAndRender(i));
+        paginationEl.appendChild(b);
+      }
+
+      const next = document.createElement('button');
+      next.className = 'btn btn-secondary';
+      next.textContent = '›';
+      next.disabled = activePage === totalPages;
+      next.addEventListener('click', ()=>applyFiltersAndRender(activePage+1));
+      paginationEl.appendChild(next);
+    }
+
+    // Quick view
+    function openQuickView(product){
+      qvImage.src = product.images[0] || '';
+      qvTitle.textContent = product.name;
+      qvCollection.textContent = product.collection?.toUpperCase() || '';
+      qvPrice.textContent = formatCurrency(product.price);
+      qvDesc.textContent = product.desc || '';
+      qvView.href = 'product.html?id=' + encodeURIComponent(product.id);
+      qvAdd.onclick = ()=>{ 
+        // integrate with existing cart if present
+        if(window.Acumen && window.Acumen.app && window.Acumen.app.Cart){
+          window.Acumen.app.Cart.add(product.id,1);
+        }
+        const btn = qvAdd;
+        btn.textContent = 'Added ✓';
+        setTimeout(()=> btn.textContent = 'Add to Cart',900);
+      };
+      qv.classList.add('active');
+      qv.classList.add('modal-active');
+      qv.style.display = 'flex';
+      qv.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeQuickView(){
+      qv.classList.remove('active');
+      qv.classList.remove('modal-active');
+      qv.style.display = 'none';
+      qv.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    // Wire events
+    filters.forEach(cb => cb.addEventListener('change', ()=> applyFiltersAndRender(1)));
+    sortSelect.addEventListener('change', ()=> applyFiltersAndRender(1));
+    clearBtn.addEventListener('click', ()=>{
+      filters.forEach(cb => cb.checked = true);
+      applyFiltersAndRender(1);
+    });
+
+    // modal close handlers
+    qvClose.addEventListener('click', closeQuickView);
+    qv.addEventListener('click', (e)=>{ if(e.target === qv) closeQuickView(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeQuickView(); });
+
+    // mobile nav toggle (same as index behavior)
+    const navToggle = document.getElementById('navToggle');
+    navToggle?.addEventListener('click', ()=>{
+      const navLinks = document.getElementById('navLinks');
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('active');
+    });
+
+    // Initialize render
+    applyFiltersAndRender(1);
+
+    // Expose for debugging
+    window.Acumen = window.Acumen || {};
+    window.Acumen.products = PRODUCTS;
+    window.Acumen.applyFiltersAndRender = applyFiltersAndRender;
+  })();
+  </script>
 </body>
 </html>
