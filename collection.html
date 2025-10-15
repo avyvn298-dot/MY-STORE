@@ -1,48 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Collections - ACUMEN WATCHES</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="description" content="Explore ACUMEN luxury watch collections — Carrera, Monaco, Aquaracer, and Formula 1. Precision, heritage, and performance in every timepiece." />
+    <meta name="theme-color" content="#0b0b0b" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS (animation on scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Small inline CSS for accessibility helpers (keep tiny) -->
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .skip-link:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        background: #111;
+        color: #fff;
+        padding: .5rem 1rem;
+        z-index: 9999;
+      }
+      /* Ensure nav-toggle visible hit area */
+      .nav-toggle { cursor: pointer; }
+    </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <noscript>
+        <div style="background:#111;color:#fff;padding:.5rem 1rem;text-align:center;">
+            JavaScript is disabled in your browser. For the best experience enable JavaScript.
+        </div>
+    </noscript>
+
     <!-- Header -->
-    <header id="header">
-        <nav class="navbar">
-            <a href="index.html" class="logo">ACUMEN</a>
+    <header id="header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="logo" aria-label="ACUMEN home">ACUMEN</a>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="collection.html">Collections</a></li>
+                <li><a href="collections.html" aria-current="page">Collections</a></li>
                 <li><a href="products.html">Watches</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="nav-icons">
-                <button class="icon-btn search-btn" aria-label="Search">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+            <div class="nav-icons" aria-hidden="false">
+                <button class="icon-btn search-btn" aria-label="Open search" title="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
                 </button>
-                <a href="orders.html" class="icon-btn" aria-label="Orders">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+                <a href="orders.html" class="icon-btn" aria-label="Orders" title="Orders">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                         <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
                     </svg>
                 </a>
-                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart" title="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                    <span class="cart-count">0</span>
+                    <span class="cart-count" aria-live="polite">0</span>
                 </a>
             </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -50,236 +97,276 @@
         </nav>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1920')">
-        <div class="page-hero-overlay"></div>
-        <div class="page-hero-content">
-            <h1>OUR COLLECTIONS</h1>
-            <p>Discover the perfect timepiece for every occasion</p>
-        </div>
-    </section>
+    <main id="main-content" role="main">
+        <!-- Page Hero -->
+        <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1920')">
+            <div class="page-hero-overlay" aria-hidden="true"></div>
+            <div class="page-hero-content" tabindex="0">
+                <h1>OUR COLLECTIONS</h1>
+                <p>Discover the perfect timepiece for every occasion</p>
+            </div>
+        </section>
 
-    <!-- Collections Showcase -->
-    <section class="collections-showcase section">
-        <div class="container">
-            <!-- Carrera Collection -->
-            <div class="collection-detailed" data-aos="fade-up">
-                <div class="collection-detailed-image">
-                    <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200" alt="Carrera Collection">
-                </div>
-                <div class="collection-detailed-info">
-                    <span class="collection-tag">RACING HERITAGE</span>
-                    <h2>CARRERA</h2>
-                    <p>Born in 1963, the Carrera collection embodies the spirit of motorsport with precision chronographs designed for those who live life in the fast lane. Each timepiece captures the essence of speed, performance, and timeless elegance.</p>
-                    <div class="collection-features">
-                        <div class="feature-item">
-                            <h4>Movement</h4>
-                            <p>Calibre Heuer 02 Automatic</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Case Size</h4>
-                            <p>39mm - 44mm</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Water Resistance</h4>
-                            <p>100 meters</p>
-                        </div>
+        <!-- Collections Showcase -->
+        <section class="collections-showcase section" aria-label="Collections showcase">
+            <div class="container">
+                <!-- Carrera Collection -->
+                <article class="collection-detailed" data-aos="fade-up" aria-labelledby="carrera-title">
+                    <div class="collection-detailed-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200" alt="ACUMEN Carrera luxury chronograph on black racing strap" width="1200" height="800">
                     </div>
-                    <a href="products.html" class="btn btn-primary">Explore Carrera</a>
+                    <div class="collection-detailed-info">
+                        <span class="collection-tag">RACING HERITAGE</span>
+                        <h2 id="carrera-title">CARRERA</h2>
+                        <p>Born in 1963, the Carrera collection embodies the spirit of motorsport with precision chronographs designed for those who live life in the fast lane. Each timepiece captures the essence of speed, performance, and timeless elegance.</p>
+                        <div class="collection-features" role="list">
+                            <div class="feature-item" role="listitem">
+                                <h4>Movement</h4>
+                                <p>Calibre Heuer 02 Automatic</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Case Size</h4>
+                                <p>39mm - 44mm</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Water Resistance</h4>
+                                <p>100 meters</p>
+                            </div>
+                        </div>
+                        <a href="products.html?collection=carrera" class="btn btn-primary" role="button" aria-label="Explore Carrera collection">Explore Carrera</a>
+                    </div>
+                </article>
+
+                <!-- Monaco Collection -->
+                <article class="collection-detailed reverse" data-aos="fade-up" aria-labelledby="monaco-title">
+                    <div class="collection-detailed-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=1200" alt="ACUMEN Monaco square-case watch on display" width="1200" height="800">
+                    </div>
+                    <div class="collection-detailed-info">
+                        <span class="collection-tag">ICONIC SQUARE</span>
+                        <h2 id="monaco-title">MONACO</h2>
+                        <p>Revolutionary from its inception in 1969, the Monaco broke conventions with its bold square case. A symbol of avant-garde design and motorsport legend, worn by racing icons and watch enthusiasts worldwide.</p>
+                        <div class="collection-features" role="list">
+                            <div class="feature-item" role="listitem">
+                                <h4>Movement</h4>
+                                <p>Calibre 11 Automatic</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Case Size</h4>
+                                <p>39mm Square</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Water Resistance</h4>
+                                <p>100 meters</p>
+                            </div>
+                        </div>
+                        <a href="products.html?collection=monaco" class="btn btn-primary" role="button" aria-label="Explore Monaco collection">Explore Monaco</a>
+                    </div>
+                </article>
+
+                <!-- Aquaracer Collection -->
+                <article class="collection-detailed" data-aos="fade-up" aria-labelledby="aquaracer-title">
+                    <div class="collection-detailed-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=1200" alt="ACUMEN Aquaracer diver's watch on a dive-ready bracelet" width="1200" height="800">
+                    </div>
+                    <div class="collection-detailed-info">
+                        <span class="collection-tag">PROFESSIONAL DIVING</span>
+                        <h2 id="aquaracer-title">AQUARACER</h2>
+                        <p>Engineered for underwater exploration, the Aquaracer combines robust functionality with refined aesthetics. Built to withstand the depths while maintaining Swiss precision and luxury on the surface.</p>
+                        <div class="collection-features" role="list">
+                            <div class="feature-item" role="listitem">
+                                <h4>Movement</h4>
+                                <p>Calibre 5 Automatic</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Case Size</h4>
+                                <p>43mm - 45mm</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Water Resistance</h4>
+                                <p>300 meters</p>
+                            </div>
+                        </div>
+                        <a href="products.html?collection=aquaracer" class="btn btn-primary" role="button" aria-label="Explore Aquaracer collection">Explore Aquaracer</a>
+                    </div>
+                </article>
+
+                <!-- Formula 1 Collection -->
+                <article class="collection-detailed reverse" data-aos="fade-up" aria-labelledby="formula-title">
+                    <div class="collection-detailed-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=1200" alt="ACUMEN Formula 1 sporty timepiece with performance strap" width="1200" height="800">
+                    </div>
+                    <div class="collection-detailed-info">
+                        <span class="collection-tag">RACE READY</span>
+                        <h2 id="formula-title">FORMULA 1</h2>
+                        <p>Dynamic, sporty, and accessible. The Formula 1 collection delivers Swiss precision with a competitive edge. Perfect for those who demand performance without compromise in their everyday adventures.</p>
+                        <div class="collection-features" role="list">
+                            <div class="feature-item" role="listitem">
+                                <h4>Movement</h4>
+                                <p>Quartz Precision</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Case Size</h4>
+                                <p>41mm - 43mm</p>
+                            </div>
+                            <div class="feature-item" role="listitem">
+                                <h4>Water Resistance</h4>
+                                <p>200 meters</p>
+                            </div>
+                        </div>
+                        <a href="products.html?collection=formula1" class="btn btn-primary" role="button" aria-label="Explore Formula 1 collection">Explore Formula 1</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Collection Highlights -->
+        <section class="collection-highlights section" style="background: #0b0b0b;" aria-label="Collection highlights">
+            <div class="container">
+                <h2 class="section-title">COLLECTION HIGHLIGHTS</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card" data-aos="fade-up" role="article" aria-labelledby="highlight-swiss">
+                        <div class="highlight-icon" aria-hidden="true">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3 id="highlight-swiss">Swiss Made</h3>
+                        <p>Every timepiece is crafted with precision in Switzerland</p>
+                    </div>
+
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="100" role="article" aria-labelledby="highlight-materials">
+                        <div class="highlight-icon" aria-hidden="true">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <h3 id="highlight-materials">Premium Materials</h3>
+                        <p>Sapphire crystal, ceramic, and precious metals</p>
+                    </div>
+
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="200" role="article" aria-labelledby="highlight-warranty">
+                        <div class="highlight-icon" aria-hidden="true">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 id="highlight-warranty">5-Year Warranty</h3>
+                        <p>Comprehensive international warranty coverage</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Monaco Collection -->
-            <div class="collection-detailed reverse" data-aos="fade-up">
-                <div class="collection-detailed-image">
-                    <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=1200" alt="Monaco Collection">
-                </div>
-                <div class="collection-detailed-info">
-                    <span class="collection-tag">ICONIC SQUARE</span>
-                    <h2>MONACO</h2>
-                    <p>Revolutionary from its inception in 1969, the Monaco broke conventions with its bold square case. A symbol of avant-garde design and motorsport legend, worn by racing icons and watch enthusiasts worldwide.</p>
-                    <div class="collection-features">
-                        <div class="feature-item">
-                            <h4>Movement</h4>
-                            <p>Calibre 11 Automatic</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Case Size</h4>
-                            <p>39mm Square</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Water Resistance</h4>
-                            <p>100 meters</p>
-                        </div>
-                    </div>
-                    <a href="products.html" class="btn btn-primary">Explore Monaco</a>
-                </div>
-            </div>
-
-            <!-- Aquaracer Collection -->
-            <div class="collection-detailed" data-aos="fade-up">
-                <div class="collection-detailed-image">
-                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=1200" alt="Aquaracer Collection">
-                </div>
-                <div class="collection-detailed-info">
-                    <span class="collection-tag">PROFESSIONAL DIVING</span>
-                    <h2>AQUARACER</h2>
-                    <p>Engineered for underwater exploration, the Aquaracer combines robust functionality with refined aesthetics. Built to withstand the depths while maintaining Swiss precision and luxury on the surface.</p>
-                    <div class="collection-features">
-                        <div class="feature-item">
-                            <h4>Movement</h4>
-                            <p>Calibre 5 Automatic</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Case Size</h4>
-                            <p>43mm - 45mm</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Water Resistance</h4>
-                            <p>300 meters</p>
-                        </div>
-                    </div>
-                    <a href="products.html" class="btn btn-primary">Explore Aquaracer</a>
-                </div>
-            </div>
-
-            <!-- Formula 1 Collection -->
-            <div class="collection-detailed reverse" data-aos="fade-up">
-                <div class="collection-detailed-image">
-                    <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=1200" alt="Formula 1 Collection">
-                </div>
-                <div class="collection-detailed-info">
-                    <span class="collection-tag">RACE READY</span>
-                    <h2>FORMULA 1</h2>
-                    <p>Dynamic, sporty, and accessible. The Formula 1 collection delivers Swiss precision with a competitive edge. Perfect for those who demand performance without compromise in their everyday adventures.</p>
-                    <div class="collection-features">
-                        <div class="feature-item">
-                            <h4>Movement</h4>
-                            <p>Quartz Precision</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Case Size</h4>
-                            <p>41mm - 43mm</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>Water Resistance</h4>
-                            <p>200 meters</p>
-                        </div>
-                    </div>
-                    <a href="products.html" class="btn btn-primary">Explore Formula 1</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Collection Highlights -->
-    <section class="collection-highlights section" style="background: #0b0b0b;">
-        <div class="container">
-            <h2 class="section-title">COLLECTION HIGHLIGHTS</h2>
-            <div class="highlights-grid">
-                <div class="highlight-card" data-aos="fade-up">
-                    <div class="highlight-icon">
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Swiss Made</h3>
-                    <p>Every timepiece is crafted with precision in Switzerland</p>
-                </div>
-                <div class="highlight-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="highlight-icon">
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                        </svg>
-                    </div>
-                    <h3>Premium Materials</h3>
-                    <p>Sapphire crystal, ceramic, and precious metals</p>
-                </div>
-                <div class="highlight-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="highlight-icon">
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
-                    </div>
-                    <h3>5-Year Warranty</h3>
-                    <p>Comprehensive international warranty coverage</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 class="logo">ACUMEN</h3>
                     <p>Swiss Luxury Timepieces</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <div class="social-links" aria-label="Social links">
+                        <a href="#" aria-label="Facebook" rel="noopener noreferrer" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
                         </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <a href="#" aria-label="Instagram" rel="noopener noreferrer" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
-                        <a href="#" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <a href="#" aria-label="Twitter" rel="noopener noreferrer" title="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
+
                 <div class="footer-section">
                     <h4>Collections</h4>
                     <ul class="footer-links">
-                        <li><a href="collection.html">Carrera</a></li>
-                        <li><a href="collection.html">Monaco</a></li>
-                        <li><a href="collection.html">Aquaracer</a></li>
-                        <li><a href="collection.html">Formula 1</a></li>
+                        <li><a href="collections.html">Carrera</a></li>
+                        <li><a href="collections.html">Monaco</a></li>
+                        <li><a href="collections.html">Aquaracer</a></li>
+                        <li><a href="collections.html">Formula 1</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
                     <h4>Customer Service</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#contact">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="orders.html">Track Order</a></li>
                         <li><a href="about.html">Warranty</a></li>
-                        <li><a href="about.html">Care & Service</a></li>
+                        <li><a href="about.html">Care &amp; Service</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
                     <h4>About</h4>
                     <ul class="footer-links">
                         <li><a href="about.html">Our Heritage</a></li>
                         <li><a href="about.html">Innovation</a></li>
-                        <li><a href="blog.html">News & Stories</a></li>
+                        <li><a href="blog.html">News &amp; Stories</a></li>
                         <li><a href="about.html">Careers</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2025 ACUMEN Watches. All rights reserved.</p>
                 <div class="footer-legal">
                     <a href="policy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms & Conditions</a>
-                    <a href="admin.html">Admin</a>
+                    <a href="terms.html">Terms &amp; Conditions</a>
+                    <a href="admin.html" rel="noopener noreferrer">Admin</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
 
-    <script src="assets/js/script.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+
+    <!-- Main script (deferred). Ensure assets/js/script.js supports being loaded with defer -->
+    <script src="assets/js/script.js" defer></script>
+
+    <script>
+      // Init AOS when script is parsed. If you prefer to init inside your main script, remove this.
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof AOS !== 'undefined') {
+          AOS.init({ duration: 900, once: true, mirror: false });
+        }
+
+        // Accessible nav toggle behavior (keeps simple fallback)
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle) {
+          navToggle.addEventListener('click', function () {
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!expanded));
+            navLinks.classList.toggle('open');
+          });
+        }
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        if (scrollTopBtn) {
+          scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      });
+    </script>
 </body>
 </html>
