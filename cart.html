@@ -1,88 +1,272 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cart — Acumen Watches</title>
-  <meta name="description" content="Shopping cart demo for Acumen Watches (demo).">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="icon" href="assets/icons/watch-favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - ACUMEN WATCHES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container nav-container">
-      <div class="logo">ACUMEN</div>
-      <nav class="nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-icons">
-        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
-        <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </header>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">ACUMEN</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collections</a></li>
+                <li><a href="products.html">Watches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <a href="orders.html" class="icon-btn" aria-label="Orders">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                </a>
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-  <main class="container cart-page">
-    <h1>Your Cart</h1>
-    <div class="cart-grid">
-      <div class="cart-items card" id="cartItems">
-        <p class="muted">Your cart is empty.</p>
-      </div>
-      <aside class="cart-summary card" id="cartSummary">
-        <h3>Summary</h3>
-        <div class="summary-lines muted">
-          <div>Subtotal: <span id="cartSubtotal">$0.00</span></div>
-          <div>Shipping: <span id="cartShipping">Calculated at checkout</span></div>
-          <div><strong>Total: <span id="cartTotal">$0.00</span></strong></div>
+    <!-- Page Hero -->
+    <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=1920')">
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
+            <h1>SHOPPING CART</h1>
+            <p>Review your selected timepieces</p>
         </div>
-        <div style="margin-top:1rem">
-          <button class="btn-primary" id="checkoutBtn" disabled>Checkout (Demo)</button>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section section">
+        <div class="container">
+            <div class="cart-layout">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                    <h2>Your Cart (3 items)</h2>
+                    
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400" alt="Watch">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3>CARRERA CHRONOGRAPH</h3>
+                            <p class="cart-item-model">CBN2A1A.BA0643</p>
+                            <p class="cart-item-specs">Automatic • 43mm • 100m</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="qty-btn">-</button>
+                            <input type="number" value="1" min="1" max="5">
+                            <button class="qty-btn">+</button>
+                        </div>
+                        <div class="cart-item-price">$5,850</div>
+                        <button class="cart-item-remove" aria-label="Remove">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=400" alt="Watch">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3>MONACO AUTOMATIC</h3>
+                            <p class="cart-item-model">CAW211P.FC6356</p>
+                            <p class="cart-item-specs">Automatic • 39mm • 100m</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="qty-btn">-</button>
+                            <input type="number" value="1" min="1" max="5">
+                            <button class="qty-btn">+</button>
+                        </div>
+                        <div class="cart-item-price">$6,200</div>
+                        <button class="cart-item-remove" aria-label="Remove">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=400" alt="Watch">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3>AQUARACER PROFESSIONAL</h3>
+                            <p class="cart-item-model">WBP208C.FT6201</p>
+                            <p class="cart-item-specs">Automatic • 43mm • 300m</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="qty-btn">-</button>
+                            <input type="number" value="1" min="1" max="5">
+                            <button class="qty-btn">+</button>
+                        </div>
+                        <div class="cart-item-price">$3,950</div>
+                        <button class="cart-item-remove" aria-label="Remove">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="cart-actions">
+                        <a href="products.html" class="btn btn-secondary">Continue Shopping</a>
+                        <button class="btn btn-secondary">Clear Cart</button>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal (3 items)</span>
+                        <span>$16,000</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Tax (Estimated)</span>
+                        <span>$1,280</span>
+                    </div>
+                    
+                    <div class="summary-divider"></div>
+                    
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span>$17,280</span>
+                    </div>
+                    
+                    <div class="promo-code">
+                        <input type="text" placeholder="Promo Code">
+                        <button class="btn btn-secondary">Apply</button>
+                    </div>
+                    
+                    <a href="checkout.html" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Proceed to Checkout</a>
+                    
+                    <div class="payment-methods">
+                        <p>We Accept:</p>
+                        <div class="payment-icons">
+                            <span>VISA</span>
+                            <span>MC</span>
+                            <span>AMEX</span>
+                            <span>PayPal</span>
+                        </div>
+                    </div>
+                    
+                    <div class="secure-checkout">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span>Secure Checkout</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </aside>
-    </div>
-    <p class="muted note">This demo cart uses localStorage and does not process payments. Integrate Stripe/Shopify for production checkout.</p>
-  </main>
+    </section>
 
-  <footer class="main-footer">
-    <div class="container footer-grid">
-      <div class="footer-about">
-        <h3>Acumen Watches</h3>
-        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
-        <p>Phone: +1 (800) 555-0199</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="year-cart"></span> Acumen Watches. All Rights Reserved.</p>
-      <div class="social-icons">
-        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
-        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
-      </div>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="logo">ACUMEN</h3>
+                    <p>Swiss Luxury Timepieces</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="collection.html">Carrera</a></li>
+                        <li><a href="collection.html">Monaco</a></li>
+                        <li><a href="collection.html">Aquaracer</a></li>
+                        <li><a href="collection.html">Formula 1</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                        <li><a href="orders.html">Track Order</a></li>
+                        <li><a href="about.html">Warranty</a></li>
+                        <li><a href="about.html">Care & Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Heritage</a></li>
+                        <li><a href="about.html">Innovation</a></li>
+                        <li><a href="blog.html">News & Stories</a></li>
+                        <li><a href="about.html">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ACUMEN Watches. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="admin.html">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <script>document.getElementById('year-cart').textContent = new Date().getFullYear();</script>
-  <script src="js/cart.js"></script>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
