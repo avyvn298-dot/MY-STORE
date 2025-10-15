@@ -1,77 +1,360 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Prestige Watches — Home</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <meta name="description" content="Luxury watches collection — Prestige Watches (TAG Heuer inspired)"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACUMEN WATCHES - Swiss Luxury Timepieces</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Prestige<span class="accent">.</span></a>
-      <nav class="nav">
-        <a href="collection.html">Collection</a>
-        <a href="about.html">About</a>
-        <a href="orders.html">My Orders</a>
-        <a href="admin.html" class="admin-link">Admin</a>
-        <button id="cart-btn" class="cart-btn">Cart (<span id="cart-count">0</span>)</button>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">ACUMEN</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collections</a></li>
+                <li><a href="products.html">Watches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <a href="orders.html" class="icon-btn" aria-label="Orders">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                </a>
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-inner container">
-        <div class="hero-text">
-          <h1>PRECISION. HERITAGE. STYLE.</h1>
-          <p>Explore our collection of luxury chronographs and classic watches — craftsmanship reimagined.</p>
-          <div class="cta-row">
-            <a href="collection.html" class="btn btn-primary">Shop Collection</a>
-            <a href="#featured" class="btn btn-ghost">Featured</a>
-          </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1920')"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="hero-subtitle">NEW COLLECTION 2025</span>
+                    <h1 class="hero-title">CARRERA CHRONOGRAPH</h1>
+                    <p class="hero-description">Precision engineered. Elegantly designed. Swiss craftsmanship redefined.</p>
+                    <div class="hero-buttons">
+                        <a href="collection.html" class="btn btn-primary">Explore Collection</a>
+                        <a href="products.html" class="btn btn-secondary">View All Watches</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hero-image">
-          <img src="assets/img/hero-watch.jpg" alt="Luxury watch" />
+        <div class="slider-controls">
+            <button class="slider-btn prev-btn">❮</button>
+            <div class="slider-dots"></div>
+            <button class="slider-btn next-btn">❯</button>
         </div>
-      </div>
     </section>
 
-    <section id="featured" class="section container">
-      <h2 class="section-title">Featured Watches</h2>
-      <div id="featured-grid" class="grid"></div>
+    <!-- Featured Collections -->
+    <section id="collections" class="collections section">
+        <div class="container">
+            <h2 class="section-title">OUR COLLECTIONS</h2>
+            <div class="collections-grid">
+                <div class="collection-card" data-aos="fade-up">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=800" alt="Carrera Collection">
+                    </div>
+                    <div class="collection-info">
+                        <h3>CARRERA</h3>
+                        <p>Racing Heritage Meets Modern Elegance</p>
+                        <a href="collection.html" class="collection-link">Discover →</a>
+                    </div>
+                </div>
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=800" alt="Monaco Collection">
+                    </div>
+                    <div class="collection-info">
+                        <h3>MONACO</h3>
+                        <p>Iconic Square Case Since 1969</p>
+                        <a href="collection.html" class="collection-link">Discover →</a>
+                    </div>
+                </div>
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=800" alt="Aquaracer Collection">
+                    </div>
+                    <div class="collection-info">
+                        <h3>AQUARACER</h3>
+                        <p>Professional Diving Precision</p>
+                        <a href="collection.html" class="collection-link">Discover →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="section container">
-      <h3>Craftsmanship & Heritage</h3>
-      <p class="lead">Each timepiece is a testament to precision engineering and refined design.</p>
+    <!-- Watches Grid Preview -->
+    <section id="watches" class="watches section">
+        <div class="container">
+            <h2 class="section-title">FEATURED TIMEPIECES</h2>
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All Watches</button>
+                <button class="filter-btn" data-filter="chronograph">Chronograph</button>
+                <button class="filter-btn" data-filter="automatic">Automatic</button>
+                <button class="filter-btn" data-filter="limited">Limited Edition</button>
+            </div>
+            <div class="watches-grid" id="watchesGrid">
+                <!-- Watches will be dynamically loaded -->
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="products.html" class="btn btn-primary">View All Watches</a>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Prestige Watches</div>
-      <div class="footer-links">
-        <a href="about.html">About</a>
-        <a href="collection.html">Collection</a>
-      </div>
-    </div>
-  </footer>
+    <!-- Innovation Section -->
+    <section id="innovation" class="innovation section">
+        <div class="innovation-banner">
+            <div class="innovation-bg" style="background-image: url('https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=1920')"></div>
+            <div class="innovation-overlay"></div>
+            <div class="innovation-content">
+                <span class="innovation-subtitle">SWISS INNOVATION</span>
+                <h2 class="innovation-title">CRAFTSMANSHIP MEETS TECHNOLOGY</h2>
+                <p class="innovation-description">Every timepiece is a masterpiece of precision engineering, combining traditional Swiss watchmaking with cutting-edge innovation.</p>
+                <a href="about.html" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Swiss Made</h3>
+                    <p>Certified Swiss craftsmanship with precision movements</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Sapphire Crystal</h3>
+                    <p>Scratch-resistant premium materials</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Water Resistant</h3>
+                    <p>Up to 300m depth protection</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3>Warranty</h3>
+                    <p>5-year international warranty</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Cart drawer -->
-  <div id="cart-drawer" class="cart-drawer hidden">
-    <div class="cart-header">
-      <h4>Your Cart</h4>
-      <button id="close-cart" class="close-btn">✕</button>
-    </div>
-    <div id="cart-items" class="cart-items"></div>
-    <div class="cart-footer">
-      <div class="cart-total">Total: <span id="cart-total">0</span></div>
-      <a href="checkout.html" class="btn btn-primary">Checkout</a>
-    </div>
-  </div>
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <span class="about-subtitle">SINCE 1860</span>
+                    <h2>HERITAGE OF EXCELLENCE</h2>
+                    <p>For over 160 years, ACUMEN has been at the forefront of Swiss watchmaking, creating timepieces that blend traditional craftsmanship with modern innovation.</p>
+                    <p>Our commitment to precision, quality, and design has made us a symbol of luxury and performance worldwide.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>160+</h3>
+                            <p>Years of Heritage</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Countries Worldwide</p>
+                        </div>
+                        <div class="stat">
+                            <h3>500K+</h3>
+                            <p>Satisfied Customers</p>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn btn-primary" style="margin-top: 2rem;">Read Our Story</a>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1611148881051-02e80bcb5256?w=800" alt="Swiss Watchmaking">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script src="assets/js/script.js"></script>
+    <!-- Newsletter Section -->
+    <section class="newsletter section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>STAY UPDATED</h2>
+                <p>Subscribe to receive exclusive offers and latest collections</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">CONTACT US</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="info-item">
+                        <h3>Visit Our Boutique</h3>
+                        <p>123 Luxury Avenue, Geneva, Switzerland</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Phone</h3>
+                        <p>+41 22 123 4567</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Email</h3>
+                        <p>contact@acumenwatches.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Opening Hours</h3>
+                        <p>Mon - Sat: 10:00 - 19:00<br>Sunday: Closed</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" data-aos="fade-left">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="logo">ACUMEN</h3>
+                    <p>Swiss Luxury Timepieces</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="collection.html">Carrera</a></li>
+                        <li><a href="collection.html">Monaco</a></li>
+                        <li><a href="collection.html">Aquaracer</a></li>
+                        <li><a href="collection.html">Formula 1</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="orders.html">Track Order</a></li>
+                        <li><a href="about.html">Warranty</a></li>
+                        <li><a href="about.html">Care & Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Heritage</a></li>
+                        <li><a href="about.html">Innovation</a></li>
+                        <li><a href="blog.html">News & Stories</a></li>
+                        <li><a href="about.html">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ACUMEN Watches. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="admin.html">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
