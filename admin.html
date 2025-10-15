@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ACUMEN WATCHES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-login {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0b0b0b 0%, #1a1a2e 100%);
+        }
+        .login-box {
+            background: rgba(20, 20, 20, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid #c7a661;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 8px 40px rgba(199, 166, 97, 0.2);
+        }
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #c7a661;
+        }
+        .admin-dashboard {
+            display: none;
+            padding-top: 80px;
+            min-height: 100vh;
+            background: #0b0b0b;
+        }
+        .admin-sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 250px;
+            height: calc(100vh - 80px);
+            background: #141414;
+            border-right: 1px solid rgba(199, 166, 97, 0.2);
+            padding: 2rem 0;
+        }
+        .admin-sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        .admin-sidebar a:hover,
+        .admin-sidebar a.active {
+            background: rgba(199, 166, 97, 0.1);
+            color: #c7a661;
+            border-left: 3px solid #c7a661;
+        }
+        .admin-main {
+            margin-left: 250px;
+            padding: 2rem;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: linear-gradient(145deg, #141414, #0d0d0d);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(199, 166, 97, 0.2);
+        }
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: #c7a661;
+            margin-bottom: 0.5rem;
+        }
+        .stat-card p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .data-table {
+            background: #141414;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(199, 166, 97, 0.2);
+        }
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th {
+            background: rgba(199, 166, 97, 0.1);
+            padding: 1rem;
+            text-align: left;
+            color: #c7a661;
+            font-weight: 600;
+        }
+        .data-table td {
+            padding: 1rem;
+            border-top: 1px solid rgba(199, 166, 97, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .data-table tr:hover {
+            background: rgba(199, 166, 97, 0.05);
+        }
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .status-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+        .status-completed {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+        .status-shipped {
+            background: rgba(33, 150, 243, 0.2);
+            color: #2196f3;
+        }
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                top: 0;
+            }
+            .admin-main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="admin-login" id="adminLogin">
+        <div class="login-box">
+            <h2>ADMIN LOGIN</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label style="color: #c7a661;">Username</label>
+                    <input type="text" placeholder="Enter username" required style="width: 100%; padding: 1rem; background: rgba(11, 11, 11, 0.8); border: 2px solid rgba(199, 166, 97, 0.3); border-radius: 10px; color: #fff; margin-top: 0.5rem;">
+                </div>
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label style="color: #c7a661;">Password</label>
+                    <input type="password" placeholder="Enter password" required style="width: 100%; padding: 1rem; background: rgba(11, 11, 11, 0.8); border: 2px solid rgba(199, 166, 97, 0.3); border-radius: 10px; color: #fff; margin-top: 0.5rem;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Login</button>
+                <p style="text-align: center; margin-top: 1rem; color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+                    Demo: admin / admin123
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <!-- Header -->
+        <header id="header" style="position: fixed;">
+            <nav class="navbar">
+                <a href="index.html" class="logo">ACUMEN ADMIN</a>
+                <div style="display: flex; align-items: center; gap: 2rem;">
+                    <span style="color: #c7a661;">Welcome, Admin</span>
+                    <button class="btn btn-secondary" onclick="logout()" style="padding: 0.5rem 1.5rem;">Logout</button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <a href="#" class="active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                Dashboard
+            </a>
+            <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Orders
+            </a>
+            <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Products
+            </a>
+            <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Customers
+            </a>
+            <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                Revenue
+            </a>
+            <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                Settings
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <div>
+                    <h1>Dashboard Overview</h1>
+                    <p style="color: rgba(255, 255, 255, 0.7);">Welcome back! Here's what's happening today.</p>
+                </div>
+                <button class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add New Product
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="fade-up">
+                    <h3>$127,500</h3>
+                    <p>Total Revenue</p>
+                    <small style="color: #4caf50;">↑ 12.5% from last month</small>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>342</h3>
+                    <p>Total Orders</p>
+                    <small style="color: #4caf50;">↑ 8.2% from last month</small>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>1,248</h3>
+                    <p>Total Customers</p>
+                    <small style="color: #4caf50;">↑ 15.3% from last month</small>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>89</h3>
+                    <p>Products Listed</p>
+                    <small style="color: rgba(255, 255, 255, 0.5);">3 out of stock</small>
+                </div>
+            </div>
+
+            <!-- Recent Orders Table -->
+            <div class="data-table" style="margin-bottom: 3rem;">
+                <div style="padding: 1.5rem; border-bottom: 1px solid rgba(199, 166, 97, 0.1);">
+                    <h2 style="color: #c7a661;">Recent Orders</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#ACU-001234</td>
+                            <td>John Doe</td>
+                            <td>Carrera Chronograph</td>
+                            <td>$5,850</td>
+                            <td><span class="status-badge status-shipped">Shipped</span></td>
+                            <td>Jan 15, 2025</td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ACU-001233</td>
+                            <td>Sarah Johnson</td>
+                            <td>Monaco Automatic</td>
+                            <td>$6,200</td>
+                            <td><span class="status-badge status-pending">Processing</span></td>
+                            <td>Jan 15, 2025</td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ACU-001232</td>
+                            <td>Michael Brown</td>
+                            <td>Aquaracer Professional</td>
+                            <td>$3,950</td>
+                            <td><span class="status-badge status-completed">Delivered</span></td>
+                            <td>Jan 14, 2025</td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ACU-001231</td>
+                            <td>Emma Wilson</td>
+                            <td>Formula 1 Chronograph</td>
+                            <td>$1,650</td>
+                            <td><span class="status-badge status-shipped">Shipped</span></td>
+                            <td>Jan 14, 2025</td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ACU-001230</td>
+                            <td>David Lee</td>
+                            <td>Carrera Sport</td>
+                            <td>$7,100</td>
+                            <td><span class="status-badge status-completed">Delivered</span></td>
+                            <td>Jan 13, 2025</td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Top Products -->
+            <div class="data-table">
+                <div style="padding: 1.5rem; border-bottom: 1px solid rgba(199, 166, 97, 0.1);">
+                    <h2 style="color: #c7a661;">Top Selling Products</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Collection</th>
+                            <th>Price</th>
+                            <th>Units Sold</th>
+                            <th>Revenue</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Carrera Chronograph</td>
+                            <td>Carrera</td>
+                            <td>$5,850</td>
+                            <td>47</td>
+                            <td>$274,950</td>
+                            <td style="color: #4caf50;">In Stock (23)</td>
+                        </tr>
+                        <tr>
+                            <td>Monaco Automatic</td>
+                            <td>Monaco</td>
+                            <td>$6,200</td>
+                            <td>38</td>
+                            <td>$235,600</td>
+                            <td style="color: #4caf50;">In Stock (15)</td>
+                        </tr>
+                        <tr>
+                            <td>Aquaracer Professional</td>
+                            <td>Aquaracer</td>
+                            <td>$3,950</td>
+                            <td>52</td>
+                            <td>$205,400</td>
+                            <td style="color: #4caf50;">In Stock (31)</td>
+                        </tr>
+                        <tr>
+                            <td>Formula 1 Chronograph</td>
+                            <td>Formula 1</td>
+                            <td>$1,650</td>
+                            <td>89</td>
+                            <td>$146,850</td>
+                            <td style="color: #ff9800;">Low Stock (5)</td>
+                        </tr>
+                        <tr>
+                            <td>Autavia Chronograph</td>
+                            <td>Autavia</td>
+                            <td>$4,900</td>
+                            <td>31</td>
+                            <td>$151,900</td>
+                            <td style="color: #f44336;">Out of Stock</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Admin Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = this.querySelector('input[type="text"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+            
+            // Simple demo authentication
+            if (username === 'avyvn' && password === 'BLOSTER') {
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                showNotification('Login successful! Welcome Admin.');
+            } else {
+                showNotification('Invalid credentials. Try: admin / admin123');
+            }
+        });
+
+        function logout() {
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('adminLogin').style.display = 'flex';
+            showNotification('Logged out successfully.');
+        }
+
+        // Initialize AOS animations
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initAOS === 'function') {
+                initAOS();
+            }
+        });
+    </script>
+</body>
+</html>
