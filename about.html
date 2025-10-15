@@ -1,124 +1,286 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>About — Acumen Watches</title>
-  <meta name="description" content="About Acumen Watches — our heritage, craftsmanship, and design philosophy.">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="icon" href="assets/icons/watch-favicon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ACUMEN WATCHES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container nav-container">
-      <div class="logo">ACUMEN</div>
-      <nav class="nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-icons">
-        <a href="cart.html" class="icon-btn"><img src="assets/icons/cart.svg" alt="Cart"></a>
-        <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </header>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">ACUMEN</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collections</a></li>
+                <li><a href="products.html">Watches</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <a href="orders.html" class="icon-btn" aria-label="Orders">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                </a>
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-  <main class="container page-about">
-    <section class="hero-compact">
-      <h1>Heritage & Craftsmanship</h1>
-      <p class="lead">For generations we have refined the art of timekeeping — marrying engineering precision with timeless design.</p>
+    <!-- Page Hero -->
+    <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1611148881051-02e80bcb5256?w=1920')">
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
+            <h1>OUR STORY</h1>
+            <p>160 Years of Swiss Watchmaking Excellence</p>
+        </div>
     </section>
 
-    <section class="story grid-2">
-      <div class="card">
-        <h2>Our Story</h2>
-        <p>Founded by horology enthusiasts and master craftsmen, Acumen grew from a small atelier into a modern atelier that still values hand-finishing and thoughtful design. Each timepiece is conceived with a spirit of exploration and refined with decades of watchmaking knowledge.</p>
-        <p>We use Swiss-sourced movements in combination with cutting-edge materials and rigorous quality checks. Every watch that leaves our hands is built to endure, to be worn, and to carry forward a legacy.</p>
-      </div>
-      <div class="card">
-        <h2>Design Philosophy</h2>
-        <p>Our design is rooted in clarity, proportion, and tactile detail. We prefer subtle complexity over loud ornamentation — a dial that reveals itself at different angles, a case that fits like an extension of the wrist, and finishes that invite touch.</p>
-        <ul class="muted">
-          <li>Minimal yet detailed dials</li>
-          <li>Ergonomic case designs</li>
-          <li>Quality materials: sapphire, ceramics, gold, forged carbon</li>
-        </ul>
-      </div>
+    <!-- Heritage Section -->
+    <section class="heritage section">
+        <div class="container">
+            <div class="heritage-content">
+                <div class="heritage-text" data-aos="fade-right">
+                    <span class="section-subtitle">SINCE 1860</span>
+                    <h2>A LEGACY OF PRECISION</h2>
+                    <p>Founded in the heart of the Swiss Jura mountains, ACUMEN has been synonymous with precision, innovation, and timeless elegance for over a century and a half.</p>
+                    <p>Our journey began with a simple vision: to create timepieces that transcend mere functionality, becoming true works of art that tell stories across generations.</p>
+                    <p>Today, we continue to honor our heritage while embracing innovation, crafting watches that meet the demands of modern life without compromising on traditional Swiss excellence.</p>
+                </div>
+                <div class="heritage-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1611148881051-02e80bcb5256?w=800" alt="Swiss Watchmaking">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="timeline">
-      <h2>Milestones</h2>
-      <ol class="muted">
-        <li><strong>1990</strong> — Founding of our atelier.</li>
-        <li><strong>2002</strong> — First in-house limited chronograph.</li>
-        <li><strong>2015</strong> — Launch of Aether Carbon collection.</li>
-        <li><strong>2024</strong> — Expansion into bespoke commissions and global retail partners.</li>
-      </ol>
+    <!-- Timeline Section -->
+    <section class="timeline section" style="background: linear-gradient(180deg, #0b0b0b 0%, #141414 100%);">
+        <div class="container">
+            <h2 class="section-title">OUR MILESTONES</h2>
+            <div class="timeline-wrapper">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-year">1860</div>
+                    <div class="timeline-content">
+                        <h3>Foundation</h3>
+                        <p>Edouard Acumen establishes the first workshop in La Chaux-de-Fonds, Switzerland.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-year">1916</div>
+                    <div class="timeline-content">
+                        <h3>Innovation Era</h3>
+                        <p>Introduction of the first stopwatch with 1/100th second precision.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-year">1963</div>
+                    <div class="timeline-content">
+                        <h3>Carrera Launch</h3>
+                        <p>The iconic Carrera chronograph debuts, inspired by motorsport legends.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-year">1969</div>
+                    <div class="timeline-content">
+                        <h3>Monaco Revolution</h3>
+                        <p>World's first automatic chronograph with revolutionary square case design.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-year">2004</div>
+                    <div class="timeline-content">
+                        <h3>Aquaracer Series</h3>
+                        <p>Professional diving watches combining luxury with extreme functionality.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3>Future Forward</h3>
+                        <p>Continuing innovation with sustainable materials and cutting-edge technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="craft-visuals grid-3">
-      <figure class="card">
-        <img src="assets/images/about1.jpg" alt="Craftsman polishing case">
-        <figcaption>Hand-polishing each case to mirror finish.</figcaption>
-      </figure>
-      <figure class="card">
-        <img src="assets/images/about2.jpg" alt="Movement assembly">
-        <figcaption>Movement assembly by master watchmakers.</figcaption>
-      </figure>
-      <figure class="card">
-        <img src="assets/images/about3.jpg" alt="Dial details">
-        <figcaption>Dial finishing: texture and depth work.</figcaption>
-      </figure>
+    <!-- Craftsmanship Section -->
+    <section class="craftsmanship section">
+        <div class="container">
+            <h2 class="section-title">SWISS CRAFTSMANSHIP</h2>
+            <div class="craftsmanship-grid">
+                <div class="craft-card" data-aos="fade-up">
+                    <div class="craft-image">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=600" alt="Movement Assembly">
+                    </div>
+                    <div class="craft-content">
+                        <h3>Movement Assembly</h3>
+                        <p>Each movement is meticulously assembled by master watchmakers with decades of experience, ensuring every component works in perfect harmony.</p>
+                    </div>
+                </div>
+                <div class="craft-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="craft-image">
+                        <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=600" alt="Quality Control">
+                    </div>
+                    <div class="craft-content">
+                        <h3>Quality Control</h3>
+                        <p>Every timepiece undergoes rigorous testing for precision, water resistance, and durability before earning the ACUMEN seal of excellence.</p>
+                    </div>
+                </div>
+                <div class="craft-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="craft-image">
+                        <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=600" alt="Hand Finishing">
+                    </div>
+                    <div class="craft-content">
+                        <h3>Hand Finishing</h3>
+                        <p>Artisans apply traditional finishing techniques to every surface, from polishing to engraving, creating timepieces of unparalleled beauty.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="cta">
-      <div class="card">
-        <h2>Visit the Atelier</h2>
-        <p>Book a private appointment to view collections or commission a bespoke piece.</p>
-        <a class="btn-primary" href="contact.html#visit">Book an Appointment</a>
-      </div>
+    <!-- Values Section -->
+    <section class="values section" style="background: linear-gradient(180deg, #0b0b0b 0%, #141414 100%);">
+        <div class="container">
+            <h2 class="section-title">OUR VALUES</h2>
+            <div class="values-grid">
+                <div class="value-card" data-aos="zoom-in">
+                    <div class="value-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>Uncompromising quality in every detail</p>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="value-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Precision</h3>
+                    <p>Swiss accuracy in every movement</p>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="value-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2v6m0 8v6M6 12H2m20 0h-4M5.64 5.64l4.24 4.24m8.48 0l4.24-4.24M5.64 18.36l4.24-4.24m8.48 8.48l-4.24-4.24"></path>
+                        </svg>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Pushing boundaries of watchmaking</p>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="value-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Heritage</h3>
+                    <p>Honoring 160 years of tradition</p>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="main-footer">
-    <div class="container footer-grid">
-      <div class="footer-about">
-        <h3>Acumen Watches</h3>
-        <p>Excellence through precision. Crafted with passion, built for legacy.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:support@acumenwatches.com">support@acumenwatches.com</a></p>
-        <p>Phone: +1 (800) 555-0199</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="year-about"></span> Acumen Watches. All Rights Reserved.</p>
-      <div class="social-icons">
-        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
-        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
-      </div>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="logo">ACUMEN</h3>
+                    <p>Swiss Luxury Timepieces</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="collection.html">Carrera</a></li>
+                        <li><a href="collection.html">Monaco</a></li>
+                        <li><a href="collection.html">Aquaracer</a></li>
+                        <li><a href="collection.html">Formula 1</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                        <li><a href="orders.html">Track Order</a></li>
+                        <li><a href="about.html">Warranty</a></li>
+                        <li><a href="about.html">Care & Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Heritage</a></li>
+                        <li><a href="about.html">Innovation</a></li>
+                        <li><a href="blog.html">News & Stories</a></li>
+                        <li><a href="about.html">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ACUMEN Watches. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="admin.html">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <script>document.getElementById('year-about').textContent = new Date().getFullYear();</script>
-  <script src="js/main.js"></script>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
